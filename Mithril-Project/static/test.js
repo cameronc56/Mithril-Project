@@ -1,8 +1,7 @@
+
                                      //NAVBAR
-var navbar = {}; //init namespace
-navbar.vm = {}; //init view-model
-navbar.controller = function() {}; //init controller, holds events
-navbar.view = function(ctrl) { 
+
+var nav = function() { 
     return m("div", [
             m("div", {class:"navbar navbar-inverse navbar-static-top"}, [
                 m("div", {class:"container"}, [
@@ -44,11 +43,7 @@ navbar.view = function(ctrl) {
         ]); //end return
 }; //end navbar.view
 
-
-var jumbotron = {}; //init namespace
-jumbotron.vm = {};//init view-model
-jumbotron.controller = function() {}; //init controller
-jumbotron.view = function(ctrl) {
+var jumbotron = function() {
     return m("div", [
             m("div", {class:"container"}, [
                 m("div", {class:"jumbotron"}, [
@@ -60,18 +55,39 @@ jumbotron.view = function(ctrl) {
                     ]),//end center
                 ]),//end jumbotron
             ]),//end container
-           ]),//end jumbotron div
-        ]);//end return
+           ]);//end return
 };//end jumbotron.view
 
 
 
 
 m.route(document.getElementById("main"), "/", {
-    "/navbar":navbar,
-    "/jumbotron":jumbotron,
-    //"/both":both
+    "/":homepage,
+    "/jumbotron":gamepage
 });
+
+
+var layout = function() {
+    return m(".layout", [
+        m("navbar", nav),
+        m("jumbotron", jumbotron)
+    ]);
+};
+
+var mixinLayout = function(layout, nav, jumbotron) {
+    return function() {
+        return layout(nav(), jumbotron());
+    };
+};
+
+var homepage = {};
+homepage.controller = function() { };
+homepage.view = mixinLayout(layout, nav, jumbotron);
+
+var gamepage = {};
+gamepage.controller = function() { };
+gamepage.view = mixinLayout(layout, nav, jumbotron);
+
 
 //a sample module
 // var dashboard = {
