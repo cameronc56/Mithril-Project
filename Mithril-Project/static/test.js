@@ -19,7 +19,7 @@ var nav = function() {
                             m("li", {class:"dropdown"}, [
                                 m("a", {class:"dropdown-toggle", "data-toggle":"dropdown", href:"#"}, "Games", m("b", {class:"caret"}) ),
                                 m("ul",{class:"dropdown-menu"}, [
-                                    m("li", [ m("a", {onclick: function() { m.route("/navbar") } }, "All Games"), ]),
+                                    m("li", [ m("a", {href:"#"}, "All Games"), ]),
                                     m("li", [ m("a", {href:"#"}, "Categories"), ]),
                                     m("li", [ m("a", {href:"#"}, "Featured"  ), ]),
                                     m("li", [ m("a", {href:"#"}, "Popular"   ), ]),
@@ -59,14 +59,6 @@ var jumbotron = function() {
 };//end jumbotron.view
 
 
-
-
-m.route(document.getElementById("main"), "/", {
-    "/":homepage,
-    "/jumbotron":gamepage
-});
-
-
 var layout = function() {
     return m(".layout", [
         m("navbar", nav),
@@ -88,6 +80,12 @@ var gamepage = {};
 gamepage.controller = function() { };
 gamepage.view = mixinLayout(layout, nav, jumbotron);
 
+m.route(document.getElementById("main"), "/", {
+    "/":homepage,
+    "/jumbotron":gamepage
+});
+
+m.module(document.getElementById("main"), {controller: function() {}, view: layout});
 
 //a sample module
 // var dashboard = {

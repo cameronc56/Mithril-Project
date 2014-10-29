@@ -22,7 +22,8 @@
 		return [
 			"nav here"
 		];
-	}
+	};
+
 
 	var body = function() {
 		return [
@@ -44,12 +45,17 @@
 	gamepage.controller = function() { };
 	gamepage.view = mixinLayout(layout, nav);
 
+	m.route.mode = 'hash';
+
 	m.route(document, "/", {
 		"/": homepage,
 		"/bar": gamepage
 	});
 
 	m.module(document, {controller: function() {}, view: layout});
+
+	document.write(nav);
+
 </script>
 </body>
 </html>
