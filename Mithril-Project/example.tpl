@@ -9,9 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<!--
+	<div id="header"></div>
     <div id="main"></div>
+-->
 <script>
-	var layout = function() {
+	var layout = function(nav, body) {
 		return m(".layout", [
 			m("header", nav),
 			m("main", body)
@@ -24,11 +27,15 @@
 		];
 	};
 
-
 	var body = function() {
 		return [
 			"body here"
-			];
+		];
+	};
+	var differentbody = function() {
+		return [
+			"no body here"
+		];
 	};
 
 	var mixinLayout = function(layout, nav, body) {
@@ -43,19 +50,16 @@
 
 	var gamepage = {};
 	gamepage.controller = function() { };
-	gamepage.view = mixinLayout(layout, nav);
-
-	m.route.mode = 'hash';
+	gamepage.view = mixinLayout(layout, nav, differentbody);
 
 	m.route(document, "/", {
 		"/": homepage,
 		"/bar": gamepage
 	});
 
+	m.route.mode = 'hash';
+
 	m.module(document, {controller: function() {}, view: layout});
-
-	document.write(nav);
-
 </script>
 </body>
 </html>
