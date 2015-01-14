@@ -14,6 +14,6 @@ def returnIndex():
 
 @route('/static/<filename>', name='static')
 def server_static(filename):
-    return static_file(filename, root='static')
+	return static_file(filename, root='static')
 
 run(host = '0.0.0.0', port = 8443, debug = True, reloader = False)
