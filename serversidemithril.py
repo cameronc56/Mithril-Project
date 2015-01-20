@@ -2,15 +2,16 @@
 from bottle import *
 app = default_app()
 
-
-@get('/game')
-def returnIndex():
-	return template('mithril', get_url = app.get_url)
+#
+#@get('/game')
+#def returnIndex():
+#	return template('main', get_url = app.get_url)
 
 
 @get('/')
 def returnIndex():
-	return template('mithril', get_url = app.get_url)
+	return template('index', get_url = app.get_url)
+
 
 @route('/static/<filename>', name='static')
 def server_static(filename):
