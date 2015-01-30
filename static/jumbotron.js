@@ -1,4 +1,5 @@
-var jumbotron = function(ctrl) {
+var jumbotron = {};
+jumbotron.view = function(ctrl) {
     return m("div", [
         m("div", {class:"container"}, [
             m("div", {class:"jumbotron"}, [
@@ -12,3 +13,5 @@ var jumbotron = function(ctrl) {
         ]),//end container
     ])//end jumbotron div
 };//end
+
+jumbotron.controller = function() {};
