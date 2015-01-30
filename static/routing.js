@@ -1,9 +1,9 @@
 var homepage = {};
 homepage.view = function (ctrl) {
-	return [
-		m("div", navbar),
-		m("div", jumbotron)
-	]
+	return m("div", [
+		m("div", navbar.view()),
+		m("div", jumbotron.view())
+	])
 };
 homepage.controller = function() {};
 
