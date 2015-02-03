@@ -43,3 +43,4 @@ navbar.view = function(ctrl) {
 }; //end navbar.view
 
 navbar.controller = function() {};
+

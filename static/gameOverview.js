@@ -1,3 +1,9 @@
-var gamesOverview = {};
+var gameOverview = {};
 
-game
+gameOverview.view = function(ctrl) {
+    return m("center", [
+        m("p", "Hello World")
+        ]);
+};
+
+gameOverview.controller = function() {};
