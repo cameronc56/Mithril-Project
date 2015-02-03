@@ -63,28 +63,29 @@ jumbotron.view = function(ctrl) {
                             m("input.form-control", {id: "register-password", onkeyup: "checkPass(); return false;", placeholder: "Password", type: "password"}),
                         ]),
                         m(".form-group", [
-                            m("label.col-lg-2.control-label[for='register-confirm-password']", "Confirm Password:"),
-                            m("input.form-control[id='register-confirm-password'][onkeyup='checkPass(); return false;'][placeholder='Confirm Password'][type='password']")
+                            m("label.col-lg-2.control-label", {for: "register-confirm-password"}, "Confirm Password:"),
+                            m("input.form-control", {id: "register-confirm-password", onkeyup: "checkPass(); return false;", placeholder: "Confirm Password", type: "password"}),
                         ]),
-                        m("center", [m("span[id='confirm-msg']")]),
-                        m(".form-group", [
-                            m("label.col-lg-2.control-label[for='register-phone']", "Phone:"),
-                            m("input.form-control[id='register-phone'][placeholder='Phone'][type='tel']")
+                        m("center", [
+                            m("span", {id: "confirm-msg"}),
                         ]),
                         m(".form-group", [
-                            m("label.col-lg-2.control-label[for='register-address']", "Address:"),
-                            m("input.form-control[id='register-address'][placeholder='Address'][type='text']")
+                            m("label.col-lg-2.control-label", {for: "register-phone"}, "Phone:"),
+                            m("input.form-control", {id: "register-phone", placeholder: "Phone", type: "tel"}),
+                        ]),
+                        m(".form-group", [
+                            m("label.col-lg-2.control-label", {for: "register-address"}, "Address:"),
+                            m("input.form-control", {id: "register-address", placeholder: "Address", type: "text"}),
                         ])
                     ]),
                     m(".modal-footer", [
-                        m("a.btn.btn-primary.pull-left[data-dismiss='modal']", "Close"),
-                        m("a.btn.btn-primary.pull-right[id='registerBtn']", "Register")
+                        m("a.btn.btn-primary.pull-left", {"data-dismiss": "modal"}, "Close"),
+                        m("a.btn.btn-primary.pull-right", {id: "registerBtn"}, "Register"),
                     ])
                 ])
             ])
         ])]
     ])//end jumbotron div
-
 };//end
 
 jumbotron.controller = function() {};
