@@ -1,5 +1,6 @@
 var jumbotron = {};
-jumbotron.view = function(ctrl) {
+
+jumbotron.view = function(controller) {
     return m("div", [
         m("div", {class:"container"}, [
             m("div", {class:"jumbotron"}, [
@@ -60,11 +61,11 @@ jumbotron.view = function(ctrl) {
                         ]),
                         m(".form-group", [
                             m("label.col-lg-2.control-label", {for: "register-password"}, "Password:"),
-                            m("input.form-control", {id: "register-password", onkeyup: "checkPass(); return false;", placeholder: "Password", type: "password"}),
+                            m("input.form-control", {id: "register-password", onkeyup: controller.checkPass(), placeholder: "Password", type: "password"}),
                         ]),
                         m(".form-group", [
                             m("label.col-lg-2.control-label", {for: "register-confirm-password"}, "Confirm Password:"),
-                            m("input.form-control", {id: "register-confirm-password", onkeyup: "checkPass(); return false;", placeholder: "Confirm Password", type: "password"}),
+                            m("input.form-control", {id: "register-confirm-password", onkeyup: controller.checkPass(), placeholder: "Confirm Password", type: "password"}),
                         ]),
                         m("center", [
                             m("span", {id: "confirm-msg"}),
@@ -80,7 +81,7 @@ jumbotron.view = function(ctrl) {
                     ]),
                     m(".modal-footer", [
                         m("a.btn.btn-primary.pull-left", {"data-dismiss": "modal"}, "Close"),
-                        m("a.btn.btn-primary.pull-right", {id: "registerBtn"}, "Register"),
+                        m("a.btn.btn-primary.pull-right", {id: "register-btn"}, "Register"),
                     ])
                 ])
             ])
@@ -88,4 +89,103 @@ jumbotron.view = function(ctrl) {
     ])//end jumbotron div
 };//end
 
-jumbotron.controller = function() {};
+jumbotron.controller =  {
+    checkPass: function() {
+        var pass1 = document.getElementById('register-password');
+        var pass2 = document.getElementById('register-confirm-password');
+        var message = document.getElementById('confirm-msg');
+        var goodColor = "#62BF65";
+        var badColor = "#E67373";
+        var whiteColor = "#ffffff"
+        var greyColor = "#808080"
+        if(pass2.value == ""){
+            pass2.style.backgroundcolor = whiteColor;
+            message.style.color = greyColor;
+            message.innerHTML = "Please Enter a Password"
+        } else if(pass1.value == pass2.value){
+            pass2.style.backgroundColor = goodColor;
+            message.style.color = goodColor;
+            message.innerHTML = "Passwords Match!";
+        } else {
+            pass2.style.backgroundColor = badColor;
+            message.style.color = badColor;
+            message.innerHTML = "Passwords Do Not Match!";
+        }
+    }
+
+};
+
+$(document).ready(function() {
+    $('#register-btn').click(function () {
+        var userInput = document.getElementById('register-username').value;
+        var passInput = document.getElementById('register-password').value;
+        var emailInput = document.getElementById('register-email').value;
+        var phoneInput = document.getElementById('register-phone').value;
+        var addressInput = document.getElementById('register-address').value;
+        var userField = document.getElementById('register-username');
+        var message = document.getElementById('register-error-msg');
+        var goodColor = "#62BF65";
+        var badColor = "#E67373";
+        $.ajax({
+            type: "POST",
+            url: "/register",
+            data: JSON.stringify({"username":userInput, "password":passInput, "email":emailInput, "phone":phoneInput, "address":addressInput}),
+            dataType: "JSON",
+            contentType: "application/json",
+            async: true,
+            cache: false,
+            success: function (msg) {
+                //msg = JSON.parse(msg);
+                $('#register-error-msg').text(msg.error);
+                if(msg.error == 'Account Created'){
+                    userField.style.backgroundColor = goodColor;
+                    message.style.color = goodColor;
+                    document.location.reload(true);
+                }
+                else {
+                    userField.style.backgroundColor = badColor;
+                    message.style.color = badColor;
+                }
+            }
+        });
+    });
+});
+
+/*                                Login
+*/
+
+$(document).ready(function() {
+    $('#login-btn').click(function () {
+        var userInput = document.getElementById('login-username').value;
+        var userField = document.getElementById('login-username');
+        var passInput = document.getElementById('login-password').value;
+        var passField = document.getElementById('login-password');
+        var message   = document.getElementById('login-error-msg');
+        var goodColor = "#62BF65";
+        var badColor  = "#E67373";
+        $.ajax({
+            type: "POST",
+            url: "/login",
+            data: JSON.stringify({"username":userInput, "password":passInput}),
+            dataType: "JSON",
+            contentType: "application/json",
+            async: true,
+            cache: false,
+            success: function (msg) {
+                //msg = JSON.parse(msg);
+                $('#login-error-msg').text(msg.error);
+                if(msg.error == "Logged In"){
+                    //userField.style.backgroundColor = goodColor;
+                    //passField.style.backgroundColor = goodColor;
+                    message.style.color = goodColor;
+                    document.location.reload(true);
+                }
+                else {
+                    //userField.style.backgroundColor = badColor;
+                    //passField.style.backgroundColor = badColor;
+                    message.style.color = badColor;
+                }
+            }
+        });
+    });
+});
