@@ -61,11 +61,11 @@ jumbotron.view = function(controller) {
                         ]),
                         m(".form-group", [
                             m("label.col-lg-2.control-label", {for: "register-password"}, "Password:"),
-                            m("input.form-control", {id: "register-password", onkeyup: controller.checkPass(), placeholder: "Password", type: "password"}),
+                            m("input.form-control", {id: "register-password", /*onkeyup: jumbotron.controller.checkPass(),*/ placeholder: "Password", type: "password"}),
                         ]),
                         m(".form-group", [
                             m("label.col-lg-2.control-label", {for: "register-confirm-password"}, "Confirm Password:"),
-                            m("input.form-control", {id: "register-confirm-password", onkeyup: controller.checkPass(), placeholder: "Confirm Password", type: "password"}),
+                            m("input.form-control", {id: "register-confirm-password", /*onkeyup: jumbotron.controller.checkPass(),*/ placeholder: "Confirm Password", type: "password"}),
                         ]),
                         m("center", [
                             m("span", {id: "confirm-msg"}),
@@ -98,7 +98,7 @@ jumbotron.controller =  {
         var badColor = "#E67373";
         var whiteColor = "#ffffff"
         var greyColor = "#808080"
-        if(pass2.value == ""){
+        if(pass2.value == null || pass2.value == ""){
             pass2.style.backgroundcolor = whiteColor;
             message.style.color = greyColor;
             message.innerHTML = "Please Enter a Password"
