@@ -104,10 +104,19 @@ jumbotron.controller =  {
         var badColor = "#E67373";
         var whiteColor = "#ffffff";
         var greyColor = "#808080";
-        if(pass2.val() === "") {
+        console.log(pass1.val().search(/[\w\d\s]/));
+        if (pass2.val() === "") {
             pass2.css("background-color", whiteColor);
             message.css("color", greyColor);
             message.html("Please enter password twice.");
+        } else if (pass1.val().search(/[^\w*\d*]/) != -1) {
+            pass2.css("background-color", badColor);
+            message.css("color", badColor);
+            message.html("Password contains invalid character(s)!");
+        } else if (pass2.val().search(/[^\w*\d*]/) != -1) {
+            pass2.css("background-color", badColor);
+            message.css("color", badColor);
+            message.html("Password contains invalid character(s)!");
         } else if(pass1.val() === pass2.val()) {
             pass2.css("background-color", goodColor);
             message.css("color", goodColor);
@@ -133,23 +142,30 @@ jumbotron.controller =  {
     }
 };
 
+function User(username, password, phone, address) {
+    this.username = username;
+    this.password = password;
+    this.phone = phone;
+    this.address = address;
+}
 
+var cameronTestUser = new User("cameron", "777777", "555-555-5555", "123 St.");
+console.log(cameronTestUser);
 
 $(document).ready(function() {
     $('#register-btn').click(function () {
-        var userInput = document.getElementById('register-username').value;
-        var passInput = document.getElementById('register-password').value;
-        var emailInput = document.getElementById('register-email').value;
-        var phoneInput = document.getElementById('register-phone').value;
-        var addressInput = document.getElementById('register-address').value;
-        var userField = document.getElementById('register-username');
-        var message = document.getElementById('register-error-msg');
+        var userInput = $('#register-username');
+        var passInput = $('#register-password');
+        var emailInput = $('#register-email');
+        var phoneInput = $('#register-phone');
+        var addressInput = $('#register-address');
+        var message = $('#register-error-msg');
         var goodColor = "#62BF65";
         var badColor = "#E67373";
         $.ajax({
             type: "POST",
             url: "/register",
-            data: JSON.stringify({"username":userInput, "password":passInput, "email":emailInput, "phone":phoneInput, "address":addressInput}),
+            data: JSON.stringify({"username":userInput.val(), "password":passInput.val(), "email":emailInput.val(), "phone":phoneInput.val(), "address":addressInput.val()}),
             dataType: "JSON",
             contentType: "application/json",
             async: true,
@@ -176,11 +192,9 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $('#login-btn').click(function () {
-        var userInput = document.getElementById('login-username').value;
-        var userField = document.getElementById('login-username');
-        var passInput = document.getElementById('login-password').value;
-        var passField = document.getElementById('login-password');
-        var message   = document.getElementById('login-error-msg');
+        var userInput = $('#login-username').val();
+        var passInput = $('#login-password').val();
+        var message   = $('#login-error-msg');
         var goodColor = "#62BF65";
         var badColor  = "#E67373";
         $.ajax({
@@ -195,15 +209,11 @@ $(document).ready(function() {
                 //msg = JSON.parse(msg);
                 $('#login-error-msg').text(msg.error);
                 if (msg.error == "Logged In") {
-                    //userField.style.backgroundColor = goodColor;
-                    //passField.style.backgroundColor = goodColor;
-                    message.style.color = goodColor;
+                    message.css("color", goodColor);
                     document.location.reload(true);
                 }
                 else {
-                    //userField.style.backgroundColor = badColor;
-                    //passField.style.backgroundColor = badColor;
-                    message.style.color = badColor;
+                    message.css("color", badColor);
                 }
             },
             failure: function(msg) {
