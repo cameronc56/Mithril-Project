@@ -61,11 +61,13 @@ jumbotron.view = function(controller) {
                         ]),
                         m(".form-group", [
                             m("label.col-lg-2.control-label", {for: "register-password"}, "Password:"),
-                            m("input.form-control", {id: "register-password", /*onkeyup: jumbotron.controller.checkPass(),*/ placeholder: "Password", type: "password"}),
+                            m("input.form-control", {id: "register-password", onkeyup: m.withAttr("value", jumbotron.controller.checkPass), placeholder: "Password", /*onchange: m.withAttr("type", jumbotron.controller.showPass)*/ type: "password", value: ""}),
                         ]),
                         m(".form-group", [
                             m("label.col-lg-2.control-label", {for: "register-confirm-password"}, "Confirm Password:"),
-                            m("input.form-control", {id: "register-confirm-password", /*onkeyup: jumbotron.controller.checkPass(),*/ placeholder: "Confirm Password", type: "password"}),
+                            m("input.form-control", {id: "register-confirm-password", onkeyup: m.withAttr("value", jumbotron.controller.checkPass), placeholder: "Confirm Password", type: "password", value: ""}),
+                            m("input#showPass.pull-right", {type: "checkbox", name: "showPass", style: "margin-left: 5px", onchange: m.withAttr("input", jumbotron.controller.showPass)}),
+                            m("label.pull-right", {for: "showPass"}, "Show Password"),
                         ]),
                         m("center", [
                             m("span", {id: "confirm-msg"}),
@@ -89,31 +91,49 @@ jumbotron.view = function(controller) {
     ])//end jumbotron div
 };//end
 
+//first use of m.prop and m.withAttr:
+//Make a checkbox on the side of the register password fields that when checked, will show the users password.
+//It will update the type of the password fields to be either "password" or "text"
+
 jumbotron.controller =  {
     checkPass: function() {
-        var pass1 = document.getElementById('register-password');
-        var pass2 = document.getElementById('register-confirm-password');
-        var message = document.getElementById('confirm-msg');
+        var pass1 = $("#register-password");
+        var pass2 = $("#register-confirm-password");
+        var message = $("#confirm-msg");
         var goodColor = "#62BF65";
         var badColor = "#E67373";
-        var whiteColor = "#ffffff"
-        var greyColor = "#808080"
-        if(pass2.value == null || pass2.value == ""){
-            pass2.style.backgroundcolor = whiteColor;
-            message.style.color = greyColor;
-            message.innerHTML = "Please Enter a Password"
-        } else if(pass1.value == pass2.value){
-            pass2.style.backgroundColor = goodColor;
-            message.style.color = goodColor;
-            message.innerHTML = "Passwords Match!";
+        var whiteColor = "#ffffff";
+        var greyColor = "#808080";
+        if(pass2.val() === "") {
+            pass2.css("background-color", whiteColor);
+            message.css("color", greyColor);
+            message.html("Please enter password twice.");
+        } else if(pass1.val() === pass2.val()) {
+            pass2.css("background-color", goodColor);
+            message.css("color", goodColor);
+            message.html("Passwords match.");
         } else {
-            pass2.style.backgroundColor = badColor;
-            message.style.color = badColor;
-            message.innerHTML = "Passwords Do Not Match!";
+            pass2.css("background-color", badColor);
+            message.css("color", badColor);
+            message.html("Passwords do not match!");
+        }
+    },
+    showPass: function() {
+        var pass1 = $("#register-password");
+        var pass2 = $("#register-confirm-password");
+        var isChecked = $("#showPass").prop("checked");
+        console.log(isChecked);
+        if(isChecked) {
+            pass1.attr("type", "text");
+            pass2.attr("type", "text");
+        } else {
+            pass1.attr("type", "password");
+            pass2.attr("type", "password");
         }
     }
-
 };
+
+
 
 $(document).ready(function() {
     $('#register-btn').click(function () {
@@ -174,7 +194,7 @@ $(document).ready(function() {
             success: function (msg) {
                 //msg = JSON.parse(msg);
                 $('#login-error-msg').text(msg.error);
-                if(msg.error == "Logged In"){
+                if (msg.error == "Logged In") {
                     //userField.style.backgroundColor = goodColor;
                     //passField.style.backgroundColor = goodColor;
                     message.style.color = goodColor;
@@ -185,6 +205,9 @@ $(document).ready(function() {
                     //passField.style.backgroundColor = badColor;
                     message.style.color = badColor;
                 }
+            },
+            failure: function(msg) {
+                console.log("Error in /login: " + msg);
             }
         });
     });
