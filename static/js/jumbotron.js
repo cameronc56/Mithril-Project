@@ -104,16 +104,11 @@ jumbotron.controller =  {
         var badColor = "#E67373";
         var whiteColor = "#ffffff";
         var greyColor = "#808080";
-        console.log(pass1.val().search(/[\w\d\s]/));
         if (pass2.val() === "") {
             pass2.css("background-color", whiteColor);
             message.css("color", greyColor);
             message.html("Please enter password twice.");
-        } else if (pass1.val().search(/[^\w*\d*]/) != -1) {
-            pass2.css("background-color", badColor);
-            message.css("color", badColor);
-            message.html("Password contains invalid character(s)!");
-        } else if (pass2.val().search(/[^\w*\d*]/) != -1) {
+        } else if (pass1.val().search(/[^\w*\d*]/) != -1 || pass2.val().search(/[^\w*\d*]/) != -1) {
             pass2.css("background-color", badColor);
             message.css("color", badColor);
             message.html("Password contains invalid character(s)!");
@@ -131,7 +126,6 @@ jumbotron.controller =  {
         var pass1 = $("#register-password");
         var pass2 = $("#register-confirm-password");
         var isChecked = $("#showPass").prop("checked");
-        console.log(isChecked);
         if(isChecked) {
             pass1.attr("type", "text");
             pass2.attr("type", "text");
@@ -174,8 +168,8 @@ $(document).ready(function() {
                 //msg = JSON.parse(msg);
                 $('#register-error-msg').text(msg.error);
                 if(msg.error == 'Account Created'){
-                    userField.style.backgroundColor = goodColor;
-                    message.style.color = goodColor;
+                    userField.css("backgroundColor", goodColor);
+                    message.css("color", goodColor);
                     document.location.reload(true);
                 }
                 else {
@@ -200,7 +194,7 @@ $(document).ready(function() {
         $.ajax({
             type: "POST",
             url: "/login",
-            data: JSON.stringify({"username":userInput, "password":passInput}),
+            data: JSON.stringify({"username":userInput.val(), "password":passInput.val()}),
             dataType: "JSON",
             contentType: "application/json",
             async: true,
