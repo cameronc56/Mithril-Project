@@ -1,6 +1,18 @@
 var jumbotron = {};
 
-jumbotron.view = function(controller) {
+
+function User(username, password, phone, address) {
+    this.username = username;
+    this.password = password;
+    this.phone = phone;
+    this.address = address;
+};
+
+var cameronTestUser = new User("cameron", "777777", "555-555-5555", "123 St.");
+//console.log(cameronTestUser);
+
+
+jumbotron.view = function(ctrl) {
     return m("div", [
         m("div", {class:"container"}, [
             m("div", {class:"jumbotron"}, [
@@ -105,19 +117,19 @@ jumbotron.controller =  {
         var whiteColor = "#ffffff";
         var greyColor = "#808080";
         if (pass2.val() === "") {
-            pass2.css("background-color", whiteColor);
+            pass2.css("border-color", "");
             message.css("color", greyColor);
             message.html("Please enter password twice.");
-        } else if (pass1.val().search(/[^\w*\d*]/) != -1 || pass2.val().search(/[^\w*\d*]/) != -1) {
-            pass2.css("background-color", badColor);
+        } else if (!helpers.inputValidation.isAlpha(pass1.val()) || !helpers.inputValidation.isAlpha(pass2.val())) {
+            pass2.css("border-color", badColor);
             message.css("color", badColor);
             message.html("Password contains invalid character(s)!");
         } else if(pass1.val() === pass2.val()) {
-            pass2.css("background-color", goodColor);
+            pass2.css("border-color", goodColor);
             message.css("color", goodColor);
             message.html("Passwords match.");
         } else {
-            pass2.css("background-color", badColor);
+            pass2.css("border-color", badColor);
             message.css("color", badColor);
             message.html("Passwords do not match!");
         }
@@ -135,16 +147,6 @@ jumbotron.controller =  {
         }
     }
 };
-
-function User(username, password, phone, address) {
-    this.username = username;
-    this.password = password;
-    this.phone = phone;
-    this.address = address;
-}
-
-var cameronTestUser = new User("cameron", "777777", "555-555-5555", "123 St.");
-console.log(cameronTestUser);
 
 $(document).ready(function() {
     $('#register-btn').click(function () {
@@ -173,8 +175,8 @@ $(document).ready(function() {
                     document.location.reload(true);
                 }
                 else {
-                    userField.style.backgroundColor = badColor;
-                    message.style.color = badColor;
+                    userField.css("backgroundColor", badColor);
+                    message.css("color", badColor);
                 }
             }
         });

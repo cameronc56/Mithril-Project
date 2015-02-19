@@ -4,7 +4,10 @@ navbar.view = function(ctrl) {
     return m("div", [
             m("div", {class:"navbar navbar-inverse navbar-static-top"}, [
                 m("div", {class:"container"}, [
-                    m("a", {class:"navbar-brand", href: "/jumbotron", config: m.route }, "Little Duckling Games"),
+                    m("a", {href: "/"}, [
+                       m("img.img-circle.pull-left", {src: "http://bit.ly/1BoCjWS", alt: "Quack!~", style: "height: 40px; margin-right: 10px; margin-top: 5px;"}),
+                    ]),
+                    m("a.navbar-brand", {href: "/jumbotron", config: m.route}, "Little Duckling Games"),
                     m("button", {class:"navbar-toggle", "data-toggle":"collapse", "data-target":".navHeaderCollapse"}, [
                         m("span", {class:"icon-bar"}),
                         m("span", {class:"icon-bar"}),
@@ -18,11 +21,11 @@ navbar.view = function(ctrl) {
                             m("li", {class:"dropdown"}, [
                                 m("a", {class:"dropdown-toggle", "data-toggle":"dropdown", href:"#"}, "Games", m("b", {class:"caret"}) ),
                                 m("ul",{class:"dropdown-menu"}, [
-                                    m("li", [ m("a", {href:"#", config: m.route }, "All Games" ), ]),
-                                    m("li", [ m("a", {href:"#", config: m.route }, "Categories"), ]),
-                                    m("li", [ m("a", {href:"#", config: m.route }, "Featured"  ), ]),
-                                    m("li", [ m("a", {href:"#", config: m.route }, "Popular"   ), ]),
-                                    m("li", [ m("a", {href:"#", config: m.route }, "New"       ), ]),
+                                    m("li", [ m("a", {href:"", config: m.route }, "All Games" ), ]),
+                                    m("li", [ m("a", {href:"", config: m.route }, "Categories"), ]),
+                                    m("li", [ m("a", {href:"", config: m.route }, "Featured"  ), ]),
+                                    m("li", [ m("a", {href:"", config: m.route }, "Popular"   ), ]),
+                                    m("li", [ m("a", {href:"", config: m.route }, "New"       ), ]),
                                 ]),//end ul
                             ]),//end li
                             m("li", [ m("a", {href:"/showForum", config: m.route}, "Forums"  ), ]),

@@ -10,9 +10,10 @@ homepage.controller = function() {};
 
 
 m.route.mode = "hash";
-m.route(document.body, "/homepage", {
-	"/homepage":homepage,
+m.route(document.body, "/", {
+	"/":homepage,
     "/navbar":navbar,
-    "/jumbotron":jumbotron
+    "/jumbotron":jumbotron,
+	"/gameOverview":gameOverview
 });
 
