@@ -6,7 +6,7 @@ function User(username, password, phone, address) {
     this.password = password;
     this.phone = phone;
     this.address = address;
-};
+}
 
 var cameronTestUser = new User("cameron", "777777", "555-555-5555", "123 St.");
 //console.log(cameronTestUser);
@@ -73,12 +73,12 @@ jumbotron.view = function(ctrl) {
                         ]),
                         m(".form-group", [
                             m("label.col-lg-2.control-label", {for: "register-password"}, "Password:"),
-                            m("input.form-control", {id: "register-password", onkeyup: m.withAttr("value", jumbotron.controller.checkPass), placeholder: "Password", /*onchange: m.withAttr("type", jumbotron.controller.showPass)*/ type: "password", value: ""}),
+                            m("input.form-control", {id: "register-password", onkeyup: m.withAttr("value", jumbotron.controller.checkPass), placeholder: "Password", type: "password"}),
                         ]),
                         m(".form-group", [
                             m("label.col-lg-2.control-label", {for: "register-confirm-password"}, "Confirm Password:"),
-                            m("input.form-control", {id: "register-confirm-password", onkeyup: m.withAttr("value", jumbotron.controller.checkPass), placeholder: "Confirm Password", type: "password", value: ""}),
-                            m("input#showPass.pull-right", {type: "checkbox", name: "showPass", style: "margin-left: 5px", onchange: m.withAttr("input", jumbotron.controller.showPass)}),
+                            m("input.form-control", {id: "register-confirm-password", onkeyup: m.withAttr("value", jumbotron.controller.checkPass), placeholder: "Confirm Password", type: "password"}),
+                            m("input#showPass.pull-right", {type: "checkbox", name: "showPass", style: "margin-left: 5px", onchange: m.withAttr("value", jumbotron.controller.showPass)}),
                             m("label.pull-right", {for: "showPass"}, "Show Password"),
                         ]),
                         m("center", [
@@ -150,18 +150,18 @@ jumbotron.controller =  {
 
 $(document).ready(function() {
     $('#register-btn').click(function () {
-        var userInput = $('#register-username');
-        var passInput = $('#register-password');
-        var emailInput = $('#register-email');
-        var phoneInput = $('#register-phone');
-        var addressInput = $('#register-address');
+        var username = $('#register-username');
+        var password = $('#register-password');
+        var email = $('#register-email');
+        var phone = $('#register-phone');
+        var address = $('#register-address');
         var message = $('#register-error-msg');
         var goodColor = "#62BF65";
         var badColor = "#E67373";
         $.ajax({
             type: "POST",
             url: "/register",
-            data: JSON.stringify({"username":userInput.val(), "password":passInput.val(), "email":emailInput.val(), "phone":phoneInput.val(), "address":addressInput.val()}),
+            data: JSON.stringify({"username":username.val(), "password":password.val(), "email":email.val(), "phone":phone.val(), "address":address.val()}),
             dataType: "JSON",
             contentType: "application/json",
             async: true,
@@ -170,12 +170,12 @@ $(document).ready(function() {
                 //msg = JSON.parse(msg);
                 $('#register-error-msg').text(msg.error);
                 if(msg.error == 'Account Created'){
-                    userField.css("backgroundColor", goodColor);
+                    username.css("backgroundColor", goodColor);
                     message.css("color", goodColor);
                     document.location.reload(true);
                 }
                 else {
-                    userField.css("backgroundColor", badColor);
+                    username.css("backgroundColor", badColor);
                     message.css("color", badColor);
                 }
             }
@@ -188,15 +188,15 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $('#login-btn').click(function () {
-        var userInput = $('#login-username').val();
-        var passInput = $('#login-password').val();
+        var username = $('#login-username');
+        var password = $('#login-password');
         var message   = $('#login-error-msg');
         var goodColor = "#62BF65";
         var badColor  = "#E67373";
         $.ajax({
             type: "POST",
             url: "/login",
-            data: JSON.stringify({"username":userInput.val(), "password":passInput.val()}),
+            data: JSON.stringify({"username":username.val(), "password":password.val()}),
             dataType: "JSON",
             contentType: "application/json",
             async: true,

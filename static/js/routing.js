@@ -8,12 +8,35 @@ homepage.view = function (ctrl) {
 };
 homepage.controller = function() {};
 
+var navbarLayout = {};
+navbarLayout.view = function(ctrl) {
+	return m("div", [
+		m("div", navbar.view())
+	])
+};
+navbarLayout.controller = function() {};
+
+var jumbotronLayout = {};
+jumbotronLayout.view = function(ctrl) {
+	return m("div", [
+		m("div", jumbotron.view())
+	])
+};
+jumbotronLayout.controller = function() {};
+
+var gameOverviewLayout = {};
+gameOverviewLayout.view = function(ctrl) {
+	return m("div", [
+		m("div", gameOverview.view())
+	])
+};
+gameOverviewLayout.controller = function() {};
 
 m.route.mode = "hash";
 m.route(document.body, "/", {
 	"/":homepage,
-    "/navbar":navbar,
-    "/jumbotron":jumbotron,
-	"/gameOverview":gameOverview
+    "/navbar":navbarLayout,
+    "/jumbotron":jumbotronLayout,
+	"/gameOverview":gameOverviewLayout
 });
 

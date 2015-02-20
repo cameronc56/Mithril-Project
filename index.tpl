@@ -13,8 +13,10 @@
 <script type="text/javascript" src="{{ get_url('static', filename = 'navbar.js') }}"></script>
 <script type="text/javascript" src="{{ get_url('static', filename = 'jumbotron.js') }}"></script>
 <script type="text/javascript" src="{{ get_url('static', filename = 'gameOverview.js') }}"></script>
-<script type="text/javascript" src="{{ get_url('static', filename = 'routing.js') }}"></script>
 <script type="text/javascript" src="{{ get_url('static', filename = 'helpers.js') }}"></script>
+<script type="text/javascript" src="{{ get_url('static', filename = 'routing.js') }}"></script>
+
+
 </body>
 </html>
 
