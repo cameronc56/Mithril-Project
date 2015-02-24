@@ -2,7 +2,7 @@ var gameOverview = {};
 
 gameOverview.view = function(ctrl) {
     return m("#homePageGridContainer.container", [
-        m("select.selectpicker", [
+        m("select.form-control", {style: "width: 15em;"}, [
             m("option", "Featured"),
             m("option", "Most Played"),
             m("option", "Newest"),
@@ -58,5 +58,3 @@ gameOverview.view = function(ctrl) {
 };
 
 gameOverview.controller = function() {};
-
-$(".selectpicker").selectpicker();
