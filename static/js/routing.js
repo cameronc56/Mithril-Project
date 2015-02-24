@@ -3,7 +3,9 @@ homepage.view = function (ctrl) {
 	return m("div", [
 		m("div", navbar.view()),
 		m("div", jumbotron.view()),
-		m("div", gameOverview.view())
+		m("div", gameOverview.view()),
+		m("div", loginModal.view()),
+		m("div", registerModal.view())
 	])
 };
 homepage.controller = function() {};
@@ -19,7 +21,9 @@ navbarLayout.controller = function() {};
 var jumbotronLayout = {};
 jumbotronLayout.view = function(ctrl) {
 	return m("div", [
-		m("div", jumbotron.view())
+		m("div", jumbotron.view()),
+		m("div", loginModal.view()),
+		m("div", registerModal.view())
 	])
 };
 jumbotronLayout.controller = function() {};
