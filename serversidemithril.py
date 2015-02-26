@@ -78,12 +78,15 @@ def sendEmail():
 	message.set_text(emailBody)
 	message.set_from(emailName + " <" + emailAddress + " ")
 	status, msg = sg.send(message)
-	print status
 	return json.dumps({"status":status})
 ################################################################################
 @get('/static/<filename:re:.*\.js>', name='static')
 def server_static(filename):
 	return static_file(filename, root='static/js')
+################################################################################
+@get('/static/<filename:re:.*\.json>', name='static')
+def server_static(filename):
+	return static_file(filename, root='static/json')
 ################################################################################
 @get('/static/<filename:re:.*\.css>', name='static/css')
 def server_static(filename):
