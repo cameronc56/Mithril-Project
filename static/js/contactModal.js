@@ -28,7 +28,7 @@ contactModal.view = function() {
                         ])
                     ]),
                     m(".modal-footer", [
-                        m("a.btn.btn-primary[data-dismiss='modal']", "Close"),
+                        m("a.btn.btn-primary.pull-left[data-dismiss='modal']", "Close"),
                         m("button.btn.btn-primary[type='submit']", {onclick: contactModal.controller.sendEmail}, "Send")
                     ])
                 ])

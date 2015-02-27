@@ -31,7 +31,7 @@ registerModal.view = function(ctrl) {
                         m("label.pull-right", {for: "showPass"}, "Show Password"),
                     ]),
                     m("center", [
-                        m("span", {id: "confirm-msg"}),
+                        m("span", {id: "confirm-msg"}, registerModal.controller.message())
                     ]),
                     m(".form-group", [
                         m("label.col-lg-2.control-label", {for: "register-phone"}, "Phone:"),
@@ -52,30 +52,35 @@ registerModal.view = function(ctrl) {
 };
 
 registerModal.controller =  {
+    message: m.prop("123123"),
     checkPass: function() {
         var pass1 = $("#register-password");
         var pass2 = $("#register-confirm-password");
-        var message = $("#confirm-msg");
+        //var message = $("#confirm-msg");
         var goodColor = "#62BF65";
         var badColor = "#E67373";
         var whiteColor = "#ffffff";
         var greyColor = "#808080";
         if (pass2.val() === "") {
             pass2.css("border-color", "");
-            message.css("color", greyColor);
-            message.html("Please enter password twice.");
+            //message.css("color", greyColor);
+            //message.html("Please enter password twice.");
+            this.message = "Please enter password twice.";
         } else if (!helpers.inputValidation.isAlpha(pass1.val()) || !helpers.inputValidation.isAlpha(pass2.val())) {
             pass2.css("border-color", badColor);
-            message.css("color", badColor);
-            message.html("Password contains invalid character(s)!");
+            //message.css("color", badColor);
+            //message.html("Password contains invalid character(s)!");
+            this.message = "Password contains invalid character(s)!";
         } else if(pass1.val() === pass2.val()) {
             pass2.css("border-color", goodColor);
-            message.css("color", goodColor);
-            message.html("Passwords match.");
+            //message.css("color", goodColor);
+            //message.html("Passwords match.");
+            this.message = "Passwords match.";
         } else {
             pass2.css("border-color", badColor);
-            message.css("color", badColor);
-            message.html("Passwords do not match!");
+            //message.css("color", badColor);
+            //message.html("Passwords do not match!");
+            this.message = "Passwords do not match!";
         }
     },
     showPass: function() {
@@ -124,6 +129,16 @@ $(document).ready(function() {
                     username.css("backgroundColor", badColor);
                     message.css("color", badColor);
                 }
+            },
+            failure: function(msg) {
+                username.css("backgroundColor", badColor);
+                message.css("color", badColor);
+                return m(".alert.alert-danger.alert-dismissible", {role: "alert"}, [
+                    m("button.close", {type: "button", "data-dismiss": "alert", "aria-label": "close"}, [
+                        m("span", {"aria-hidden": "true"}, "&times;")
+                    ]),
+                    "Warning! Account was not created!"
+                ])
             }
         });
     });

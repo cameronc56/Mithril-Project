@@ -27,4 +27,4 @@ helpers.cookies = {
         }
         return "";
     }
-}
+};
