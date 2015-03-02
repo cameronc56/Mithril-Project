@@ -2,6 +2,16 @@ var registerModal = {};
 
 registerModal.view = function(ctrl) {
     //                               CREATE ACCOUNT MODAL
+    var setAndCheck = function(prop) {
+        return function(val) {
+            // set value on property
+            prop(val);
+
+            // call the checkPass fx
+            ctrl.checkPass();
+        };
+    };
+
     return m(".modal.fade", {id: "createAccount", role: "dialog"}, [
         m(".modal-dialog", [
             m(".modal-content", [
@@ -22,11 +32,11 @@ registerModal.view = function(ctrl) {
                     ]),
                     m(".form-group", [
                         m("label.col-lg-2.control-label", {for: "register-password"}, "Password:"),
-                        m("input.form-control", {id: "register-password", onkeyup: m.withAttr("value", ctrl.pass1), onkeyup: m.withAttr("value", ctrl.checkPass), placeholder: "Password", type: "password", value: ctrl.pass1()}),
+                        m("input.form-control", {id: "register-password", onkeyup: m.withAttr("value", setAndCheck(ctrl.pass1)), placeholder: "Password", type: "password", value: ctrl.pass1()}),
                     ]),
                     m(".form-group", [
                         m("label.col-lg-2.control-label", {for: "register-confirm-password"}, "Confirm Password:"),
-                        m("input.form-control", {id: "register-confirm-password", onkeyup: m.withAttr("value", ctrl.pass2), onkeyup: m.withAttr("value", ctrl.checkPass), placeholder: "Confirm Password", type: "password", value: ctrl.pass2()}),
+                        m("input.form-control", {id: "register-confirm-password", onkeyup: m.withAttr("value", setAndCheck(ctrl.pass2)), placeholder: "Confirm Password", type: "password", value: ctrl.pass2()}),
                         m("input#showPass.pull-right", {type: "checkbox", name: "showPass", style: "margin-left: 5px", onchange: m.withAttr("value", ctrl.showPass)}),
                         m("label.pull-right", {for: "showPass"}, "Show Password"),
                     ]),
@@ -58,9 +68,7 @@ registerModal.controller = function() {
     me.pass2 = m.prop("asdf");
 
     me.checkPass =  function() {
-        //var pass1 = $("#register-password");
-        //var pass2 = $("#register-confirm-password");
-        var message = $("#confirm-msg");
+        var message = me.message();
         var goodColor = "#62BF65";
         var badColor = "#E67373";
         var whiteColor = "#ffffff";
@@ -142,5 +150,3 @@ $(document).ready(function() {
         });
     });
 });
-
-m.module(document.body, registerModal);

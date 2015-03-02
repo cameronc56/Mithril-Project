@@ -1,3 +1,6 @@
+
+var registerModalCtrl = registerModal.controller();
+
 var homepage = {};
 homepage.view = function () {
 	return m("div", [
@@ -5,7 +8,7 @@ homepage.view = function () {
 		m("div", jumbotron.view()),
 		m("div", gameOverview.view()),
 		m("div", loginModal.view()),
-		m("div", registerModal.view(registerModal.controller())),
+		m("div", registerModal.view(registerModalCtrl)),
 		m("div", contactModal.view()),
 		m("div", footer.view())
 	])
@@ -51,4 +54,3 @@ m.route(document.body, "/", {
 	"/gameOverview":gameOverviewLayout,
 	"/jumbotron2": jumbotron
 });
-
