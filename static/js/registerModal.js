@@ -22,16 +22,16 @@ registerModal.view = function(ctrl) {
                     ]),
                     m(".form-group", [
                         m("label.col-lg-2.control-label", {for: "register-password"}, "Password:"),
-                        m("input.form-control", {id: "register-password", onkeyup: m.withAttr("value", registerModal.controller.checkPass), placeholder: "Password", type: "password"}),
+                        m("input.form-control", {id: "register-password", onkeyup: m.withAttr("value", ctrl.pass1), onkeyup: m.withAttr("value", ctrl.checkPass), placeholder: "Password", type: "password", value: ctrl.pass1()}),
                     ]),
                     m(".form-group", [
                         m("label.col-lg-2.control-label", {for: "register-confirm-password"}, "Confirm Password:"),
-                        m("input.form-control", {id: "register-confirm-password", onkeyup: m.withAttr("value", registerModal.controller.checkPass), placeholder: "Confirm Password", type: "password"}),
-                        m("input#showPass.pull-right", {type: "checkbox", name: "showPass", style: "margin-left: 5px", onchange: m.withAttr("value", registerModal.controller.showPass)}),
+                        m("input.form-control", {id: "register-confirm-password", onkeyup: m.withAttr("value", ctrl.pass2), onkeyup: m.withAttr("value", ctrl.checkPass), placeholder: "Confirm Password", type: "password", value: ctrl.pass2()}),
+                        m("input#showPass.pull-right", {type: "checkbox", name: "showPass", style: "margin-left: 5px", onchange: m.withAttr("value", ctrl.showPass)}),
                         m("label.pull-right", {for: "showPass"}, "Show Password"),
                     ]),
                     m("center", [
-                        m("span", {id: "confirm-msg"}, registerModal.controller.message())
+                        m("span", {id: "confirm-msg"}, ctrl.message())
                     ]),
                     m(".form-group", [
                         m("label.col-lg-2.control-label", {for: "register-phone"}, "Phone:"),
@@ -51,39 +51,43 @@ registerModal.view = function(ctrl) {
     ])
 };
 
-registerModal.controller =  {
-    message: m.prop("123123"),
-    checkPass: function() {
-        var pass1 = $("#register-password");
-        var pass2 = $("#register-confirm-password");
-        //var message = $("#confirm-msg");
+registerModal.controller = function() {
+    var me = {};
+    me.message =  m.prop("123123");
+    me.pass1 = m.prop("asdf");
+    me.pass2 = m.prop("asdf");
+
+    me.checkPass =  function() {
+        //var pass1 = $("#register-password");
+        //var pass2 = $("#register-confirm-password");
+        var message = $("#confirm-msg");
         var goodColor = "#62BF65";
         var badColor = "#E67373";
         var whiteColor = "#ffffff";
         var greyColor = "#808080";
-        if (pass2.val() === "") {
-            pass2.css("border-color", "");
+        if (me.pass2() == "") {
+            //pass2.css("border-color", "");
             //message.css("color", greyColor);
             //message.html("Please enter password twice.");
-            this.message = "Please enter password twice.";
-        } else if (!helpers.inputValidation.isAlpha(pass1.val()) || !helpers.inputValidation.isAlpha(pass2.val())) {
-            pass2.css("border-color", badColor);
+            me.message("Please enter password twice.");
+        } else if (!helpers.inputValidation.isAlpha(me.pass1()) || !helpers.inputValidation.isAlpha(me.pass2())) {
+            //pass2.css("border-color", badColor);
             //message.css("color", badColor);
             //message.html("Password contains invalid character(s)!");
-            this.message = "Password contains invalid character(s)!";
-        } else if(pass1.val() === pass2.val()) {
-            pass2.css("border-color", goodColor);
+            me.message("Password contains invalid character(s)!");
+        } else if(me.pass1() === me.pass2()) {
+            //pass2.css("border-color", goodColor);
             //message.css("color", goodColor);
             //message.html("Passwords match.");
-            this.message = "Passwords match.";
+            me.message("Passwords match.");
         } else {
-            pass2.css("border-color", badColor);
+            //pass2.css("border-color", badColor);
             //message.css("color", badColor);
             //message.html("Passwords do not match!");
-            this.message = "Passwords do not match!";
+            me.message("Passwords do not match!");
         }
-    },
-    showPass: function() {
+    };
+    me.showPass = function() {
         var pass1 = $("#register-password");
         var pass2 = $("#register-confirm-password");
         var isChecked = $("#showPass").prop("checked");
@@ -94,7 +98,8 @@ registerModal.controller =  {
             pass1.attr("type", "password");
             pass2.attr("type", "password");
         }
-    }
+    };
+    return me;
 };
 
 
@@ -133,13 +138,9 @@ $(document).ready(function() {
             failure: function(msg) {
                 username.css("backgroundColor", badColor);
                 message.css("color", badColor);
-                return m(".alert.alert-danger.alert-dismissible", {role: "alert"}, [
-                    m("button.close", {type: "button", "data-dismiss": "alert", "aria-label": "close"}, [
-                        m("span", {"aria-hidden": "true"}, "&times;")
-                    ]),
-                    "Warning! Account was not created!"
-                ])
             }
         });
     });
 });
+
+m.module(document.body, registerModal);

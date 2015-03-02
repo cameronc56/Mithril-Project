@@ -1,11 +1,11 @@
 var homepage = {};
-homepage.view = function (ctrl) {
+homepage.view = function () {
 	return m("div", [
 		m("div", navbar.view()),
 		m("div", jumbotron.view()),
 		m("div", gameOverview.view()),
 		m("div", loginModal.view()),
-		m("div", registerModal.view()),
+		m("div", registerModal.view(registerModal.controller())),
 		m("div", contactModal.view()),
 		m("div", footer.view())
 	])
@@ -48,6 +48,7 @@ m.route(document.body, "/", {
 	"/":homepage,
     "/navbar":navbarLayout,
     "/jumbotron":jumbotronLayout,
-	"/gameOverview":gameOverviewLayout
+	"/gameOverview":gameOverviewLayout,
+	"/jumbotron2": jumbotron
 });
 

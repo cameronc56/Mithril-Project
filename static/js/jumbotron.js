@@ -29,3 +29,5 @@ jumbotron.view = function(ctrl) {
 };//end
 
 jumbotron.controller = function() {};
+
+m.module(document.body, jumbotron);
