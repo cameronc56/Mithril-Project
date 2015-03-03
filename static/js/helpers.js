@@ -2,18 +2,21 @@ var helpers = {};
 helpers.view = function(ctrl) {};
 helpers.controller = function() {};
 
-helpers.inputValidation = {
-    isAlpha: function(inputToValidate) {
+helpers.inputValidation = function() {
+    var me = {};
+    me.isAlpha = function(inputToValidate) {
         if(inputToValidate.search(/[^\w*^\d*]/) != -1) {
             return false;
         } else {
             return true;
         }
     }
+    return me;
 };
 
-helpers.cookies = {
-    getCookie: function(cname) {
+helpers.cookies = function() {
+    var me = {};
+    me.getCookie = function(cname) {
         var name = cname + "=";
         var ca = document.cookie.split(';');
         for(var i = 0; i < ca.length; i++) {
@@ -27,4 +30,13 @@ helpers.cookies = {
         }
         return "";
     }
+    return me;
 };
+
+helpers.colors = function() {
+    var me = {};
+    me.goodColor = "#62BF65";
+    me.badColor = "#E67373";
+    me.greyColor = "#808080";
+    return me;
+}

@@ -1,13 +1,6 @@
 var gameOverview = {};
 
 gameOverview.view = function(ctrl) {
-    var thumbnail = function() {
-        var t = [];
-        for(var i = 0; i < 4; i++) {
-            t.push(gameThumbnail.view());
-        }
-        return t;
-    };
     return m("#homePageGridContainer.container", [
         m("select.form-control", {style: "width: 15em;"}, [
             m("option", "Featured"),
@@ -17,7 +10,7 @@ gameOverview.view = function(ctrl) {
         ]),
         m(".row", {style: "margin-top: 10px;"}, _.times(4, gameThumbnail.view)),
         m(".row", {style: "margin-top: 10px;"}, _.times(4, gameThumbnail.view)),
-        m(".row", {style: "margin-top: 10px;"}, thumbnail()),
+        m(".row", {style: "margin-top: 10px;"}, _.times(4, gameThumbnail.view)),
         m("center", [
             m(".row", [
                 m("nav", [

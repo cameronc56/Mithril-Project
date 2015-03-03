@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72721e00-e306-49aa-ae74-7f1455d3308e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login.db" afterPath="$PROJECT_DIR$/login.db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/gameOverview.js" afterPath="$PROJECT_DIR$/static/js/gameOverview.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.tpl" afterPath="$PROJECT_DIR$/index.tpl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/helpers.js" afterPath="$PROJECT_DIR$/static/js/helpers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/registerModal.js" afterPath="$PROJECT_DIR$/static/js/registerModal.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Mithril-Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,31 +31,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="gameOverview.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/js/gameOverview.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.296875" vertical-offset="0" max-vertical-offset="960">
-              <caret line="19" column="61" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="registerModal.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="registerModal.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/registerModal.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="2370">
-              <caret line="38" column="91" selection-start-line="38" selection-start-column="91" selection-end-line="38" selection-end-column="91" />
+            <state vertical-scroll-proportion="0.65384614" vertical-offset="225" max-vertical-offset="2205">
+              <caret line="49" column="6" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.tpl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.tpl">
+      <file leaf-file-name="routing.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/routing.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.0" vertical-offset="0" max-vertical-offset="600">
-              <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="930">
+              <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -85,13 +78,13 @@
         <option value="$PROJECT_DIR$/static/js/navbar.js" />
         <option value="$PROJECT_DIR$/static/js/gameThumbnail.js" />
         <option value="$PROJECT_DIR$/serversidemithril.py" />
-        <option value="$PROJECT_DIR$/static/js/helpers.js" />
         <option value="$PROJECT_DIR$/static/js/contactModal.js" />
-        <option value="$PROJECT_DIR$/static/js/registerModal.js" />
         <option value="$PROJECT_DIR$/static/js/jumbotron.js" />
         <option value="$PROJECT_DIR$/static/js/routing.js" />
         <option value="$PROJECT_DIR$/index.tpl" />
         <option value="$PROJECT_DIR$/static/js/gameOverview.js" />
+        <option value="$PROJECT_DIR$/static/js/helpers.js" />
+        <option value="$PROJECT_DIR$/static/js/registerModal.js" />
       </list>
     </option>
   </component>
@@ -100,10 +93,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1872" />
+    <option name="x" value="49" />
     <option name="y" value="23" />
-    <option name="width" value="936" />
-    <option name="height" value="1057" />
+    <option name="width" value="1391" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -180,28 +173,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mithril-Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mithril-Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -326,15 +301,15 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
@@ -372,6 +347,10 @@
       <option name="usbDebugPort" value="7936" />
       <method />
     </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
       <option name="TESTING_TYPE" value="0" />
@@ -391,10 +370,6 @@
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner />
       <method />
     </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
@@ -678,16 +653,17 @@
       <workItem from="1424720633027" duration="17645000" />
       <workItem from="1424971260487" duration="11436000" />
       <workItem from="1425016716683" duration="13876000" />
-      <workItem from="1425341674231" duration="2320000" />
+      <workItem from="1425341674231" duration="6922000" />
+      <workItem from="1425401787554" duration="7714000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97442000" />
+    <option name="totallyTimeSpent" value="109758000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1872" y="23" width="936" height="1057" extended-state="0" />
-    <editor active="false" />
+    <frame x="49" y="23" width="1391" height="877" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -709,7 +685,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20192307" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13515456" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -779,9 +755,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1185" max-vertical-offset="1830">
           <caret line="79" column="34" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
-          <folding>
-            <element signature="e#22#42#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -789,9 +762,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="360">
           <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -807,9 +777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="561">
           <caret line="19" column="56" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
-          <folding>
-            <element signature="e#22#42#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -848,9 +815,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="495">
           <caret line="19" column="56" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
-          <folding>
-            <element signature="e#22#42#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -889,9 +853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="495">
           <caret line="19" column="56" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
-          <folding>
-            <element signature="e#22#42#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -930,9 +891,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="495">
           <caret line="19" column="56" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
-          <folding>
-            <element signature="e#22#42#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -971,9 +929,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="495">
           <caret line="19" column="56" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
-          <folding>
-            <element signature="e#22#42#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -989,9 +944,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="375">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#22#42#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1007,9 +959,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="375">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#22#42#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1084,9 +1033,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1830">
           <caret line="79" column="34" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
-          <folding>
-            <element signature="e#22#42#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1094,9 +1040,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
           <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1104,7 +1047,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1112,14 +1054,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1050">
           <caret line="30" column="54" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/helpers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
-          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -1140,34 +1074,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/routing.js">
+    <entry file="file://$PROJECT_DIR$/static/js/gameOverview.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61538464" vertical-offset="0" max-vertical-offset="930">
-          <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
+        <state vertical-scroll-proportion="0.359375" vertical-offset="0" max-vertical-offset="960">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/helpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.0" vertical-offset="0" max-vertical-offset="600">
+        <state vertical-scroll-proportion="0.47619048" vertical-offset="0" max-vertical-offset="756">
           <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/routing.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="930">
+          <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/registerModal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2370">
-          <caret line="38" column="91" selection-start-line="38" selection-start-column="91" selection-end-line="38" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/gameOverview.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.296875" vertical-offset="0" max-vertical-offset="960">
-          <caret line="19" column="61" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="61" />
+        <state vertical-scroll-proportion="0.65384614" vertical-offset="225" max-vertical-offset="2205">
+          <caret line="49" column="6" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
           <folding />
         </state>
       </provider>
