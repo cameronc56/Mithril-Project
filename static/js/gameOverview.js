@@ -15,8 +15,8 @@ gameOverview.view = function(ctrl) {
             m("option", "Newest"),
             m("option", "Alphabetical")
         ]),
-        m(".row", {style: "margin-top: 10px;"}, thumbnail()),
-        m(".row", {style: "margin-top: 10px;"}, thumbnail()),
+        m(".row", {style: "margin-top: 10px;"}, _.times(4, gameThumbnail.view)),
+        m(".row", {style: "margin-top: 10px;"}, _.times(4, gameThumbnail.view)),
         m(".row", {style: "margin-top: 10px;"}, thumbnail()),
         m("center", [
             m(".row", [
