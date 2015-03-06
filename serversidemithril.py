@@ -14,7 +14,7 @@ c = conn.cursor()
 
 #Users table
 #c.execute("DROP TABLE Users")
-#c.execute("CREATE TABLE Users (username text PRIMARY KEY, passwordHash text NOT Null, passwordSalt text, email text, phone text, address text)")
+#c.execute("CREATE TABLE Users (username text PRIMARY KEY, passwordHash text NOT Null, passwordSalt text, email text)")
 #conn.commit()
 
 ################################################################################
@@ -28,8 +28,6 @@ def register():
 	username = d['username']
 	password = d['password']
 	email = d['email']
-	phone = d['phone']
-	address = d['address']
 	conn = openConn()
 	with conn:
 		c = conn.cursor()
@@ -38,7 +36,7 @@ def register():
 		else:
 			salt = uuid.uuid4().hex
 			hash = hashlib.sha512((password + salt).encode('utf-8')).hexdigest()
-			c.execute("INSERT INTO Users(username, passwordHash, passwordSalt, email, phone, address) VALUES(?,?,?,?,?,?)", (username, hash, salt, email, phone, address))
+			c.execute("INSERT INTO Users(username, passwordHash, passwordSalt, email) VALUES(?,?,?,?)", (username, hash, salt, email))
 			conn.commit()
 			return json.dumps({"error":'Account Created'})
 ################################################################################

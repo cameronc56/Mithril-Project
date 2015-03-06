@@ -23,11 +23,7 @@
 <script type="text/javascript" src="{{ get_url('static', filename = 'game.js') }}"></script>
 <script type="text/javascript" src="{{ get_url('static', filename = 'routing.js') }}"></script>
 <script>
-    $(document).ready(function() {
-        $.getJSON("{{ get_url('static', filename = 'games.json') }}", function(data){
 
-        });
-    });
 </script>
 </body>
 </html>

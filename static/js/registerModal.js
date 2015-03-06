@@ -9,7 +9,7 @@ registerModal.view = function(ctrl) {
                 ]),
                 m(".modal-body", [
                     m("center", [
-                        m("span#register-error-msg", {onkeyup: m.withAttr("value", ctrl.successMessage), style: ctrl.successMessageColor()}, ctrl.successMessage())
+                        m("span#register-error-msg", {onkeyup: m.withAttr("value", ctrl.responseMessage), style: ctrl.responseMessageColor()}, ctrl.responseMessage())
                     ]),
                     m(".form-group", [
                         m("label.col-lg-2.control-label", {for: "register-username"}, "Username:"),
@@ -31,14 +31,6 @@ registerModal.view = function(ctrl) {
                     ]),
                     m("center", [
                         m("span", {id: "confirm-msg", "style": ctrl.messageColor()}, ctrl.message())
-                    ]),
-                    m(".form-group", [
-                        m("label.col-lg-2.control-label", {for: "register-phone"}, "Phone:"),
-                        m("input#register-phone.form-control", {onkeyup: m.withAttr("value", ctrl.phone), placeholder: "Phone", type: "tel"}, ctrl.phone()),
-                    ]),
-                    m(".form-group", [
-                        m("label.col-lg-2.control-label", {for: "register-address"}, "Address:"),
-                        m("input#register-address.form-control", {onkeyup: m.withAttr("value", ctrl.address), placeholder: "Address", type: "text"}, ctrl.address()),
                     ])
                 ]),
                 m(".modal-footer", [
@@ -51,10 +43,6 @@ registerModal.view = function(ctrl) {
 };
 
 registerModal.controller = function() {
-    //init
-    registerModal.colors = helpers.colors();
-    registerModal.inputValidation = helpers.inputValidation();
-
     var me = {};
     me.message =  m.prop("");
     me.messageColor = m.prop("");
@@ -64,20 +52,20 @@ registerModal.controller = function() {
     me.checkPass = function() {
         if (me.pass2() == "") {
             me.message("Please enter password twice.");
-            me.messageColor("color:" + registerModal.colors.greyColor);
+            me.messageColor("color:" + colors.greyColor);
             me.pass2Color("");
-        } else if (!registerModal.inputValidation.isAlpha(me.pass1()) || !registerModal.inputValidation.isAlpha(me.pass2())) {
+        } else if (!inputValidation.isAlpha(me.pass1()) || !inputValidation.isAlpha(me.pass2())) {
             me.message("Password contains invalid character(s)!");
-            me.messageColor("color:" + registerModal.colors.badColor);
-            me.pass2Color("border-color:" + registerModal.colors.badColor);
+            me.messageColor("color:" + colors.badColor);
+            me.pass2Color("border-color:" + colors.badColor);
         } else if(me.pass1() === me.pass2()) {
             me.message("Passwords match.");
-            me.messageColor("color:" + registerModal.colors.goodColor);
-            me.pass2Color("border-color:" + registerModal.colors.goodColor);
+            me.messageColor("color:" + colors.goodColor);
+            me.pass2Color("border-color:" + colors.goodColor);
         } else {
             me.message("Passwords do not match!");
-            me.messageColor("color:" + registerModal.colors.badColor);
-            me.pass2Color("border-color:" + registerModal.colors.badColor);
+            me.messageColor("color:" + colors.badColor);
+            me.pass2Color("border-color:" + colors.badColor);
         }
     };
     me.pass1Type = m.prop("password");
@@ -97,45 +85,50 @@ registerModal.controller = function() {
     me.usernameColor = m.prop("");
     me.password = me.pass1();
     me.email = m.prop("");
-    me.phone = m.prop("");
-    me.address = m.prop("");
-    me.successMessage = m.prop("");
-    me.successMessageColor = m.prop("");
-
+    me.responseMessage = m.prop("");
+    me.responseMessageColor = m.prop("");
     me.register = function() {
-        $.ajax({
-            type: "POST",
-            url: "/register",
-            data: JSON.stringify({
-                "username": me.username(),
-                "password": me.password,
-                "email": me.email(),
-                "phone": me.phone(),
-                "address": me.address()
-            }),
-            dataType: "JSON",
-            contentType: "application/json",
-            async: true,
-            cache: false,
-            success: function (msg) {
-                //msg = JSON.parse(msg);
-                me.successMessage(msg.error);
-                if (msg.error == 'Account Created') {
-                    me.usernameColor("backgroundColor: " + registerModal.colors.goodColor);
-                    me.messageColor("color: " + registerModal.colors.goodColor);
-                    document.location.reload(true);
+        if(!inputValidation.isAlpha(me.username())) {
+            me.responseMessage("Invalid character in username");
+        } else if(!inputValidation.isAlpha(me.password)) {
+            me.responseMessage("Invalid character in password");
+        } else if(!inputValidation.isEmail(me.email())) {
+            me.responseMessage("Invalid character in email");
+        } else if(me.username.length < 5 || me.password.length < 5) {
+            me.responseMessage("Username and password must have atleast 4 characters.");
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "/register",
+                data: JSON.stringify({
+                    "username": me.username(),
+                    "password": me.password,
+                    "email": me.email()
+                }),
+                dataType: "JSON",
+                contentType: "application/json",
+                async: true,
+                cache: false,
+                success: function (msg) {
+                    //msg = JSON.parse(msg);
+                    me.responseMessage(msg.error);
+                    if (msg.error == 'Account Created') {
+                        me.usernameColor("backgroundColor: " + colors.goodColor);
+                        me.responseMessageColor("color: " + colors.goodColor);
+                        document.location.reload(true);
+                    }
+                    else {
+                        me.username("backgroundColor: " + colors.badColor);
+                        me.message("color: " + colors.badColor);
+                    }
+                },
+                failure: function (msg) {
+                    me.username("backgroundColor: " + colors.badColor);
+                    me.responseMessageColor("color: " + colors.badColor);
+                    console.log(msg);
                 }
-                else {
-                    me.username("backgroundColor: " + registerModal.colors.badColor);
-                    me.message("color: " + registerModal.colors.badColor);
-                }
-            },
-            failure: function (msg) {
-                me.username("backgroundColor: " + registerModal.colors.badColor);
-                me.message("color: " + registerModal.colors.badColor);
-                console.log(msg);
-            }
-        });
+            });
+        }
     };
     return me;
 };

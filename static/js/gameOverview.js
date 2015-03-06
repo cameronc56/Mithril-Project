@@ -37,4 +37,16 @@ gameOverview.view = function(ctrl) {
     ]);
 };
 
-gameOverview.controller = function() {};
+gameOverview.controller = function() {
+    var me = {};
+    me.getGamesJson = function(){
+        return $.getJSON("/static/games.json");
+    };
+
+    me.sortAlphabetical = function() {
+        console.log(JSON.parse(JSON.stringify(me.getGamesJson())));
+        //sort.sortJsonArrayByProperty(me.getGamesJson(), "title", -1);
+    };
+
+    me.sortAlphabetical();
+};
