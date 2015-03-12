@@ -5,7 +5,7 @@ navbar.view = function(ctrl) {
             m("div", {class:"navbar navbar-default navbar-static-top"}, [
                 m("div", {class:"container"}, [
                     m("a", {href: "/"}, [
-                       m("img.img-circle.pull-left", {src: "http://bit.ly/1BoCjWS", alt: "Quack!~", style: "height: 40px; margin-right: 10px; margin-top: 5px;"})
+                       m("img.img-circle.pull-left", {src: "https://bit.ly/1BoCjWS", alt: "Quack!~", style: "height: 40px; margin-right: 10px; margin-top: 5px;"})
                     ]),
                     m("a.navbar-brand", {href: "/"}, "Little Duckling Games"),
                     m("button", {class:"navbar-toggle", "data-toggle":"collapse", "data-target":".navHeaderCollapse"}, [
