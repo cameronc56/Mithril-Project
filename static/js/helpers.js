@@ -10,8 +10,12 @@ helpers.inputValidation = function() {
     me.isEmail = function(inputToValidate) {
         return (inputToValidate.search(/[^\w*^\d*^@*^.*^+*]/) == -1);
     };
+    me.replaceSpacesWithUnderscores = function(inputToValidate) {
+        return inputToValidate.replace(/ /g, "_");
+    };
     return me;
 };
+
 
 helpers.cookies = function() {
     var me = {};
@@ -34,28 +38,19 @@ helpers.cookies = function() {
 
 helpers.sort = function() {
     var me = {};
-    me.sortJsonArrayByProperty = function(objArray, prop, direction){
-            if (arguments.length<2) throw new Error("sortJsonArrayByProp requires 2 arguments");
-            var direct = arguments.length>2 ? arguments[2] : 1; //Default to ascending
-
-            if (objArray && objArray.constructor===Array){
-                var propPath = (prop.constructor===Array) ? prop : prop.split(".");
-                objArray.sort(function(a,b){
-                    for (var p in propPath){
-                        if (a[propPath[p]] && b[propPath[p]]){
-                            a = a[propPath[p]];
-                            b = b[propPath[p]];
-                        }
-                    }
-                    // convert numeric strings to integers
-                    a = a.match(/^\d+$/) ? +a : a;
-                    b = b.match(/^\d+$/) ? +b : b;
-                    return ( (a < b) ? -1*direct : ((a > b) ? 1*direct : 0) );
-                });
+    me.sortByProperty = function(property) {
+        'use strict';
+        return function (a, b) {
+            var sortStatus = 0;
+            if (a[property] < b[property]) {
+                sortStatus = -1;
+            } else if (a[property] > b[property]) {
+                sortStatus = 1;
             }
+            return sortStatus;
         };
-    //sortJsonArrayByProperty(results, 'attributes.OBJECTID');
-    //sortJsonArrayByProperty(results, 'attributes.OBJECTID', -1);
+    };
+    return me;
 };
 
 helpers.colors = function() {

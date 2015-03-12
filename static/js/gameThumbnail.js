@@ -1,13 +1,26 @@
 var gameThumbnail = {};
 
-gameThumbnail.view = function(ctrl) {
+gameThumbnail.viewsOnPage = 0;
+gameThumbnail.view = function() {
+    var gameInfo = games().sort(sorting.sortByProperty("title"))[gameThumbnail.viewsOnPage];
+    var title = gameInfo.title;
+    var thumbnail = gameInfo.thumbnail;
+    console.log(gameInfo);
+    gameThumbnail.viewsOnPage += 1;
     return m(".col-sm-3", [
-        m("p", "Duck Life 3: Evolution"),
-        m("a", {href: "/DuckLife3", config: m.route}, [
-            m("img.img-rounded.img-responsive", {src: "/images/ducklife3evolutionthumbnail.png", alt: "Duck Life 3"})
+        m("p", title),
+        m("a", {href: "/" + inputValidation.replaceSpacesWithUnderscores(title), config: m.route}, [
+            m("img.img-rounded.img-responsive", {src: thumbnail, alt: title})
         ]),
         m("br")
     ])
 };
 
-gameThumbnail.controller = function() {};
+var games = m.prop([]);
+
+gameThumbnail.controller = function() {
+    m.request({method: "GET", url: "/static/games.json"}).then(function(val) {
+        games(val);
+    });
+};
+

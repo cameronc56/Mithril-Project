@@ -1,12 +1,13 @@
 //init
 var colors = helpers.colors();
 var inputValidation = helpers.inputValidation();
-var sort = helpers.sort();
+var sorting = helpers.sort();
 
 //init controllers
 var registerModalCtrl = registerModal.controller();
 var loginModalCtrl = loginModal.controller();
 var gameOverviewCtrl = gameOverview.controller();
+var gameThumbnailCtrl = gameThumbnail.controller();
 
 var homepage = {};
 homepage.view = function () {
@@ -14,6 +15,7 @@ homepage.view = function () {
 		m("div", navbar.view()),
 		m("div", jumbotron.view()),
 		m("div", gameOverview.view(gameOverviewCtrl)),
+		//m("div", gameThumbnail.view(gameThumbnailCtrl)),
 		m("div", loginModal.view(loginModalCtrl)),
 		m("div", registerModal.view(registerModalCtrl)),
 		m("div", contactModal.view()),
