@@ -3,10 +3,10 @@ var gameOverview = {};
 gameOverview.view = function(ctrl) {
     return m("#homePageGridContainer.container", [
         m("select.form-control", {style: "width: 15em;"}, [
-            m("option", "Featured"),
+            m("option", "Alphabetical"),
             m("option", "Most Played"),
             m("option", "Newest"),
-            m("option", "Alphabetical")
+            m("option", "Featured")
         ]),
         m(".container", [
             m(".row", {style: "margin-top: 10px;"}, _.times(4, gameThumbnail.view)),
@@ -41,23 +41,5 @@ gameOverview.view = function(ctrl) {
 
 gameOverview.controller = function() {
     var me = {};
-    //var me = {};
-    //me.gamesJson = [];
-    //
-    //me.getGamesJson = function() {
-    //    $.getJSON("/static/games.json", function(data) {
-    //        me.gamesJson = data;
-    //        me.afterDataLoads();
-    //    });
-    //};
-    //
-
-    //
-    //me.afterDataLoads = function(pageNumber, thumbnailsToDisplay) {
-    //    me.sortAlphabetical(pageNumber, thumbnailsToDisplay);
-    //};
-    //if(me.getGamesJson()) {
-    //    return me;
-    //}
     return me;
 };

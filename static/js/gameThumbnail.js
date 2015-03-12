@@ -5,11 +5,10 @@ gameThumbnail.view = function() {
     var gameInfo = games().sort(sorting.sortByProperty("title"))[gameThumbnail.viewsOnPage];
     var title = gameInfo.title;
     var thumbnail = gameInfo.thumbnail;
-    console.log(gameInfo);
     gameThumbnail.viewsOnPage += 1;
     return m(".col-sm-3", [
         m("p", title),
-        m("a", {href: "/" + inputValidation.replaceSpacesWithUnderscores(title), config: m.route}, [
+        m("a", {href: "/game/" + inputValidation.replaceSpacesWithUnderscores(title), config: m.route}, [
             m("img.img-rounded.img-responsive", {src: thumbnail, alt: title})
         ]),
         m("br")
