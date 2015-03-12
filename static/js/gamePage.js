@@ -19,7 +19,7 @@ gamePage.view = function() {
         width = $(window).width() - 100;
         height = width * ratio;
     }
-    
+
     //if(gameInfo.height > $(window).height()) {
     //ratio = gameInfo.height / gameInfo.width;
     //height = $(window).height - 100;
@@ -29,7 +29,7 @@ gamePage.view = function() {
 
     return m("div", [
         m("center", [
-            m("embed", {src: gameInfo.flash_file, width: width + ";", height:  height + ";"})
+            m("embed", {src: gameInfo.flash_file.replace("http", "https"), width: width + ";", height:  height + ";"})
         ])
     ]);
 };
