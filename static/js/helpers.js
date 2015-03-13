@@ -38,29 +38,31 @@ helpers.cookies = function() {
 
 helpers.sort = function() {
     var me = {};
-    me.sortByStringProperty = function(property) {
+
+    me.sortByProperty = function(property) {
         'use strict';
-        return function (a, b) {
-            var sortStatus = 0;
-            if (a[property] < b[property]) {
-                sortStatus = -1;
-            } else if (a[property] > b[property]) {
-                sortStatus = 1;
-            }
-            return sortStatus;
-        };
-    };
-    me.sortByIntegerProperty = function(property) {
-        'use strict';
-        return function (a, b) {
-            var sortStatus = 0;
-            if (parseInt(a[property]) < parseInt(b[property])) {
-                sortStatus = 1;
-            } else if (parseInt(a[property]) > parseInt(b[property])) {
-                sortStatus = -1;
-            }
-            return sortStatus;
-        };
+        var sortStatus = 0;
+        if(property == "gameplays") {
+            return function (a, b) {
+                var sortStatus = 0;
+                if (parseInt(a[property]) < parseInt(b[property])) {
+                    sortStatus = 1;
+                } else if (parseInt(a[property]) > parseInt(b[property])) {
+                    sortStatus = -1;
+                }
+                return sortStatus;
+            };
+        } else {
+            return function (a, b) {
+                var sortStatus = 0;
+                if (a[property] < b[property]) {
+                    sortStatus = -1;
+                } else if (a[property] > b[property]) {
+                    sortStatus = 1;
+                }
+                return sortStatus;
+            };
+        }
     };
     return me;
 };

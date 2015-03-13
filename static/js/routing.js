@@ -39,7 +39,7 @@ gamePageLayout.controller = function() {};
 
 
 m.route.mode = "hash";
-m.route(document.body, "/", {
-	"/":homepage,
+m.route(document.body, "/page/1", {
+	"/page/:pageNumber":homepage,
 	"/game/:gameTitle": gamePageLayout
 });

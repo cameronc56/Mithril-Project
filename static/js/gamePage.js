@@ -10,14 +10,14 @@ gamePage.view = function() {
         }
     }
     var gameInfo = games()[gamePositionInJsonFile];
-    var ratio = 1;
-    var width = gameInfo.width;
-    var height = gameInfo.height;
+    var ratio = gameInfo.height / gameInfo.width;
+    var width = $(window).width() - 50;
+    var height = width * ratio;
 
     if(gameInfo.width > $(window).width()) {
         ratio = gameInfo.height / gameInfo.width;
-        width = $(window).width() - 100;
-        height = width * ratio;
+        width = $(window).width() - 50;
+        height = height * ratio;
     }
 
     //if(gameInfo.height > $(window).height()) {
