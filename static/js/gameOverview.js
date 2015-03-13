@@ -2,7 +2,7 @@ var gameOverview = {};
 
 gameOverview.view = function(ctrl) {
     return m("#homePageGridContainer.container", [
-        m("select.form-control", {style: "width: 15em;", onchange: _.compose(m.withAttr("value", gameOverview.sortBy), gameThumbnail.resetViews), value: gameOverview.sortBy()}, [
+        m("select.form-control", {style: "width: 15em;", onchange: _.compose(m.withAttr("value", gameOverview.sortBy), gameThumbnail.resetViews, ctrl.reroute), value: gameOverview.sortBy()}, [
             m("option", "Most Played"),
             m("option", "Alphabetically")
         ]),
@@ -41,5 +41,8 @@ gameOverview.sortBy = m.prop("Most Played");
 
 gameOverview.controller = function() {
     var me = {};
+    me.reroute = function() {
+        m.route("#/page/1");
+    }
     return me;
 };

@@ -48,4 +48,3 @@ gameThumbnail.controller = function() {
         games(val);
     });
 };
-
