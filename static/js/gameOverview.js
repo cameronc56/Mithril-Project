@@ -3,8 +3,8 @@ var gameOverview = {};
 gameOverview.view = function(ctrl) {
     return m("#homePageGridContainer.container", [
         m("select.form-control", {style: "width: 15em;"}, [
-            m("option", "Alphabetical"),
             m("option", "Most Played"),
+            m("option", "Alphabetically"),
             m("option", "Newest"),
             m("option", "Featured")
         ]),

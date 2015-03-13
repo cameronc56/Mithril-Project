@@ -2,7 +2,8 @@ var gameThumbnail = {};
 
 gameThumbnail.viewsOnPage = 0;
 gameThumbnail.view = function() {
-    var gameInfo = games().sort(sorting.sortByProperty("title"))[gameThumbnail.viewsOnPage];
+    var gameInfo = games().sort(sorting.sortByIntegerProperty("gameplays"))[gameThumbnail.viewsOnPage];
+    console.log(gameInfo);
     var title = gameInfo.title;
     var thumbnail = gameInfo.thumbnail;
     gameThumbnail.viewsOnPage += 1;
