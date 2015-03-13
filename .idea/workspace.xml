@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="72721e00-e306-49aa-ae74-7f1455d3308e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/gameOverview.js" afterPath="$PROJECT_DIR$/static/js/gameOverview.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/gameThumbnail.js" afterPath="$PROJECT_DIR$/static/js/gameThumbnail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Mithril-Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,8 +30,8 @@
       <file leaf-file-name="gameOverview.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/gameOverview.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8076923" vertical-offset="30" max-vertical-offset="810">
-              <caret line="44" column="25" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.3846154" vertical-offset="15" max-vertical-offset="810">
+              <caret line="21" column="100" selection-start-line="21" selection-start-column="100" selection-end-line="21" selection-end-column="100" />
               <folding />
             </state>
           </provider>
@@ -705,12 +703,12 @@
       <workItem from="1425341674231" duration="6922000" />
       <workItem from="1425401787554" duration="23998000" />
       <workItem from="1425673912688" duration="139000" />
-      <workItem from="1425674067033" duration="46302000" />
+      <workItem from="1425674067033" duration="47477000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="172483000" />
+    <option name="totallyTimeSpent" value="173658000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="23" width="1393" height="877" extended-state="0" />
@@ -1162,8 +1160,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/gameOverview.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8076923" vertical-offset="30" max-vertical-offset="810">
-          <caret line="44" column="25" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.3846154" vertical-offset="15" max-vertical-offset="810">
+          <caret line="21" column="100" selection-start-line="21" selection-start-column="100" selection-end-line="21" selection-end-column="100" />
           <folding />
         </state>
       </provider>

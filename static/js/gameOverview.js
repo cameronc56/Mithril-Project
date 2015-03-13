@@ -19,11 +19,11 @@ gameOverview.view = function(ctrl) {
                                     m("span", {"aria-hidden": "true"}, "«")
                                 ])
                             ]),
-                            m("li", [m("a", {href: "/page/1", onclick: gameThumbnail.resetViews(), config: m.route}, "1")]),
-                            m("li", [m("a", {href: "/page/2", onclick: gameThumbnail.resetViews(), config: m.route}, "2")]),
-                            m("li", [m("a", {href: "/page/3", onclick: gameThumbnail.resetViews(), config: m.route}, "3")]),
-                            m("li", [m("a", {href: "/page/4", onclick: gameThumbnail.resetViews(), config: m.route}, "4")]),
-                            m("li", [m("a", {href: "/page/5", onclick: gameThumbnail.resetViews(), config: m.route}, "5")]),
+                            m("li", [m("a", {href: "/page/" + (parseInt(m.route.param("pageNumber"))).toString(), onclick: gameThumbnail.resetViews(), config: m.route}, (parseInt(m.route.param("pageNumber"))).toString())]),
+                            m("li", [m("a", {href: "/page/" + (parseInt(m.route.param("pageNumber")) + 1).toString(), onclick: gameThumbnail.resetViews(), config: m.route}, (parseInt(m.route.param("pageNumber")) + 1).toString())]),
+                            m("li", [m("a", {href: "/page/" + (parseInt(m.route.param("pageNumber")) + 2).toString(), onclick: gameThumbnail.resetViews(), config: m.route}, (parseInt(m.route.param("pageNumber")) + 2).toString())]),
+                            m("li", [m("a", {href: "/page/" + (parseInt(m.route.param("pageNumber")) + 3).toString(), onclick: gameThumbnail.resetViews(), config: m.route}, (parseInt(m.route.param("pageNumber")) + 3).toString())]),
+                            m("li", [m("a", {href: "/page/" + (parseInt(m.route.param("pageNumber")) + 4).toString(), onclick: gameThumbnail.resetViews(), config: m.route}, (parseInt(m.route.param("pageNumber")) + 4).toString())]),
                             m("li", [
                                 m("a", {href: "/page/" + (parseInt(m.route.param("pageNumber")) + 1), "aria-label": "Next", config: m.route}, [
                                     m("span", {"aria-hidden": "true"}, "»")
