@@ -34,7 +34,7 @@ navbar.view = function(ctrl) {
                             m("li", {class:"dropdown"}, [
                                 m("a", {class:"dropdown-toggle", "data-toggle":"dropdown", href:"#"}, "Account", m("b", {class:"caret"}) ),
                                 m("ul", {class:"dropdown-menu"}, [
-                                    m("li", [ m("a", {href:"/accountPage", config: m.route }, "Account Details") ]),
+                                    m("li", [ m("a", {href:"/account/cameronc56", config: m.route }, "Account Details") ]),
                                     m("li", [ m("a", {href:"/logout", "method":"POST", config: m.route }, "Logout")         ])
                                 ])//end ul
                             ]),//end li
@@ -46,21 +46,7 @@ navbar.view = function(ctrl) {
 }; //end navbar.view
 
 navbar.controller = function() {
-    function setActiveMenuItem() {
-        $(".nav li").removeClass("active");
-        var menuItem = $('a[href=".' + this.location.pathname + '"]');
-        var name = this.location.pathname;
-        name = name.slice(1, name.length).trim();
-        if (name.length === 0) {
-            name = 'home';
-        }
-        var menuItem1 = $('#' + name);
-        menuItem1.addClass('active');
-    }
-
-    $(document).ready(function() {
-        setActiveMenuItem();
-    });
-
+    var me = {};
+    return me;
 };
 

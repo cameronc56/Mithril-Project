@@ -78,6 +78,23 @@ def sendEmail():
 	status, msg = sg.send(message)
 	return json.dumps({"status":status})
 ################################################################################
+@post('/account')
+def account():
+	session = request.json['session']
+	session = decode_session_str(session)
+	if is_logged_in(session):
+		username = session['username']
+		conn = openConn()
+		with conn:
+			c = conn.cursor()
+			email = (c.execute("SELECT email FROM Users WHERE username = ?",(username,))).fetchone()
+			email = email[0]
+			if(email == None):
+				email = "No email attached to this Account"
+			return json.dumps({"username":username})
+	else:
+		return json.dumps({"username":"Click To Login"})
+################################################################################
 @get('/static/<filename:re:.*\.js>', name='static')
 def server_static(filename):
 	return static_file(filename, root='static/js')

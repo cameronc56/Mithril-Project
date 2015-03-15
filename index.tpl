@@ -21,7 +21,7 @@
 <script type="text/javascript" src="{{ get_url('static', filename = 'contactModal.js') }}"></script>
 <script type="text/javascript" src="{{ get_url('static', filename = 'footer.js') }}"></script>
 <script type="text/javascript" src="{{ get_url('static', filename = 'helpers.js') }}"></script>
-<script type="text/javascript" src="{{ get_url('static', filename = 'game.js') }}"></script>
+<script type="text/javascript" src="{{ get_url('static', filename = 'accountPage.js') }}"></script>
 <script type="text/javascript" src="{{ get_url('static', filename = 'routing.js') }}"></script>
 <script>
 
