@@ -1,7 +1,6 @@
 var accountPage = {};
 
 accountPage.view = function(ctrl) {
-    ctrl.checkSession();
     return m("div", [
         m("center", [
             m("p", "Username: " + ctrl.username())
@@ -13,7 +12,7 @@ accountPage.controller = function() {
     var me = {};
     me.navbarUsername = m.prop("Account");
     me.username = m.prop("Username");
-    me.checkSession = function() {
+    me.checkSession = function() {;
         if (cookies.getCookie('session')) {
             var session = JSON.stringify(cookies.getCookie('session'));
             m.request({
@@ -25,7 +24,7 @@ accountPage.controller = function() {
                 me.navbarUsername(response.username);
             });
         }
-        ;
-    }
+    };
+    me.checkSession();
     return me;
 };

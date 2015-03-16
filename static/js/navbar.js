@@ -1,7 +1,6 @@
 var navbar = {};
 
 navbar.view = function(ctrl) {
-    accountPageCtrl.checkSession();
     return m("div", [
             m("div", {class:"navbar navbar-default navbar-static-top"}, [
                 m("div", {class:"container"}, [
@@ -28,13 +27,13 @@ navbar.view = function(ctrl) {
                                 ]),//end ul
                             ]),//end li
                             m("li", [ m("a", {href:"/showForum", config: m.route}, "Forums"  ) ]),
-                            m("li", [ m("a", {href:"#contact", "data-toggle":"modal", config: m.route }, "Contact" ) ]),
+                            m("li", [ m("a", {href:"#contact", "data-toggle":"modal"}, "Contact" ) ]),
                             m("li", {class:"dropdown"}, [
                                 m("a", {class:"dropdown-toggle", "data-toggle":"dropdown", href:""}, accountPageCtrl.navbarUsername(), m("b", {class:"caret"}) ),
                                 m("ul", {class:"dropdown-menu"}, [
-                                    m("li", [ m("a", {href:"/account/" + accountPageCtrl.username(), config: m.route }, "Account Details") ]),
+                                    m("li", [ m("a", {href:"#/account/" + accountPageCtrl.username()}, "Account Details") ]),
                                     m("li", [ m("a", {href:"#", config: m.route }, "Favorites") ]),
-                                    m("li", [ m("a", {href:"/logout", "method":"POST", config: m.route }, "Logout")         ])
+                                    m("li", [ m("a", {href:"", onclick: ctrl.deleteUserSession}, "Logout")         ])
                                 ])//end ul
                             ]),//end li
                         ]), //end ul
@@ -46,6 +45,9 @@ navbar.view = function(ctrl) {
 
 navbar.controller = function() {
     var me = {};
+    me.deleteUserSession = function() {
+        cookies.deleteCookie("session");
+    };
     return me;
 };
 

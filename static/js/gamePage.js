@@ -17,8 +17,8 @@ gamePage.view = function() {
     //reminder: when some games are scaled up in size, they leave a gray border and don't scale.
     //afaik, there is no way to tell if the game is scalable or not.
     if(height > $(window).height() * .95) {
-        for(i = 1; height > $(window).height() * .90;) {
-            height -= i;
+        while(height > $(window).height() * .90) {
+            height -= 1;
         }
         width = height / ratio;
     }

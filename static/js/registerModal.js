@@ -1,7 +1,7 @@
 var registerModal = {};
 registerModal.view = function(ctrl) {
     //                               CREATE ACCOUNT MODAL
-    return m(".modal.fade", {id: "createAccount", role: "dialog"}, [
+    return m(".modal.fade", {id: "registerModal", role: "dialog"}, [
         m(".modal-dialog", [
             m(".modal-content", [
                 m(".modal-header", [
@@ -83,18 +83,20 @@ registerModal.controller = function() {
 
     me.username = m.prop("");
     me.usernameColor = m.prop("");
-    me.password = me.pass1();
     me.email = m.prop("");
     me.responseMessage = m.prop("");
     me.responseMessageColor = m.prop("");
     me.register = function() {
+        var usernameValue = me.username();
+        var passwordValue = me.pass1();
         if(!inputValidation.isAlpha(me.username())) {
             me.responseMessage("Invalid character in username");
-        } else if(!inputValidation.isAlpha(me.password)) {
+        } else if(!inputValidation.isAlpha(me.pass1())) {
             me.responseMessage("Invalid character in password");
         } else if(!inputValidation.isEmail(me.email())) {
             me.responseMessage("Invalid character in email");
-        } else if(me.username.length < 5 || me.password.length < 5) {
+        } else if(usernameValue.length < 5 || passwordValue.length < 5) {
+            console.log(usernameValue + " " + passwordValue);
             me.responseMessage("Username and password must have atleast 4 characters.");
         } else {
             $.ajax({
@@ -102,7 +104,7 @@ registerModal.controller = function() {
                 url: "/register",
                 data: JSON.stringify({
                     "username": me.username(),
-                    "password": me.password,
+                    "password": me.pass1(),
                     "email": me.email()
                 }),
                 dataType: "JSON",
