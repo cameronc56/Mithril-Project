@@ -4159,22 +4159,6 @@
     "instructions": "- Arrow keys or WASD to Move.\n- Mouse to Shoot.\n- R or Shift to Reload\n- Down key to Assemble the Car.\n- Space bar or Enter to Plant a Mine.\n- Number keys or Q and E to change weapons.\n- F to open/close the shop\n"
   },
   {
-    "category": "Sports & Racing",
-    "rating": "3.82",
-    "gameplays": "4660825",
-    "description": "More high flying racing in this sequel to the wildly popular Coaster Racer. \nThis time there&#8217;s a new nitro system, challenge races, and bikes as well as cars.\n",
-    "screenshot": "http://cdn2.kongcdn.com/assets/screenshots/0036/1164/Coaster_Racer_2_1.png",
-    "title": "Coaster Racer 2",
-    "url": "http://www.kongregate.com/games/LongAnimals/coaster-racer-2",
-    "id": "118219",
-    "height": "480",
-    "flash_file": "http://external.kongregate-games.com/gamez/0011/8219/live/embeddable_118219.swf",
-    "developer_name": "LongAnimals",
-    "width": "640",
-    "launch_date": "2011-07-08",
-    "thumbnail": "https://kongregate3.insnw.net/game_icons/0026/8119/icon_coaster2_100_site.png?15265-op"
-  },
-  {
     "category": "Strategy & Defense",
     "rating": "3.66",
     "description": "The soviet AI is back! Evil corrupted masterminds have found a new way into his base, a zombie plague has started! You have to defend once more from possessions from the undead. Utilize your skill tree with your hero, use turrets and traps against the invasion!\n-&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;\nits a Hero Tower Defense game &#8211; it means you will have to build towers and pimp up your Hero to kill enemies. Enemies will try to rob you.\nAt some point, you will able to Rambo simple levels =) then switch to Hard mode.\n-&#8212;&#8212;\nIf you ever played &#8216;Flash Element TD&#8217; or &#8216;Cursed Gems&#8217; &#8211; its same Genre, so you know what to do =)\n",
@@ -6370,23 +6354,6 @@
     "instructions": "Move the mouse to aim fireballs, mouse click triggers the Divine Pillar of Flame.\nAs Sun King: arrow keys to move, 1-4 number keys to summon minions.\n"
   },
   {
-    "category": "Sports & Racing",
-    "rating": "3.58",
-    "gameplays": "8673501",
-    "description": "Exhillarating race with 16 opponents over insane roller coaster tracks.\n",
-    "screenshot": "http://cdn4.kongcdn.com/assets/screenshots/0036/2132/Coaster_Racer.png",
-    "title": "Coaster Racer",
-    "url": "http://www.kongregate.com/games/LongAnimals/coaster-racer",
-    "id": "93927",
-    "height": "480",
-    "flash_file": "http://external.kongregate-games.com/gamez/0009/3927/live/embeddable_93927.swf",
-    "developer_name": "LongAnimals",
-    "width": "640",
-    "launch_date": "2010-10-13",
-    "thumbnail": "https://kongregate4.insnw.net/game_icons/0018/6160/coasterracer_thumbnail_img_100.png?12965-op",
-    "instructions": "AWSD or Arrows\n"
-  },
-  {
     "category": "Puzzle",
     "rating": "3.56",
     "description": "Bubbles, Guinea Pigs, Snakes, and Japanese Pop! \nThe Guinea Pigs return to rescue the animals from Tokyo Zoo, and to defeat the Zoowrangler.\nRescue on 50 levels, 4 boss fights, unlock downloadables, and play the minigame while swinging guinea pigs from the mouths of snakes!\n",
@@ -7116,17 +7083,5 @@
     "launch_date": "2014-08-19",
     "thumbnail": "https://kongregate1.insnw.net/game_icons/0056/0315/thumb1_site.png?21525-op",
     "instructions": "Arrow Keys to move, C to shoot, X grenade and Z for guinea pig rockets\n"
-  },
-  {
-    "category": "Multiplayer",
-    "rating": "4.16",
-    "gameplays": "624159",
-    "description": "A turn-based hack &#8216;n&#8217; slash adventure. Choose from six classes and fight through randomly generated levels full of bountiful treasures to defeat the forces of darkness!\nCardinal Quest 2 is free-to-play. You can unlock new classes and perks experiences with Kreds or earn them by playing. Either way, three Acts of unique locations, monsters and bosses are yours to conquer!\n",
-    "screenshot": "http://cdn3.kongcdn.com/assets/screenshots/0041/4198/Paladin_talents.png",
-    "title": "Cardinal Quest 2",
-    "url": "http://www.kongregate.com/games/randomnine/cardinal-quest-2",
-    "id": "179258",
-    "height": "480",
-    "flash_file": "http://external.kongregate-games.com/gamez/0017/9258/live"
   }
 ]

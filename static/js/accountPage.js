@@ -1,36 +1,31 @@
 var accountPage = {};
 
 accountPage.view = function(ctrl) {
+    ctrl.checkSession();
     return m("div", [
         m("center", [
-            m("p", ctrl.username())
+            m("p", "Username: " + ctrl.username())
         ])
     ])
 };
 
 accountPage.controller = function() {
     var me = {};
+    me.navbarUsername = m.prop("Account");
     me.username = m.prop("Username");
     me.checkSession = function() {
-        var session = cookies.getCookie('session');
-        $.ajax({
-            type: "POST",
-            url: "/account",
-            data: JSON.stringify({"session":session}),
-            dataType: "JSON",
-            contentType: "application/json",
-            async: true,
-            cache: false,
-            success: function (msg) {
-                var data = msg;//JSON.parse(msg);
-                var username = data.username;
-                me.username(username);
-            },
-            failure: function(msg) {
-                me.username("USERNAME RETRIEVAL FAILURE");
-            }
-        });
-    };
-    me.checkSession();
+        if (cookies.getCookie('session')) {
+            var session = JSON.stringify(cookies.getCookie('session'));
+            m.request({
+                method: "POST",
+                url: "/account",
+                data: {"session": session}
+            }).then(function (response) {
+                me.username(response.username);
+                me.navbarUsername(response.username);
+            });
+        }
+        ;
+    }
     return me;
 };
