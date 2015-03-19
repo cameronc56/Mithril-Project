@@ -12,6 +12,7 @@ var gameThumbnailCtrl = gameThumbnail.controller();
 var accountPageCtrl = accountPage.controller();
 var jumbotronCtrl = jumbotron.controller();
 var navbarCtrl = navbar.controller();
+var gamePageCtrl = gamePage.controller();
 
 var homepage = {};
 homepage.view = function() {
@@ -32,7 +33,7 @@ var gamePageLayout = {};
 gamePageLayout.view = function() {
 	return m("div", [
 		m("div", navbar.view(navbarCtrl)),
-		m("div", gamePage.view()),
+		m("div", gamePage.view(gamePageCtrl)),
 		m("div", loginModal.view(loginModalCtrl)),
 		m("div", registerModal.view(registerModalCtrl)),
 		m("div", contactModal.view()),

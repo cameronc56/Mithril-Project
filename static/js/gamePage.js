@@ -1,6 +1,6 @@
 var gamePage = {};
 
-gamePage.view = function() {
+gamePage.view = function(ctrl) {
 
     var gameUrl = m.route.param("gameTitle");
     var gamePositionInJsonFile = 0;
@@ -25,12 +25,28 @@ gamePage.view = function() {
 
     return m("div", [
         m("center", [
-            m("embed", {src: gameInfo.flash_file.replace("http", "https"), width: width + ";", height:  height + ";"})
+            m("embed", {src: gameInfo.flash_file.replace("http", "https"), width: width + ";", height:  height + ";"}),
+        ]),
+        m(".container",  [
+            m(".form-group", {onclick: ctrl.favorite}, [
+                m("a.btn.btn-primary", [
+                    m("h5", "+ Favorite  ", m("span", {class: ctrl.favoriteClass(), "aria-hidden": "true"}))
+                ])
+            ])
         ])
     ]);
 };
 
 gamePage.controller = function() {
     var me = {};
+    me.favoriteClass = m.prop("glyphicon glyphicon-star-empty");
+    me.favorite = function() {
+        if(me.favoriteClass() == "glyphicon glyphicon-star-empty") {
+            me.favoriteClass("glyphicon glyphicon-star");
+        } else {
+            me.favoriteClass("glyphicon glyphicon-star-empty");
+        }
+    };
+
     return me;
 };

@@ -107,8 +107,8 @@ def server_static(filename):
 def server_static(filename):
 	return static_file(filename, root='static/css')
 ################################################################################
-@get('/<filename:re:.*\.(eot|ttf|woff|svg)>')
-def fonts(filename):
+@get('/fonts/<filename>')
+def server_static(filename):
 	return static_file(filename, root='static/fonts')
 ################################################################################
 @route('/images/<imageName>', name = 'images')
