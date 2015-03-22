@@ -94,10 +94,10 @@ registerModal.controller = function() {
         } else if(!inputValidation.isAlpha(me.pass1())) {
             me.responseMessage("Invalid character in password");
         } else if(!inputValidation.isEmail(me.email())) {
-            me.responseMessage("Invalid character in email");
+            me.responseMessage("Invalid Email");
         } else if(usernameValue.length < 5 || passwordValue.length < 5) {
             console.log(usernameValue + " " + passwordValue);
-            me.responseMessage("Username and password must have atleast 4 characters.");
+            me.responseMessage("Username and password must have at least 4 characters.");
         } else {
             $.ajax({
                 type: "POST",

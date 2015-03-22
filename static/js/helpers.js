@@ -8,7 +8,7 @@ helpers.inputValidation = function() {
         return (inputToValidate.search(/[^\w*^\d*]/) == -1);
     };
     me.isEmail = function(inputToValidate) {
-        return (inputToValidate.search(/[^\w*^\d*^@*^.*^+*]/) == -1);
+        return (inputToValidate.search(/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/) !== -1);
     };
     me.replaceSpacesWithUnderscores = function(inputToValidate) {
         return inputToValidate.replace(/ /g, "_");

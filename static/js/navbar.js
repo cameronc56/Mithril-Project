@@ -22,13 +22,13 @@ navbar.view = function(ctrl) {
                                 m("a", {class:"dropdown-toggle", "data-toggle":"dropdown", href:"#"}, "Games", m("b", {class:"caret"}) ),
                                 m("ul",{class:"dropdown-menu"}, [
                                     m("li", [ m("a", {href:"", config: m.route }, "Most Played" ) ]),
-                                    m("li", [ m("a", {href:"", config: m.route }, "All Games") ]),
+                                    m("li", [ m("a", {href:"", config: m.route }, "All Games") ])
                                 ])//end ul
                             ]),//end li
                             m("li", [ m("a", {href:"/showForum", config: m.route}, "Forums"  ) ]),
                             m("li", [ m("a", {href:"#contact", "data-toggle":"modal"}, "Contact" ) ]),
                             m("li", {class:"dropdown"}, [
-                                m("a", {class:"dropdown-toggle", "data-toggle":"dropdown", href:""}, accountPageCtrl.navbarUsername(), m("b", {class:"caret"}) ),
+                                m("a", {class:"dropdown-toggle", "data-toggle":"dropdown", href:""}, accountPageCtrl.navbarUsername(), m("b", {class:"caret"})),
                                 m("ul", {class:"dropdown-menu"}, [
                                     m("li", [ m("a", {href:"#/account/" + accountPageCtrl.username()},
                                         "Account ",
@@ -38,13 +38,13 @@ navbar.view = function(ctrl) {
                                         "Favorites ",
                                         m("span.glyphicon.glyphicon-star", {"aria-hidden": "true"})
                                     )]),
-                                    m("li", [ m("a", {href:"", onclick: ctrl.deleteUserSession}, "Logout")         ])
+                                    m("li", [ m("a", {href:"", onclick: ctrl.deleteUserSession}, "Logout")])
                                 ])//end ul
-                            ]),//end li
-                        ]), //end ul
-                    ]), //end div
-                ]),//end container
-            ]),// end navbar div
+                            ])//end li
+                        ]) //end ul
+                    ]) //end div
+                ])//end container
+            ])// end navbar div
         ]); //end return
 }; //end navbar.view
 
