@@ -23,14 +23,15 @@ gamePage.view = function(ctrl) {
         width = height / ratio;
     }
 
+
     return m("div", [
         m("center", [
             m("embed", {src: gameInfo.flash_file.replace("http", "https"), width: width + ";", height:  height + ";"}),
         ]),
-        m(".container",  [
+        m(".container-fluid", {style: "width:" + width + "px;"},  [
             m(".form-group", {onclick: ctrl.favorite}, [
                 m("a.btn.btn-primary", [
-                    m("h5", "+ Favorite  ", m("span", {class: ctrl.favoriteClass(), "aria-hidden": "true"}))
+                    m("h5", "+ Favorite  ", m("span", {class: ctrl.favoriteClass(), "aria-hidden": "true"/*, style: "margin-left:" + ($(window).width() - width)/2 + "px;"*/}))
                 ])
             ])
         ])
