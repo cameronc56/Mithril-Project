@@ -38,6 +38,17 @@ helpers.cookies = function() {
             document.cookie = cname + "= ;expires=Thu, 01-Jan-1970 00:00:01 GMT";
         }
     };
+    me.checkSession = function(responseFunction) {
+        if(me.getCookie("session")) {
+            m.request({
+                method: "POST",
+                url: "/account",
+                data: {"session":JSON.stringify(me.getCookie("session"))}
+            }).then(function(response) {
+                responseFunction(response);
+            })
+        }
+    };
     return me;
 };
 

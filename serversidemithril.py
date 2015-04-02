@@ -48,7 +48,7 @@ def login():
 	conn = openConn()
 	with conn:
 		c = conn.cursor()
-		var =  (c.execute("SELECT passwordHash, passwordSalt FROM Users WHERE username = ?",(username,))).fetchone()
+		var = (c.execute("SELECT passwordHash, passwordSalt FROM Users WHERE username = ?",(username,))).fetchone()
 		if var:
 			DBhash = var[0]
 			salt = var[1]
@@ -78,9 +78,38 @@ def sendEmail():
 	status, msg = sg.send(message)
 	return json.dumps({"status":status})
 ######################y##########################################################
+@post('/isFavoriteGame')
+def isFavoriteGame():
+	d = request.json
+	username = d["username"]
+	gameTitle = d["gameTitle"]
+	conn = openConn()
+	with conn:
+		c = conn.cursor()
+		isFavorite = (c.execute("SELECT gameTitle FROM favoriteGames join Users ON Users.username = favoriteGames.username WHERE Users.username = ? AND favoriteGames.gameTitle  = ?",(username, gameTitle))).fetchone()
+		if isFavorite:
+			return json.dumps({"isFavorite":"True"})
+		else:
+			return json.dumps({"isFavorite":"False"})
+######################y##########################################################
 @post('/favoriteGame')
 def favoriteGame():
-	print "hello"
+	d = request.json
+	username = d["username"]
+	print username
+	gameTitle = d["gameTitle"]
+	print gameTitle
+	conn = openConn()
+	with conn:
+		c = conn.cursor()
+		isFavorite = (c.execute("SELECT gameTitle FROM favoriteGames join Users ON Users.username = favoriteGames.username WHERE Users.username = ? AND favoriteGames.gameTitle  = ?",(username, gameTitle))).fetchone()
+		if isFavorite:
+			print "isFavorite == true"
+			(c.execute("DELETE FROM favoriteGames WHERE favoriteGames.username = ? AND favoriteGames.gameTitle = ?", (username, gameTitle))).fetchone()
+		else:
+			print "isFavorite == false"
+			c.execute("INSERT INTO favoriteGames(username, gameTitle) VALUES (?, ?)", (username, gameTitle))
+	return json.dumps({"response":"RESPONSE FROM SERVER"})
 ################################################################################
 @post('/account')
 def account():

@@ -1,7 +1,6 @@
 var gamePage = {};
 
 gamePage.view = function(ctrl) {
-
     var gameUrl = m.route.param("gameTitle");
     var gamePositionInJsonFile = 0;
     for (var i = 0; i < games().length; i++) {
@@ -22,16 +21,14 @@ gamePage.view = function(ctrl) {
         }
         width = height / ratio;
     }
-
-
     return m("div", [
         m("center", [
-            m("embed", {src: gameInfo.flash_file.replace("http", "https"), width: width + ";", height:  height + ";"}),
+            m("embed", {src: gameInfo.flash_file.replace("http", "https"), width: width + ";", height:  height + ";"})
         ]),
         m(".container-fluid", {style: "width:" + width + "px;"},  [
             m(".form-group", {onclick: ctrl.favorite}, [
                 m("a.btn.btn-primary", [
-                    m("h5", "+ Favorite  ", m("span", {class: ctrl.favoriteClass(), "aria-hidden": "true"/*, style: "margin-left:" + ($(window).width() - width)/2 + "px;"*/}))
+                    m("h5", "+ Favorite  ", m("span", {class: ctrl.favoriteClass(), "aria-hidden": "true"}))
                 ])
             ])
         ])
@@ -40,14 +37,45 @@ gamePage.view = function(ctrl) {
 
 gamePage.controller = function() {
     var me = {};
+
+    me.username = m.prop("Username");
+    cookies.checkSession(function(response){me.username(response.username)});
     me.favoriteClass = m.prop("glyphicon glyphicon-star-empty");
-    me.favorite = function() {
-        if(me.favoriteClass() == "glyphicon glyphicon-star-empty") {
-            me.favoriteClass("glyphicon glyphicon-star");
-        } else {
-            me.favoriteClass("glyphicon glyphicon-star-empty");
+
+    me.isFavorite = function() {
+        if(cookies.getCookie("session") != "") {
+            m.request({
+                method: "POST",
+                url: "/isFavoriteGame",
+                data: {"username": me.username(), "gameTitle": m.route.param("gameTitle")}
+            }).then(function (response) {
+                console.log("isFavorite");
+                if (response.isFavorite == "True") {
+                    me.favoriteClass("glyphicon glyphicon-star");
+                } else if (response.isFavorite == "False") {
+                    me.favoriteClass("glyphicon glyphicon-star-empty");
+                }
+            })
         }
     };
-    //me.favoriteGame = m.request();
+
+    me.favorite = function() {
+        if(cookies.getCookie("session") != "") {
+            if (me.favoriteClass() == "glyphicon glyphicon-star-empty") {
+                me.favoriteClass("glyphicon glyphicon-star");
+            } else {
+                me.favoriteClass("glyphicon glyphicon-star-empty");
+            }
+            m.request({
+                method: "POST",
+                url: "/favoriteGame",
+                data: {"username": me.username(), "gameTitle": m.route.param("gameTitle")}
+            }).then(function (response) {
+
+            });
+        } else if(cookies.getCookie("session") == "") {
+            alert("Please login to favorite this game");
+        }
+    };
     return me;
 };

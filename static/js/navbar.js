@@ -28,9 +28,9 @@ navbar.view = function(ctrl) {
                             m("li", [ m("a", {href:"/showForum", config: m.route}, "Forums"  ) ]),
                             m("li", [ m("a", {href:"#contact", "data-toggle":"modal"}, "Contact" ) ]),
                             m("li", {class:"dropdown"}, [
-                                m("a", {class:"dropdown-toggle", "data-toggle":"dropdown", href:""}, accountPageCtrl.navbarUsername(), m("b", {class:"caret"})),
+                                m("a", {class:"dropdown-toggle", "data-toggle":"dropdown", href:""}, ctrl.username(), m("b", {class:"caret"})),
                                 m("ul", {class:"dropdown-menu"}, [
-                                    m("li", [ m("a", {href:"#/account/" + accountPageCtrl.username()},
+                                    m("li", [ m("a", {href:"#/account/" + ctrl.username()},
                                         "Account ",
                                         m("span.glyphicon.glyphicon-cog", {"aria-hidden": "true"})
                                     )]),
@@ -53,6 +53,8 @@ navbar.controller = function() {
     me.deleteUserSession = function() {
         cookies.deleteCookie("session");
     };
+    me.username = m.prop("Account");
+    cookies.checkSession(function(response) {me.username(response.username)});
     return me;
 };
 
