@@ -12,7 +12,7 @@ accountPage.controller = function() {
     var me = {};
     me.navbarUsername = m.prop("Account");
     me.username = m.prop("Username");
-    me.checkSession = function() {;
+    me.checkSession = function() {
         if (cookies.getCookie('session')) {
             var session = JSON.stringify(cookies.getCookie('session'));
             m.request({

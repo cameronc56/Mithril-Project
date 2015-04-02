@@ -48,6 +48,6 @@ gamePage.controller = function() {
             me.favoriteClass("glyphicon glyphicon-star-empty");
         }
     };
-
+    //me.favoriteGame = m.request();
     return me;
 };

@@ -43,29 +43,19 @@ loginModal.controller = function() {
         } else if(!inputValidation.isAlpha(me.password())) {
             me.responseMessage("Password contains invalid characters");
         } else {
-            $.ajax({
-                type: "POST",
+            m.request({
+                method: "POST",
                 url: "/login",
-                data: JSON.stringify({"username": me.username(), "password": me.password()}),
-                dataType: "JSON",
-                contentType: "application/json",
-                async: true,
-                cache: false,
-                success: function (msg) {
-                    //msg = JSON.parse(msg);
-                    me.responseMessage(msg.error);
-                    if (msg.error == "Logged In") {
-                        me.responseMessageColor("color: " + colors.goodColor);
-                        document.location.reload(true);
-                    }
-                    else {
-                        me.responseMessageColor("color: " + colors.badColor);
-                    }
-                },
-                failure: function (msg) {
-                    console.log("Error in /login: " + msg);
+                data: {"username": me.username(), "password": me.password()}
+            }).then(function(response) {
+                me.responseMessage(response.error);
+                if(response.error == "Logged In") {
+                    me.responseMessageColor("color: " + colors.goodColor);
+                    document.location.reload(true);
+                } else {
+                    me.responseMessageColor("color: " + colors.badColor);
                 }
-            });
+            })
         }
     };
     return me;

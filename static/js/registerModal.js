@@ -91,45 +91,33 @@ registerModal.controller = function() {
         var passwordValue = me.pass1();
         if(!inputValidation.isAlpha(me.username())) {
             me.responseMessage("Invalid character in username");
+            me.responseMessageColor("color: " + colors.badColor);
         } else if(!inputValidation.isAlpha(me.pass1())) {
             me.responseMessage("Invalid character in password");
+            me.responseMessageColor("color: " + colors.badColor);
         } else if(!inputValidation.isEmail(me.email())) {
             me.responseMessage("Invalid Email");
+            me.responseMessageColor("color: " + colors.badColor);
         } else if(usernameValue.length < 5 || passwordValue.length < 5) {
-            console.log(usernameValue + " " + passwordValue);
-            me.responseMessage("Username and password must have at least 4 characters.");
+            me.responseMessage("Username and password must have more than 4 characters.");
+            me.responseMessageColor("color: " + colors.badColor);
         } else {
-            $.ajax({
-                type: "POST",
+            m.request({
+                method: "POST",
                 url: "/register",
-                data: JSON.stringify({
-                    "username": me.username(),
-                    "password": me.pass1(),
-                    "email": me.email()
-                }),
-                dataType: "JSON",
-                contentType: "application/json",
-                async: true,
-                cache: false,
-                success: function (msg) {
-                    //msg = JSON.parse(msg);
-                    me.responseMessage(msg.error);
-                    if (msg.error == 'Account Created') {
-                        me.usernameColor("backgroundColor: " + colors.goodColor);
-                        me.responseMessageColor("color: " + colors.goodColor);
-                        document.location.reload(true);
-                    }
-                    else {
-                        me.username("backgroundColor: " + colors.badColor);
-                        me.message("color: " + colors.badColor);
-                    }
-                },
-                failure: function (msg) {
-                    me.username("backgroundColor: " + colors.badColor);
+                data: {"username": me.username(), "password": me.pass1(), "email": me.email()}
+            }).then(function(response) {
+                me.responseMessage(response.error);
+                if (response.error == 'Account Created') {
+                    me.usernameColor("backgroundColor: " + colors.goodColor);
+                    me.responseMessageColor("color: " + colors.goodColor);
+                    document.location.reload(true);
+                } else {
+                    me.usernameColor("backgroundColor: " + colors.badColor);
                     me.responseMessageColor("color: " + colors.badColor);
-                    console.log(msg);
                 }
-            });
+            })
+
         }
     };
     return me;
