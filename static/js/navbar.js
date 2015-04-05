@@ -1,7 +1,7 @@
 var navbar = {};
 
 navbar.view = function(ctrl) {
-    return m("div", [
+    return [
             m("div", {class:"navbar navbar-default navbar-static-top"}, [
                 m("div", {class:"container"}, [
                     m("a", {href: "/"}, [
@@ -30,22 +30,39 @@ navbar.view = function(ctrl) {
                             m("li", {class:"dropdown"}, [
                                 m("a", {class:"dropdown-toggle", "data-toggle":"dropdown", href:""}, ctrl.username(), m("b", {class:"caret"})),
                                 m("ul", {class:"dropdown-menu"}, [
-                                    m("li", [ m("a", {href:"#/account/" + ctrl.username()},
-                                        "Account ",
-                                        m("span.glyphicon.glyphicon-cog", {"aria-hidden": "true"})
-                                    )]),
-                                    m("li", [ m("a", {href:"#", config: m.route },
-                                        "Favorites ",
-                                        m("span.glyphicon.glyphicon-star", {"aria-hidden": "true"})
-                                    )]),
-                                    m("li", [ m("a", {href:"", onclick: ctrl.deleteUserSession}, "Logout")])
+                                    ctrl.isLoggedIn() ?
+                                        [
+                                            m("li", [
+                                                m("a", {href:"#/account/" + ctrl.username()}, "Account ", [
+                                                        m("span.glyphicon.glyphicon-user.pull-right", {"aria-hidden": "true"})
+                                                ])
+                                            ]),
+                                            m("li", [
+                                                m("a", {href:"#", config: m.route}, "Favorites ", [
+                                                    m("span.glyphicon.glyphicon-star.pull-right", {"aria-hidden": "true"})
+                                                ])
+                                            ]),
+                                            m("li", [
+                                                m("a", {href:"", onclick: ctrl.deleteUserSession}, "Logout", [
+                                                    m("span.glyphicon.glyphicon-log-out.pull-right", {"aria-hidden": "true"})
+                                                ])
+                                            ])
+                                        ]
+                                    :
+                                       [
+                                            m("li", [
+                                                m("a", {href:"#loginModal", "data-toggle": "modal"}, "Login", [
+                                                    m("span.glyphicon.glyphicon-log-in.pull-right", {"aria-hidden": "true"})
+                                                ])
+                                            ])
+                                        ]
                                 ])//end ul
                             ])//end li
                         ]) //end ul
                     ]) //end div
                 ])//end container
             ])// end navbar div
-        ]); //end return
+        ]; //end return
 }; //end navbar.view
 
 navbar.controller = function() {
@@ -55,6 +72,9 @@ navbar.controller = function() {
     };
     me.username = m.prop("Account");
     cookies.checkSession(function(response) {me.username(response.username)});
+    me.isLoggedIn = function() {
+        return me.username() !== "Account";
+    };
     return me;
 };
 

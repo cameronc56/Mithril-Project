@@ -18,15 +18,15 @@ initControllers = function() {
 
 var homepage = {};
 homepage.view = function() {
-	return m("div", [
-		m("div", navbar.view(navbarCtrl)),
-		m("div", jumbotron.view(jumbotronCtrl)),
-		m("div", gameOverview.view(gameOverviewCtrl)),
-		m("div", loginModal.view(loginModalCtrl)),
-		m("div", registerModal.view(registerModalCtrl)),
-		m("div", contactModal.view()),
-		m("div", footer.view())
-	])
+	return [
+		navbar.view(navbarCtrl),
+		jumbotron.view(jumbotronCtrl),
+		gameOverview.view(gameOverviewCtrl),
+		loginModal.view(loginModalCtrl),
+		registerModal.view(registerModalCtrl),
+		contactModal.view(),
+		footer.view()
+	]
 };
 homepage.controller = function() {
 	initControllers();
@@ -35,14 +35,14 @@ homepage.controller = function() {
 
 var gamePageLayout = {};
 gamePageLayout.view = function() {
-	return m("div", [
-		m("div", navbar.view(navbarCtrl)),
-		m("div", gamePage.view(gamePageCtrl)),
-		m("div", loginModal.view(loginModalCtrl)),
-		m("div", registerModal.view(registerModalCtrl)),
-		m("div", contactModal.view()),
-		m("div", footer.view())
-	])
+	return [
+		navbar.view(navbarCtrl),
+		gamePage.view(gamePageCtrl),
+		loginModal.view(loginModalCtrl),
+		registerModal.view(registerModalCtrl),
+		contactModal.view(),
+		footer.view()
+	]
 };
 gamePageLayout.controller = function() {
 	initControllers();
@@ -50,14 +50,14 @@ gamePageLayout.controller = function() {
 
 var accountPageLayout = {};
 accountPageLayout.view = function() {
-	return m("div", [
-		m("div", navbar.view(navbarCtrl)),
-		m("div", accountPage.view(accountPageCtrl)),
-		m("div", loginModal.view(loginModalCtrl)),
-		m("div", registerModal.view(registerModalCtrl)),
-		m("div", contactModal.view()),
-		m("div", footer.view())
-	])
+	return [
+		navbar.view(navbarCtrl),
+		accountPage.view(accountPageCtrl),
+		loginModal.view(loginModalCtrl),
+		registerModal.view(registerModalCtrl),
+		contactModal.view(),
+		footer.view()
+	]
 };
 accountPageLayout.controller = function() {
 	initControllers();

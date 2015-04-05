@@ -21,20 +21,36 @@ gamePage.view = function(ctrl) {
         }
         width = height / ratio;
     }
-
-    return m("div", [
+    return [
+        m(".container", [
+           m(".row", [
+               m(".span", [
+                   m(".alert.alert-danger.alert-dismissible", {role: "alert", style: ctrl.showError()}, [
+                       m("button.close", {"data-dismiss": "alert", "aria-label": "Close"}, [
+                           m("span", {"aria-hidden": "true"}, "×")
+                       ]),
+                       m("", "Please login to favorite this game")
+                   ])
+               ])
+           ])
+        ]),
         m("center", [
             m("embed", {src: gameInfo.flash_file.replace("http", "https"), width: width + ";", height:  height + ";"})
         ]),
-        m(".container-fluid", {style: "width:" + width + "px;"},  [
+        m(".container-fluid", {style: "width:" + width * 1.035 + "px;"},  [
             m(".form-group", {onclick: ctrl.favorite}, [
                 m("a.btn.btn-primary", [
                     m("h5", "+ Favorite  ", m("span", {class: ctrl.favoriteClass(), "aria-hidden": "true"}))
                 ])
             ])
         ])
-    ]);
+    ];
 };
+
+//<div class="alert alert-warning alert-dismissible" role="alert">
+//  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+//  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+//</div>
 
 gamePage.controller = function() {
     var me = {};
@@ -66,6 +82,8 @@ gamePage.controller = function() {
         }
     };
 
+    me.showError = m.prop("display: none;");
+
     me.favorite = function() {
         if(cookies.getCookie("session") != "") {
             m.request({
@@ -80,7 +98,7 @@ gamePage.controller = function() {
                 }
             });
         } else if(cookies.getCookie("session") == "") {
-            alert("Please login to favorite this game");
+            me.showError("display: '';");
         }
     };
     return me;
