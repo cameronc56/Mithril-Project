@@ -82,15 +82,18 @@ def sendEmail():
 def isFavoriteGame():
 	d = request.json
 	username = d["username"]
+	print username
 	gameTitle = d["gameTitle"]
+	print gameTitle
 	conn = openConn()
 	with conn:
 		c = conn.cursor()
-		isFavorite = (c.execute("SELECT gameTitle FROM favoriteGames join Users ON Users.username = favoriteGames.username WHERE Users.username = ? AND favoriteGames.gameTitle  = ?",(username, gameTitle))).fetchone()
-		if isFavorite:
-			return json.dumps({"isFavorite":"True"})
-		else:
-			return json.dumps({"isFavorite":"False"})
+		isFavorite = (c.execute("SELECT gameTitle FROM favoriteGames WHERE username = ? AND gameTitle  = ?",(username, gameTitle))).fetchone()
+		print isFavorite
+		if isFavorite is not None:
+			return json.dumps({"isFavorite":"true"})
+		elif isFavorite is None:
+			return json.dumps({"isFavorite":"false"})
 ######################y##########################################################
 @post('/favoriteGame')
 def favoriteGame():
@@ -102,13 +105,14 @@ def favoriteGame():
 	conn = openConn()
 	with conn:
 		c = conn.cursor()
-		isFavorite = (c.execute("SELECT gameTitle FROM favoriteGames join Users ON Users.username = favoriteGames.username WHERE Users.username = ? AND favoriteGames.gameTitle  = ?",(username, gameTitle))).fetchone()
-		if isFavorite:
-			print "isFavorite == true"
-			(c.execute("DELETE FROM favoriteGames WHERE favoriteGames.username = ? AND favoriteGames.gameTitle = ?", (username, gameTitle))).fetchone()
-		else:
-			print "isFavorite == false"
+		isFavorite = (c.execute("SELECT gameTitle FROM favoriteGames WHERE username = ? AND gameTitle  = ?",(username, gameTitle))).fetchone()
+		if isFavorite is not None:
+			(c.execute("DELETE FROM favoriteGames WHERE username = ? AND gameTitle = ?", (username, gameTitle))).fetchone()
+			print (c.execute("SELECT gameTitle FROM favoriteGames WHERE username = ? AND gameTitle  = ?",(username, gameTitle))).fetchone()
+		elif isFavorite is None:
 			c.execute("INSERT INTO favoriteGames(username, gameTitle) VALUES (?, ?)", (username, gameTitle))
+			print (c.execute("SELECT gameTitle FROM favoriteGames WHERE username = ? AND gameTitle  = ?",(username, gameTitle))).fetchone()
+	conn.commit()
 	return json.dumps({"response":"RESPONSE FROM SERVER"})
 ################################################################################
 @post('/account')

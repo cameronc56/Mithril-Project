@@ -4,15 +4,17 @@ var inputValidation = helpers.inputValidation();
 var sorting = helpers.sort();
 var cookies = helpers.cookies();
 
-//init controllers
-var registerModalCtrl = registerModal.controller();
-var loginModalCtrl = loginModal.controller();
-var gameOverviewCtrl = gameOverview.controller();
-var gameThumbnailCtrl = gameThumbnail.controller();
-var accountPageCtrl = accountPage.controller();
-var jumbotronCtrl = jumbotron.controller();
-var navbarCtrl = navbar.controller();
-var gamePageCtrl = gamePage.controller();
+initControllers = function() {
+	//init controllers
+	registerModalCtrl = registerModal.controller();
+	loginModalCtrl = loginModal.controller();
+	gameOverviewCtrl = gameOverview.controller();
+	gameThumbnailCtrl = gameThumbnail.controller();
+	accountPageCtrl = accountPage.controller();
+	jumbotronCtrl = jumbotron.controller();
+	navbarCtrl = navbar.controller();
+	gamePageCtrl = gamePage.controller();
+};
 
 var homepage = {};
 homepage.view = function() {
@@ -26,7 +28,9 @@ homepage.view = function() {
 		m("div", footer.view())
 	])
 };
-homepage.controller = function() {};
+homepage.controller = function() {
+	initControllers();
+};
 
 
 var gamePageLayout = {};
@@ -40,7 +44,9 @@ gamePageLayout.view = function() {
 		m("div", footer.view())
 	])
 };
-gamePageLayout.controller = function() {};
+gamePageLayout.controller = function() {
+	initControllers();
+};
 
 var accountPageLayout = {};
 accountPageLayout.view = function() {
@@ -53,9 +59,9 @@ accountPageLayout.view = function() {
 		m("div", footer.view())
 	])
 };
-accountPageLayout.controller = function() {};
-
-
+accountPageLayout.controller = function() {
+	initControllers();
+};
 
 m.route.mode = "hash";
 m.route(document.body, "/page/1", {

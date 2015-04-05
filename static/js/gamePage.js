@@ -21,6 +21,7 @@ gamePage.view = function(ctrl) {
         }
         width = height / ratio;
     }
+
     return m("div", [
         m("center", [
             m("embed", {src: gameInfo.flash_file.replace("http", "https"), width: width + ";", height:  height + ";"})
@@ -39,39 +40,44 @@ gamePage.controller = function() {
     var me = {};
 
     me.username = m.prop("Username");
-    cookies.checkSession(function(response){me.username(response.username)});
-    me.favoriteClass = m.prop("glyphicon glyphicon-star-empty");
+    cookies.checkSession(function(response) {
+        me.username(response.username);
+        me.isFavorite();
+    });
+    me.favoriteClass = m.prop();
 
     me.isFavorite = function() {
-        if(cookies.getCookie("session") != "") {
-            m.request({
-                method: "POST",
-                url: "/isFavoriteGame",
-                data: {"username": me.username(), "gameTitle": m.route.param("gameTitle")}
-            }).then(function (response) {
-                console.log("isFavorite");
-                if (response.isFavorite == "True") {
-                    me.favoriteClass("glyphicon glyphicon-star");
-                } else if (response.isFavorite == "False") {
-                    me.favoriteClass("glyphicon glyphicon-star-empty");
-                }
-            })
+        if(m.route.param("gameTitle") != undefined) {
+            if(cookies.getCookie("session") != "") {
+                m.request({
+                    method: "POST",
+                    url: "/isFavoriteGame",
+                    data: {"username": me.username(), "gameTitle": m.route.param("gameTitle")}
+                }).then(function (response) {
+                    if (response.isFavorite == "true") {
+                        console.log("true");
+                        me.favoriteClass("glyphicon glyphicon-star");
+                    } else if (response.isFavorite == "false") {
+                        console.log("false");
+                        me.favoriteClass("glyphicon glyphicon-star-empty");
+                    }
+                })
+            }
         }
     };
 
     me.favorite = function() {
         if(cookies.getCookie("session") != "") {
-            if (me.favoriteClass() == "glyphicon glyphicon-star-empty") {
-                me.favoriteClass("glyphicon glyphicon-star");
-            } else {
-                me.favoriteClass("glyphicon glyphicon-star-empty");
-            }
             m.request({
                 method: "POST",
                 url: "/favoriteGame",
                 data: {"username": me.username(), "gameTitle": m.route.param("gameTitle")}
             }).then(function (response) {
-
+                if (me.favoriteClass() == "glyphicon glyphicon-star-empty") {
+                    me.favoriteClass("glyphicon glyphicon-star");
+                } else {
+                    me.favoriteClass("glyphicon glyphicon-star-empty");
+                }
             });
         } else if(cookies.getCookie("session") == "") {
             alert("Please login to favorite this game");

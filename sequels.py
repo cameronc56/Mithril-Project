@@ -19,5 +19,5 @@ c = conn.cursor()
 
 #favoriteGames Table
 #c.execute("DROP TABLE favoriteGames")
-#c.execute("CREATE TABLE favoriteGames (username text PRIMARY KEY, gameTitle text)")
+#c.execute("CREATE TABLE favoriteGames (id integer PRIMARY KEY, username text, gameTitle text)")
 conn.commit()
