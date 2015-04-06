@@ -14,6 +14,7 @@ initControllers = function() {
 	jumbotronCtrl = jumbotron.controller();
 	navbarCtrl = navbar.controller();
 	gamePageCtrl = gamePage.controller();
+	contactModalCtrl = contactModal.controller();
 };
 
 var homepage = {};
@@ -24,7 +25,7 @@ homepage.view = function() {
 		gameOverview.view(gameOverviewCtrl),
 		loginModal.view(loginModalCtrl),
 		registerModal.view(registerModalCtrl),
-		contactModal.view(),
+		contactModal.view(contactModalCtrl),
 		footer.view()
 	]
 };
@@ -40,7 +41,7 @@ gamePageLayout.view = function() {
 		gamePage.view(gamePageCtrl),
 		loginModal.view(loginModalCtrl),
 		registerModal.view(registerModalCtrl),
-		contactModal.view(),
+		contactModal.view(contactModalCtrl),
 		footer.view()
 	]
 };
@@ -55,7 +56,7 @@ accountPageLayout.view = function() {
 		accountPage.view(accountPageCtrl),
 		loginModal.view(loginModalCtrl),
 		registerModal.view(registerModalCtrl),
-		contactModal.view(),
+		contactModal.view(contactModalCtrl),
 		footer.view()
 	]
 };

@@ -6,6 +6,7 @@ import json
 import blowfish
 import base64
 import sendgrid
+import os
 
 app = default_app()
 cryptoKey = "zOMeALKStvK3SxqRjm6xeqrt0Hn85oARUqYNa7kU"
@@ -63,12 +64,13 @@ def login():
 ################################################################################
 @post('/sendEmail')
 def sendEmail():
+	sendgridUsername = os.environ['USERNAME']
+	sendgridPassword = os.environ['PASSWORD']
 	d = request.json
 	emailName = d['emailName']
 	emailAddress = d['emailAddress']
 	emailBody = d['emailBody']
-
-	sg = sendgrid.SendGridClient('cameronc56', '111122336')
+	sg = sendgrid.SendGridClient(str(sendgridUsername), str(sendgridPassword))
 	message = sendgrid.Mail()
 	message.add_to('Cam C <admin@littleducklinggames.com>')
 	message.set_subject('Message to the Admin')
@@ -77,24 +79,21 @@ def sendEmail():
 	message.set_from(emailName + " <" + emailAddress + " ")
 	status, msg = sg.send(message)
 	return json.dumps({"status":status})
-######################y##########################################################
+################################################################################
 @post('/isFavoriteGame')
 def isFavoriteGame():
 	d = request.json
 	username = d["username"]
-	print username
 	gameTitle = d["gameTitle"]
-	print gameTitle
 	conn = openConn()
 	with conn:
 		c = conn.cursor()
 		isFavorite = (c.execute("SELECT gameTitle FROM favoriteGames WHERE username = ? AND gameTitle  = ?",(username, gameTitle))).fetchone()
-		print isFavorite
 		if isFavorite is not None:
 			return json.dumps({"isFavorite":"true"})
 		elif isFavorite is None:
 			return json.dumps({"isFavorite":"false"})
-######################y##########################################################
+################################################################################
 @post('/favoriteGame')
 def favoriteGame():
 	d = request.json

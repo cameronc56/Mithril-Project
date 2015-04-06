@@ -1,64 +1,59 @@
 var contactModal = {};
-contactModal.view = function() {
-    return m(".modal.fade[id='contact'][role='dialog']", [
-        m(".modal-dialog", [
-            m(".modal-content", [
-                m("form.form-horizontal", [
-                    m(".modal-header", [
-                        m("h4", "Contact the Admin")
-                    ]),
-                    m(".modal-body", [
-                        m(".form-group", [
-                            m("label.col-lg-2.control-label[for='contact-name']", "Name:"),
-                            m(".col-lg-10", [
-                                m("input.form-control[id='contact-name'][placeholder='Full Name'][type='text']")
+contactModal.view = function(ctrl) {
+    return [
+        m(".modal.fade[id='contact'][role='dialog']", [
+            m(".modal-dialog", [
+                m(".modal-content", [
+                    m("form.form-horizontal", [
+                        m(".modal-header", [
+                            m("h4", "Contact the Admin")
+                        ]),
+                        m(".modal-body", [
+                            m(".form-group", [
+                                m("label.col-lg-2.control-label", {for: "contact-name"}, "Name:"),
+                                m(".col-lg-10", [
+                                    m("input.form-control#contact-name", {onkeyup: m.withAttr("value", ctrl.name), style: ctrl.fieldColor(), placeholder: "Full Name", type: "text"})
+                                ])
+                            ]),
+                            m(".form-group", [
+                                m("label.col-lg-2.control-label", {for: "contact-email"}, "Email:"),
+                                m(".col-lg-10", [
+                                    m("input.form-control#contact-email", {onkeyup: m.withAttr("value", ctrl.email), style: ctrl.fieldColor(), placeholder: "you@example.com", type: "email"})
+                                ])
+                            ]),
+                            m(".form-group", [
+                                m("label.col-lg-2.control-label", {for: "contact-msg"}, "Message:"),
+                                m(".col-lg-10", [
+                                    m("textarea.form-control#contact-msg", {rows: "8", onkeyup: m.withAttr("value", ctrl.message), style: ctrl.fieldColor()})
+                                ])
                             ])
                         ]),
-                        m(".form-group", [
-                            m("label.col-lg-2.control-label[for='contact-email']", "Email:"),
-                            m(".col-lg-10", [
-                                m("input.form-control[id='contact-email'][placeholder='you@example.com'][type='email']")
-                            ])
-                        ]),
-                        m(".form-group", [
-                            m("label.col-lg-2.control-label[for='contact-msg']", "Message:"),
-                            m(".col-lg-10", [
-                                m("textarea.form-control[id='contact-msg'][rows='8']")
-                            ])
+                        m(".modal-footer", [
+                            m("a.btn.btn-primary.pull-left", {"data-dismiss":"modal"}, "Close"),
+                            m("button.btn.btn-primary", {onclick: ctrl.sendEmail, "data-dismiss": "modal", type: "submit"}, "Send")
                         ])
-                    ]),
-                    m(".modal-footer", [
-                        m("a.btn.btn-primary.pull-left[data-dismiss='modal']", "Close"),
-                        m("button.btn.btn-primary[type='submit']", {onclick: contactModal.controller.sendEmail}, "Send")
                     ])
                 ])
             ])
         ])
-    ])
+    ]
 };
 
-contactModal.controller =  {
-    sendEmail: function() {
-        var emailName = $('#contact-name');
-        var emailAddress = $('#contact-email');
-        var emailBody = $('#contact-msg');
-        var goodColor = "#62BF65";
-        var badColor = "#E67373";
-        $.ajax({
-            type: "POST",
+contactModal.controller = function() {
+    //remember not to commit credentials.txt to the github repo, and to change sendgrid credentials.
+    var me = {};
+    me.name = m.prop("");
+    me.email = m.prop("");
+    me.message = m.prop("");
+    me.fieldColor = m.prop();
+    me.sendEmail = function() {
+        m.request({
+            method: "POST",
             url: "/sendEmail",
-            data: JSON.stringify({"emailName":emailName.val(), "emailAddress":emailAddress.val(), "emailBody":emailBody.val()}),
-            dataType: "JSON",
-            contentType: "application/json",
-            async: true,
-            cache: false,
-            success: function(msg) {
-                var status = msg;
-                emailName.css("backgroundColor", goodColor);
-                emailAddress.css("backgroundColor", goodColor);
-                emailBody.css("backgroundColor", goodColor);
-            }
+            data: {"emailName": me.name(), "emailAddress": me.email(), "emailBody": me.message()}
+        }).then(function(response) {
+            me.fieldColor("border-color: " + colors.goodColor + ";");
         });
-    }
+    };
+    return me;
 };
-

@@ -57,7 +57,6 @@ helpers.sort = function() {
 
     me.sortByProperty = function(property) {
         'use strict';
-        var sortStatus = 0;
         if(property == "gameplays") {
             return function (a, b) {
                 var sortStatus = 0;
