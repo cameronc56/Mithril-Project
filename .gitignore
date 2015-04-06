@@ -7,3 +7,4 @@ mithril.min.js
 node_modules
 .idea/*
 .idea/workspace.xml
+.idea
