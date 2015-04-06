@@ -2,6 +2,8 @@ bottle.py
 bottle.pyc
 mithril.js
 mithril.min.js
+login.db
+sequels.py
 *.iml
 .idea_modules
 node_modules
