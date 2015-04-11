@@ -38,7 +38,7 @@ navbar.view = function(ctrl) {
                                                 ])
                                             ]),
                                             m("li", [
-                                                m("a", {href:"#", config: m.route}, "Favorites ", [
+                                                m("a", {href:"/favoriteGames/page/1", config: m.route}, "Favorites ", [
                                                     m("span.glyphicon.glyphicon-star.pull-right", {"aria-hidden": "true"})
                                                 ])
                                             ]),

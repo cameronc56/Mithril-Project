@@ -71,10 +71,8 @@ gamePage.controller = function() {
                     data: {"username": me.username(), "gameTitle": m.route.param("gameTitle")}
                 }).then(function (response) {
                     if (response.isFavorite == "true") {
-                        console.log("true");
                         me.favoriteClass("glyphicon glyphicon-star");
                     } else if (response.isFavorite == "false") {
-                        console.log("false");
                         me.favoriteClass("glyphicon glyphicon-star-empty");
                     }
                 })

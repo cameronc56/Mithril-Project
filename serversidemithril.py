@@ -9,7 +9,7 @@ import sendgrid
 import os
 
 app = default_app()
-cryptoKey = "zOMeALKStvK3SxqRjm6xeqrt0Hn85oARUqYNa7kU"
+cryptoKey = os.environ["CRYPTOKEY"]
 conn = sqlite3.connect('login.db')
 c = conn.cursor()
 
@@ -49,10 +49,10 @@ def login():
 	conn = openConn()
 	with conn:
 		c = conn.cursor()
-		var = (c.execute("SELECT passwordHash, passwordSalt FROM Users WHERE username = ?",(username,))).fetchone()
-		if var:
-			DBhash = var[0]
-			salt = var[1]
+		query = (c.execute("SELECT passwordHash, passwordSalt FROM Users WHERE username = ?",(username,))).fetchone()
+		if query:
+			DBhash = query[0]
+			salt = query[1]
 			hash = hashlib.sha512((password + salt).encode('utf-8')).hexdigest()
 			if hash == DBhash:
 				response.set_cookie("session", encode_session_str({"username" : username}))
@@ -93,6 +93,16 @@ def isFavoriteGame():
 			return json.dumps({"isFavorite":"true"})
 		elif isFavorite is None:
 			return json.dumps({"isFavorite":"false"})
+################################################################################
+@post('/getAllFavoriteGames')
+def getAllFavoriteGames():
+	d = request.json
+	username = d["username"]
+	conn = openConn()
+	with conn:
+		c = conn.cursor()
+		favoriteGames = (c.execute("SELECT gameTitle FROM favoriteGames WHERE username = ?", (username, ))).fetchall()
+		return json.dumps({"favoriteGames":favoriteGames})
 ################################################################################
 @post('/favoriteGame')
 def favoriteGame():

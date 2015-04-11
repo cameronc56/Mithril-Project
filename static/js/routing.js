@@ -8,6 +8,7 @@ initControllers = function() {
 	//init controllers
 	registerModalCtrl = registerModal.controller();
 	loginModalCtrl = loginModal.controller();
+	favoriteGamesCtrl = favoriteGames.controller();
 	gameOverviewCtrl = gameOverview.controller();
 	gameThumbnailCtrl = gameThumbnail.controller();
 	accountPageCtrl = accountPage.controller();
@@ -49,6 +50,21 @@ gamePageLayout.controller = function() {
 	initControllers();
 };
 
+var favoriteGamesLayout = {};
+favoriteGamesLayout.view = function() {
+	return [
+		navbar.view(navbarCtrl),
+		favoriteGames.view(favoriteGamesCtrl),
+		loginModal.view(loginModalCtrl),
+		registerModal.view(registerModalCtrl),
+		contactModal.view(contactModalCtrl),
+		footer.view()
+	]
+};
+favoriteGamesLayout.controller = function() {
+	initControllers()
+};
+
 var accountPageLayout = {};
 accountPageLayout.view = function() {
 	return [
@@ -68,5 +84,6 @@ m.route.mode = "hash";
 m.route(document.body, "/page/1", {
 	"/page/:pageNumber":homepage,
 	"/game/:gameTitle": gamePageLayout,
-	"/account/:username": accountPageLayout
+	"/account/:username": accountPageLayout,
+	"/favoriteGames/page/:pageNumber": favoriteGamesLayout
 });

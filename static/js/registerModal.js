@@ -1,45 +1,47 @@
 var registerModal = {};
 registerModal.view = function(ctrl) {
     //                               CREATE ACCOUNT MODAL
-    return m(".modal.fade", {id: "registerModal", role: "dialog"}, [
-        m(".modal-dialog", [
-            m(".modal-content", [
-                m(".modal-header", [
-                    m("h4", "Create Account")
-                ]),
-                m(".modal-body", [
-                    m("center", [
-                        m("span#register-error-msg", {onkeyup: m.withAttr("value", ctrl.responseMessage), style: ctrl.responseMessageColor()}, ctrl.responseMessage())
+    return [
+        m(".modal.fade", {id: "registerModal", role: "dialog"}, [
+            m(".modal-dialog", [
+                m(".modal-content", [
+                    m(".modal-header", [
+                        m("h4", "Create Account")
                     ]),
-                    m(".form-group", [
-                        m("label.col-lg-2.control-label", {for: "register-username"}, "Username:"),
-                        m("input#register-username.form-control", {onkeyup: m.withAttr("value", ctrl.username), style: ctrl.usernameColor(), type:"text", placeholder: "Username"}, ctrl.username()),
+                    m(".modal-body", [
+                        m("center", [
+                            m("span#register-error-msg", {onkeyup: m.withAttr("value", ctrl.responseMessage), style: ctrl.responseMessageColor()}, ctrl.responseMessage())
+                        ]),
+                        m(".form-group", [
+                            m("label.col-lg-2.control-label", {for: "register-username"}, "Username:"),
+                            m("input#register-username.form-control", {onkeyup: m.withAttr("value", ctrl.username), style: ctrl.usernameColor(), type:"text", placeholder: "Username"}, ctrl.username()),
+                        ]),
+                        m(".form-group", [
+                            m("label.col-lg-2.control-label", {for: 'register-email'}, "Email:"),
+                            m("input#register-email.form-control", {onkeyup: m.withAttr("value", ctrl.email), placeholder: "Email", type: "email"}, ctrl.email()),
+                        ]),
+                        m(".form-group", [
+                            m("label.col-lg-2.control-label", {for: "register-password"}, "Password:"),
+                            m("input#register-password.form-control", {onkeyup: _.compose(ctrl.checkPass, m.withAttr("value", ctrl.pass1)), placeholder: "Password", type: ctrl.pass1Type(), value: ctrl.pass1()}),
+                        ]),
+                        m(".form-group", [
+                            m("label.col-lg-2.control-label", {for: "register-confirm-password"}, "Confirm Password:"),
+                            m("input.form-control", {id: "register-confirm-password", "style": ctrl.pass2Color(), onkeyup: _.compose(ctrl.checkPass, m.withAttr("value", ctrl.pass2)), placeholder: "Confirm Password", type: ctrl.pass2Type(), value: ctrl.pass2()}),
+                            m("input#showPass.pull-right", {type: "checkbox", name: "showPass", style: "margin-left: 5px", onchange: _.compose(ctrl.showPass, m.withAttr("checked", ctrl.isChecked)), checked: ctrl.isChecked()}),
+                            m("label.pull-right", {for: "showPass"}, "Show Password"),
+                        ]),
+                        m("center", [
+                            m("span", {id: "confirm-msg", "style": ctrl.messageColor()}, ctrl.message())
+                        ])
                     ]),
-                    m(".form-group", [
-                        m("label.col-lg-2.control-label", {for: 'register-email'}, "Email:"),
-                        m("input#register-email.form-control", {onkeyup: m.withAttr("value", ctrl.email), placeholder: "Email", type: "email"}, ctrl.email()),
-                    ]),
-                    m(".form-group", [
-                        m("label.col-lg-2.control-label", {for: "register-password"}, "Password:"),
-                        m("input#register-password.form-control", {onkeyup: _.compose(ctrl.checkPass, m.withAttr("value", ctrl.pass1)), placeholder: "Password", type: ctrl.pass1Type(), value: ctrl.pass1()}),
-                    ]),
-                    m(".form-group", [
-                        m("label.col-lg-2.control-label", {for: "register-confirm-password"}, "Confirm Password:"),
-                        m("input.form-control", {id: "register-confirm-password", "style": ctrl.pass2Color(), onkeyup: _.compose(ctrl.checkPass, m.withAttr("value", ctrl.pass2)), placeholder: "Confirm Password", type: ctrl.pass2Type(), value: ctrl.pass2()}),
-                        m("input#showPass.pull-right", {type: "checkbox", name: "showPass", style: "margin-left: 5px", onchange: _.compose(ctrl.showPass, m.withAttr("checked", ctrl.isChecked)), checked: ctrl.isChecked()}),
-                        m("label.pull-right", {for: "showPass"}, "Show Password"),
-                    ]),
-                    m("center", [
-                        m("span", {id: "confirm-msg", "style": ctrl.messageColor()}, ctrl.message())
+                    m(".modal-footer", [
+                        m("a.btn.btn-primary.pull-left", {"data-dismiss": "modal"}, "Close"),
+                        m("a#register-btn.btn.btn-primary.pull-right", {onclick: ctrl.register}, "Register"),
                     ])
-                ]),
-                m(".modal-footer", [
-                    m("a.btn.btn-primary.pull-left", {"data-dismiss": "modal"}, "Close"),
-                    m("a#register-btn.btn.btn-primary.pull-right", {onclick: ctrl.register}, "Register"),
                 ])
             ])
         ])
-    ])
+    ]
 };
 
 registerModal.controller = function() {
@@ -109,11 +111,11 @@ registerModal.controller = function() {
             }).then(function(response) {
                 me.responseMessage(response.error);
                 if (response.error == 'Account Created') {
-                    me.usernameColor("backgroundColor: " + colors.goodColor);
+                    me.usernameColor("background-color: " + colors.goodColor);
                     me.responseMessageColor("color: " + colors.goodColor);
                     document.location.reload(true);
                 } else {
-                    me.usernameColor("backgroundColor: " + colors.badColor);
+                    me.usernameColor("background-color: " + colors.badColor);
                     me.responseMessageColor("color: " + colors.badColor);
                 }
             })

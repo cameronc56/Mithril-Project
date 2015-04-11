@@ -1,7 +1,7 @@
 var contactModal = {};
 contactModal.view = function(ctrl) {
     return [
-        m(".modal.fade[id='contact'][role='dialog']", [
+        m(".modal.fade#contact", {role: "dialog"}, [
             m(".modal-dialog", [
                 m(".modal-content", [
                     m("form.form-horizontal", [
@@ -40,7 +40,6 @@ contactModal.view = function(ctrl) {
 };
 
 contactModal.controller = function() {
-    //remember not to commit credentials.txt to the github repo, and to change sendgrid credentials.
     var me = {};
     me.name = m.prop("");
     me.email = m.prop("");

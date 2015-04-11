@@ -15,6 +15,7 @@
 <script type="text/javascript" src="{{ get_url('static', filename = 'jumbotron.js') }}"></script>
 <script type="text/javascript" src="{{ get_url('static', filename = 'gameThumbnail.js') }}"></script>
 <script type="text/javascript" src="{{ get_url('static', filename = 'gameOverview.js') }}"></script>
+<script type="text/javascript" src="{{ get_url('static', filename = 'favoriteGames.js') }}"></script>
 <script type="text/javascript" src="{{ get_url('static', filename = 'gamePage.js') }}"></script>
 <script type="text/javascript" src="{{ get_url('static', filename = 'loginModal.js') }}"></script>
 <script type="text/javascript" src="{{ get_url('static', filename = 'registerModal.js') }}"></script>
