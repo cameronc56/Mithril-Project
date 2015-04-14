@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72721e00-e306-49aa-ae74-7f1455d3308e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/favoriteGames.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login.db" afterPath="$PROJECT_DIR$/login.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/contactModal.js" afterPath="$PROJECT_DIR$/static/js/contactModal.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/gamePage.js" afterPath="$PROJECT_DIR$/static/js/gamePage.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/favoriteGames.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/gameOverview.js" afterPath="$PROJECT_DIR$/static/js/gameOverview.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/gameThumbnail.js" afterPath="$PROJECT_DIR$/static/js/gameThumbnail.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.tpl" afterPath="$PROJECT_DIR$/index.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/navbar.js" afterPath="$PROJECT_DIR$/static/js/navbar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/registerModal.js" afterPath="$PROJECT_DIR$/static/js/registerModal.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/routing.js" afterPath="$PROJECT_DIR$/static/js/routing.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serversidemithril.py" afterPath="$PROJECT_DIR$/serversidemithril.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Mithril-Project.iws" />
@@ -40,7 +35,7 @@
               <entry file="file://$PROJECT_DIR$/static/js/helpers.js">
                 <provider selected="true" editor-type-id="text-editor">
                   <state vertical-scroll-proportion="0.0" vertical-offset="482" max-vertical-offset="1440">
-                    <caret line="61" column="35" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
+                    <caret line="45" column="28" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
                     <folding />
                   </state>
                 </provider>
@@ -56,21 +51,11 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="routing.js" pinned="false" current-in-tab="false">
+            <file leaf-file-name="routing.js" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/static/js/routing.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.0" vertical-offset="632" max-vertical-offset="1410">
-                    <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="gameThumbnail.js" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/static/js/gameThumbnail.js">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.17352185" vertical-offset="0" max-vertical-offset="1470">
-                    <caret line="9" column="51" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+                  <state vertical-scroll-proportion="0.51670146" vertical-offset="0" max-vertical-offset="1395">
+                    <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
                     <folding />
                   </state>
                 </provider>
@@ -90,8 +75,8 @@
       <file leaf-file-name="serversidemithril.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/serversidemithril.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.333333" vertical-offset="0" max-vertical-offset="2745">
-              <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2745">
+              <caret line="162" column="80" selection-start-line="162" selection-start-column="80" selection-end-line="162" selection-end-column="80" />
               <folding>
                 <element signature="e#22#42#0" expanded="true" />
               </folding>
@@ -99,41 +84,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="favoriteGames.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/favoriteGames.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1005">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.tpl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.tpl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="570">
-              <caret line="17" column="82" selection-start-line="17" selection-start-column="82" selection-end-line="17" selection-end-column="82" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gamePage.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/js/gamePage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40384614" vertical-offset="705" max-vertical-offset="1635">
-              <caret line="68" column="35" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="gameOverview.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/gameOverview.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="990">
-              <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
+              <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gameThumbnail.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/js/gameThumbnail.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.421875" vertical-offset="0" max-vertical-offset="1470">
+              <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -173,14 +138,14 @@
         <option value="$PROJECT_DIR$/static/js/helpers.js" />
         <option value="$PROJECT_DIR$/static/js/contactModal.js" />
         <option value="$PROJECT_DIR$/static/js/registerModal.js" />
-        <option value="$PROJECT_DIR$/index.tpl" />
-        <option value="$PROJECT_DIR$/static/js/gameOverview.js" />
-        <option value="$PROJECT_DIR$/static/js/routing.js" />
         <option value="$PROJECT_DIR$/static/js/navbar.js" />
         <option value="$PROJECT_DIR$/static/js/gamePage.js" />
         <option value="$PROJECT_DIR$/static/js/favoriteGames.js" />
         <option value="$PROJECT_DIR$/serversidemithril.py" />
+        <option value="$PROJECT_DIR$/index.tpl" />
+        <option value="$PROJECT_DIR$/static/js/gameOverview.js" />
         <option value="$PROJECT_DIR$/static/js/gameThumbnail.js" />
+        <option value="$PROJECT_DIR$/static/js/routing.js" />
       </list>
     </option>
   </component>
@@ -189,10 +154,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="43" />
+    <option name="x" value="-1872" />
     <option name="y" value="23" />
-    <option name="width" value="698" />
-    <option name="height" value="877" />
+    <option name="width" value="936" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -708,15 +673,15 @@
       <workItem from="1427939548327" duration="2183000" />
       <workItem from="1427996233654" duration="16110000" />
       <workItem from="1428111368048" duration="32658000" />
-      <workItem from="1428362585014" duration="17470000" />
+      <workItem from="1428362585014" duration="22047000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="297990000" />
+    <option name="totallyTimeSpent" value="302567000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="43" y="23" width="698" height="877" extended-state="0" />
+    <frame x="-1872" y="23" width="936" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1116,22 +1081,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/helpers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1440">
-          <caret line="61" column="35" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="570">
-          <caret line="17" column="82" selection-start-line="17" selection-start-column="82" selection-end-line="17" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/navbar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1290">
@@ -1140,52 +1089,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/gameOverview.js">
+    <entry file="file://$PROJECT_DIR$/static/js/gamePage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="990">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
+        <state vertical-scroll-proportion="1.3076923" vertical-offset="0" max-vertical-offset="1635">
+          <caret line="68" column="35" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/favoriteGames.js">
+    <entry file="file://$PROJECT_DIR$/index.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1005">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.2724359" vertical-offset="0" max-vertical-offset="936">
+          <caret line="17" column="78" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/serversidemithril.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.333333" vertical-offset="0" max-vertical-offset="2745">
-          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2745">
+          <caret line="162" column="80" selection-start-line="162" selection-start-column="80" selection-end-line="162" selection-end-column="80" />
           <folding>
             <element signature="e#22#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/routing.js">
+    <entry file="file://$PROJECT_DIR$/static/js/gameOverview.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="632" max-vertical-offset="1410">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/gamePage.js">
+    <entry file="file://$PROJECT_DIR$/static/js/helpers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40384614" vertical-offset="705" max-vertical-offset="1635">
-          <caret line="68" column="35" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="482" max-vertical-offset="1440">
+          <caret line="45" column="28" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/routing.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51670146" vertical-offset="0" max-vertical-offset="1395">
+          <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/gameThumbnail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17352185" vertical-offset="0" max-vertical-offset="1470">
-          <caret line="9" column="51" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.421875" vertical-offset="0" max-vertical-offset="1470">
+          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
           <folding />
         </state>
       </provider>

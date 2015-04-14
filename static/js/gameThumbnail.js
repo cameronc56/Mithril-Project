@@ -4,15 +4,16 @@ gameThumbnail.resetViews = function() {
     gameThumbnail.viewsOnPage(0);
 };
 gameThumbnail.view = function(ctrl) {
+    var gameInfo, title, thumbnail;
     if(m.route().indexOf("favoriteGames") > -1) {
         var maxGameThumbnails = ctrl.favoriteGamesArray().length;
         if(gameThumbnail.viewsOnPage() <= maxGameThumbnails - 1) {
             for(var j = gameThumbnail.viewsOnPage(); j < maxGameThumbnails; j++) {
                 for(var i = 0; i < games().length; i++) {
                     if(ctrl.favoriteGamesArray()[j][0] == inputValidation.replaceSpacesWithUnderscores(games()[i].title)) {
-                        var gameInfo = games()[i];
-                        var title = gameInfo.title;
-                        var thumbnail = gameInfo.thumbnail;
+                        gameInfo = games()[i];
+                        title = gameInfo.title;
+                        thumbnail = gameInfo.thumbnail;
                         gameThumbnail.viewsOnPage(gameThumbnail.viewsOnPage() + 1);
                         return m(".col-sm-3", [
                             m("p", title),
@@ -24,9 +25,6 @@ gameThumbnail.view = function(ctrl) {
                     }
                 }
             }
-            return [
-                m("p", "gameThumbnail")
-            ];
         }
     } else {
         var selectValue = gameOverview.sortBy();
@@ -35,9 +33,9 @@ gameThumbnail.view = function(ctrl) {
         } else if(selectValue == "Alphabetically") {
             selectValue = "title";
         }
-        var gameInfo = games().sort(sorting.sortByProperty(selectValue))[gameThumbnail.viewsOnPage() + (parseInt(m.route.param("pageNumber") - 1) * 12)];
-        var title = gameInfo.title;
-        var thumbnail = gameInfo.thumbnail;
+        gameInfo = games().sort(sorting.sortByProperty(selectValue))[gameThumbnail.viewsOnPage() + (parseInt(m.route.param("pageNumber") - 1) * 12)];
+        title = gameInfo.title;
+        thumbnail = gameInfo.thumbnail;
         gameThumbnail.viewsOnPage(gameThumbnail.viewsOnPage() + 1);
         return m(".col-sm-3", [
             m("p", title),
@@ -49,24 +47,7 @@ gameThumbnail.view = function(ctrl) {
     }
 };
 
-//global array of games objects
-//game object attributes:
-//category
-//description
-//developer_name
-//featured_image
-//flash_file
-//gameplays
-//height
-//id
-//instructions
-//launch_date
-//rating
-//screenshot
-//thumbnail
-//title
-//url
-//width
+//global, all thumbnails need to see it
 var games = m.prop([]);
 
 gameThumbnail.controller = function() {
@@ -91,3 +72,22 @@ gameThumbnail.controller = function() {
     };
     return me;
 };
+
+//global array of games objects
+//game object attributes:
+//category
+//description
+//developer_name
+//featured_image
+//flash_file
+//gameplays
+//height
+//id
+//instructions
+//launch_date
+//rating
+//screenshot
+//thumbnail
+//title
+//url
+//width

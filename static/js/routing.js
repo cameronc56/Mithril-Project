@@ -8,7 +8,6 @@ initControllers = function() {
 	//init controllers
 	registerModalCtrl = registerModal.controller();
 	loginModalCtrl = loginModal.controller();
-	favoriteGamesCtrl = favoriteGames.controller();
 	gameOverviewCtrl = gameOverview.controller();
 	gameThumbnailCtrl = gameThumbnail.controller();
 	accountPageCtrl = accountPage.controller();
@@ -34,7 +33,6 @@ homepage.controller = function() {
 	initControllers();
 };
 
-
 var gamePageLayout = {};
 gamePageLayout.view = function() {
 	return [
@@ -54,7 +52,7 @@ var favoriteGamesLayout = {};
 favoriteGamesLayout.view = function() {
 	return [
 		navbar.view(navbarCtrl),
-		favoriteGames.view(favoriteGamesCtrl),
+		gameOverview.view(gameOverviewCtrl),
 		loginModal.view(loginModalCtrl),
 		registerModal.view(registerModalCtrl),
 		contactModal.view(contactModalCtrl),
@@ -67,6 +65,7 @@ favoriteGamesLayout.controller = function() {
 
 var accountPageLayout = {};
 accountPageLayout.view = function() {
+	console.log(m.route());
 	return [
 		navbar.view(navbarCtrl),
 		accountPage.view(accountPageCtrl),
