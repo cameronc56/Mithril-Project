@@ -1,3 +1,3 @@
 # Mithril-Project
 
-background-color: #C6E2FF;
+A simple flash game website. 
