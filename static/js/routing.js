@@ -3,6 +3,7 @@ var colors = helpers.colors();
 var inputValidation = helpers.inputValidation();
 var sorting = helpers.sort();
 var cookies = helpers.cookies();
+var routing = helpers.routing();
 
 initControllers = function() {
 	//init controllers

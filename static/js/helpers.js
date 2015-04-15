@@ -89,3 +89,11 @@ helpers.colors = function() {
     me.greyColor = "#808080";
     return me;
 };
+
+helpers.routing = function() {
+    var me = {};
+    me.reroute = function() {
+        m.route("#/page/1");
+    };
+    return me;
+};

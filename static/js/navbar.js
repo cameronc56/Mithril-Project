@@ -21,8 +21,8 @@ navbar.view = function(ctrl) {
                             m("li", {class:"dropdown"}, [
                                 m("a", {class:"dropdown-toggle", "data-toggle":"dropdown", href:"#"}, "Games", m("b", {class:"caret"}) ),
                                 m("ul",{class:"dropdown-menu"}, [
-                                    m("li", [ m("a", {href:"", config: m.route }, "Most Played" ) ]),
-                                    m("li", [ m("a", {href:"", config: m.route }, "All Games") ])
+                                    m("li", [ m("a", {href: "/page/1", onclick: _.compose(gameOverview.sortBy, function(){return "Most Played"}, routing.reroute), config: m.route }, "Most Played" ) ]),
+                                    m("li", [ m("a", {href: "/page/1", onclick: _.compose(gameOverview.sortBy, function(){return "Alphabetically"}, routing.reroute), config: m.route }, "All Games") ])
                                 ])//end ul
                             ]),//end li
                             m("li", [ m("a", {href:"/showForum", config: m.route}, "Forums"  ) ]),
@@ -38,7 +38,7 @@ navbar.view = function(ctrl) {
                                                 ])
                                             ]),
                                             m("li", [
-                                                m("a", {href:"/favoriteGames/page/1", config: m.route}, "Favorites ", [
+                                                m("a", {href: "#/favoriteGames/page/1"}, "Favorites ", [
                                                     m("span.glyphicon.glyphicon-star.pull-right", {"aria-hidden": "true"})
                                                 ])
                                             ]),
@@ -64,6 +64,9 @@ navbar.view = function(ctrl) {
             ])// end navbar div
         ]; //end return
 }; //end navbar.view
+
+
+
 
 navbar.controller = function() {
     var me = {};

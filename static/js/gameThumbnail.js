@@ -50,10 +50,15 @@ gameThumbnail.view = function(ctrl) {
 //global, all thumbnails need to see it
 var games = m.prop([]);
 
-gameThumbnail.controller = function() {
+gameThumbnail.vm = {};
+gameThumbnail.vm.getGamesJson = function() {
     m.request({method: "GET", url: "/static/games.json"}).then(function(val) {
         games(val);
     });
+};
+
+gameThumbnail.controller = function() {
+    gameThumbnail.vm.getGamesJson();
     var me = {};
     me.username = m.prop("Username");
     cookies.checkSession(function(response) {
