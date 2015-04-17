@@ -1,8 +1,7 @@
 var navbar = {};
 
 navbar.view = function(ctrl) {
-    return [
-            m("div", {class:"navbar navbar-default navbar-static-top"}, [
+    return m("div", {class:"navbar navbar-default navbar-static-top"}, [
                 m("div", {class:"container"}, [
                     m("a", {href: "/"}, [
                        m("img.img-circle.pull-left", {src: "https://i.imgur.com/eevjESG.jpg", alt: "Quack!~", style: "height: 40px; margin-right: 10px; margin-top: 5px;"})
@@ -25,7 +24,7 @@ navbar.view = function(ctrl) {
                                     m("li", [ m("a", {href: "/page/1", onclick: _.compose(gameOverview.sortBy, function(){return "Alphabetically"}, routing.reroute), config: m.route }, "All Games") ])
                                 ])//end ul
                             ]),//end li
-                            m("li", [ m("a", {href:"/showForum", config: m.route}, "Forums"  ) ]),
+                            m("li", [ m("a", {href:"/forum", config: m.route}, "Forums"  ) ]),
                             m("li", [ m("a", {href:"#contact", "data-toggle":"modal"}, "Contact" ) ]),
                             m("li", {class:"dropdown"}, [
                                 m("a", {class:"dropdown-toggle", "data-toggle":"dropdown", href:""}, ctrl.username(), m("b", {class:"caret"})),
@@ -61,8 +60,7 @@ navbar.view = function(ctrl) {
                         ]) //end ul
                     ]) //end div
                 ])//end container
-            ])// end navbar div
-        ]; //end return
+        ]); //end return
 }; //end navbar.view
 
 

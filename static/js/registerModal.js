@@ -1,8 +1,7 @@
 var registerModal = {};
 registerModal.view = function(ctrl) {
     //                               CREATE ACCOUNT MODAL
-    return [
-        m(".modal.fade", {id: "registerModal", role: "dialog"}, [
+    return m(".modal.fade", {id: "registerModal", role: "dialog"}, [
             m(".modal-dialog", [
                 m(".modal-content", [
                     m(".modal-header", [
@@ -40,8 +39,7 @@ registerModal.view = function(ctrl) {
                     ])
                 ])
             ])
-        ])
-    ]
+        ]);
 };
 
 registerModal.controller = function() {

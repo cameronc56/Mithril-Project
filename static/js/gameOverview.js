@@ -1,8 +1,15 @@
 var gameOverview = {};
 
 gameOverview.view = function(ctrl) {
-    return [
-        (m.route().indexOf("favoriteGames") > -1)
+    //var i = 1;
+    //while(i++ < 10) {
+    //    console.log(i);
+    //}
+    var displayPageNumber = function(i) {
+        return m("li", [m("a", {style: ctrl.highlightCurrentPage(i), href: "/page/" + ctrl.pageNumberToDisplay(i), onclick: gameThumbnail.resetViews(), config: m.route}, ctrl.pageNumberToDisplay(i))]);
+
+    };
+    return (m.route().indexOf("favoriteGames") > -1)
             ?
             m("center", [
                 m("h1", "Your Favorite Games")
@@ -10,14 +17,14 @@ gameOverview.view = function(ctrl) {
              :
             m(""),
         m("#homePageGridContainer.container", [
-            m("select.form-control", {style: "width: 15em;", onchange: _.compose(m.withAttr("value", gameOverview.sortBy), gameThumbnail.resetViews, routing.reroute), value: gameOverview.sortBy()}, [
+            m("select.form-control", {style: "width: 15em;", onchange: _.compose(m.withAttr("value", gameOverview.sortBy), /*gameThumbnail.resetViews, */ routing.reroute), value: gameOverview.sortBy()}, [
                 m("option", "Most Played"),
                 m("option", "Alphabetically")
             ]),
             m(".container", [
-                m(".row", {style: "margin-top: 10px;"}, _.times(4, function(){return gameThumbnail.view(gameThumbnailCtrl)})),
-                m(".row", {style: "margin-top: 10px;"}, _.times(4, function(){return gameThumbnail.view(gameThumbnailCtrl)})),
-                m(".row", {style: "margin-top: 10px;"}, _.times(4, function(){return gameThumbnail.view(gameThumbnailCtrl)})),
+                m(".row", {style: "margin-top: 10px;"}, _.times(4, function(){return gameThumbnail})),
+                m(".row", {style: "margin-top: 10px;"}, _.times(4, function(){return gameThumbnail})),
+                m(".row", {style: "margin-top: 10px;"}, _.times(4, function(){return gameThumbnail})),
                 m("center", [
                     m(".row", [
                         m("nav", [
@@ -28,11 +35,7 @@ gameOverview.view = function(ctrl) {
                                             m("span", {"aria-hidden": "true"}, "«")
                                         ])
                                     ]),
-                                    m("li", [m("a", {style: ctrl.highlightCurrentPage(1), href: "/page/" + ctrl.pageNumberToDisplay(1), onclick: gameThumbnail.resetViews(), config: m.route}, ctrl.pageNumberToDisplay(1))]),
-                                    m("li", [m("a", {style: ctrl.highlightCurrentPage(2), href: "/page/" + ctrl.pageNumberToDisplay(2), onclick: gameThumbnail.resetViews(), config: m.route}, ctrl.pageNumberToDisplay(2))]),
-                                    m("li", [m("a", {style: ctrl.highlightCurrentPage(3), href: "/page/" + ctrl.pageNumberToDisplay(3), onclick: gameThumbnail.resetViews(), config: m.route}, ctrl.pageNumberToDisplay(3))]),
-                                    m("li", [m("a", {style: ctrl.highlightCurrentPage(4), href: "/page/" + ctrl.pageNumberToDisplay(4), onclick: gameThumbnail.resetViews(), config: m.route}, ctrl.pageNumberToDisplay(4))]),
-                                    m("li", [m("a", {style: ctrl.highlightCurrentPage(5), href: "/page/" + ctrl.pageNumberToDisplay(5), onclick: gameThumbnail.resetViews(), config: m.route}, ctrl.pageNumberToDisplay(5))]),
+                                    _.times(5, displayPageNumber),
                                     m("li", [
                                         m("a", {href: "/page/" + (parseInt(m.route.param("pageNumber")) + 1), "aria-label": "Next", config: m.route}, [
                                             m("span", {"aria-hidden": "true"}, "»")
@@ -44,8 +47,7 @@ gameOverview.view = function(ctrl) {
                     ])
                 ])
             ])
-        ])
-    ];
+        ]);
 };
 
 gameOverview.sortBy = m.prop("Most Played");
@@ -59,9 +61,9 @@ gameOverview.controller = function() {
     };
     me.pageNumberToDisplay = function(i) {
         if (m.route.param("pageNumber") > 3) {
-            return (parseInt(m.route.param("pageNumber")) + i - 3).toString();
-        } else  {
-            return (i).toString();
+            return (parseInt(m.route.param("pageNumber")) + i - 2).toString();
+        } else {
+            return (i + 1).toString();
         }
     };
     return me;

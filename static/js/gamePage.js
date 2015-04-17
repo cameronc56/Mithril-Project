@@ -3,48 +3,51 @@ var gamePage = {};
 gamePage.view = function(ctrl) {
     var gameUrl = m.route.param("gameTitle");
     var gamePositionInJsonFile = 0;
-    for (var i = 0; i < games().length; i++) {
-        if (inputValidation.replaceSpacesWithUnderscores(games()[i].title) == gameUrl) {
+    for (var i = 0; i < ctrl.games().length; i++) {
+        if (inputValidation.replaceSpacesWithUnderscores(ctrl.games()[i].title) == gameUrl) {
             gamePositionInJsonFile = i;
         }
     }
-    var gameInfo = games()[gamePositionInJsonFile];
-    var ratio = gameInfo.height / gameInfo.width;
-    var width = $(window).width() * .95;
-    var height = width * ratio;
+    var gameInfo = ctrl.games()[gamePositionInJsonFile];
+    if(gameInfo != undefined) {
+        var ratio = gameInfo.height / gameInfo.width;
+        var width = $(window).width() * .95;
+        var height = width * ratio;
 
-    //reminder: when some games are scaled up in size, they leave a gray border and don't scale.
-    //afaik, there is no way to tell if the game is scalable or not.
-    if(height > $(window).height() * .95) {
-        while(height > $(window).height() * .90) {
-            height -= 1;
+        //reminder: when some games are scaled up in size, they leave a gray border and don't scale.
+        //afaik, there is no way to tell if the game is scalable or not.
+        if(height > $(window).height() * .95) {
+            while(height > $(window).height() * .90) {
+                height -= 1;
+            }
+            width = height / ratio;
         }
-        width = height / ratio;
-    }
-    return [
-        m(".container", [
-           m(".row", [
-               m(".span", [
-                   m(".alert.alert-danger.alert-dismissible", {role: "alert", style: ctrl.showError()}, [
-                       m("button.close", {"data-dismiss": "alert", "aria-label": "Close"}, [
-                           m("span", {"aria-hidden": "true"}, "×")
-                       ]),
-                       m("", "Please login to favorite this game")
-                   ])
-               ])
-           ])
-        ]),
-        m("center", [
-            m("embed", {src: gameInfo.flash_file.replace("http", "https"), width: width + ";", height:  height + ";"})
-        ]),
-        m(".container-fluid", {style: "width:" + width * 1.035 + "px;"},  [
-            m(".form-group", {onclick: ctrl.favorite}, [
-                m("a.btn.btn-primary", [
-                    m("h5", "+ Favorite  ", m("span", {class: ctrl.favoriteClass(), "aria-hidden": "true"}))
+        return m("div", [
+            m(".container", [
+                m(".row", [
+                    m(".span", [
+                        m(".alert.alert-danger.alert-dismissible", {role: "alert", style: ctrl.showError()}, [
+                            m("button.close", {"data-dismiss": "alert", "aria-label": "Close"}, [
+                                m("span", {"aria-hidden": "true"}, "×")
+                            ]),
+                            m("", "Please login to favorite this game")
+                        ])
+                    ])
+                ])
+            ]),
+            m("center", [
+                m("embed", {src: gameInfo.flash_file.replace("http", "https"), width: width + ";", height:  height + ";"})
+            ]),
+            m(".container-fluid", {style: "width:" + width * 1.035 + "px;"},  [
+                m(".form-group", {onclick: ctrl.favorite}, [
+                    m("a.btn.btn-primary", [
+                        m("h5", "+ Favorite  ", m("span", {class: ctrl.favoriteClass(), "aria-hidden": "true"}))
+                    ])
                 ])
             ])
-        ])
-    ];
+        ]);
+    }
+    return m("div")
 };
 
 //<div class="alert alert-warning alert-dismissible" role="alert">
@@ -54,6 +57,17 @@ gamePage.view = function(ctrl) {
 
 gamePage.controller = function() {
     var me = {};
+
+    me.games = m.prop([]);
+    me.getGamesJson = function() {
+        m.request({
+            method: "GET",
+            url: "/static/games.json"
+        }).then(function(val) {
+            me.games(val);
+        });
+    };
+    me.getGamesJson();
 
     me.username = m.prop("Username");
     cookies.checkSession(function(response) {

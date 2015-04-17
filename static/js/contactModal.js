@@ -1,7 +1,6 @@
 var contactModal = {};
 contactModal.view = function(ctrl) {
-    return [
-        m(".modal.fade#contact", {role: "dialog"}, [
+    return m(".modal.fade#contact", {role: "dialog"}, [
             m(".modal-dialog", [
                 m(".modal-content", [
                     m("form.form-horizontal", [
@@ -35,8 +34,7 @@ contactModal.view = function(ctrl) {
                     ])
                 ])
             ])
-        ])
-    ]
+        ]);
 };
 
 contactModal.controller = function() {
