@@ -32,12 +32,12 @@ def register():
 	conn = openConn()
 	with conn:
 		c = conn.cursor()
-		if (c.execute("SELECT passwordSalt, passwordHash FROM Users WHERE username = ?",(username,))).fetchone():
+		if (c.execute("SELECT PasswordSalt, PasswordHash FROM Users WHERE Username = ?",(username,))).fetchone():
 			return json.dumps({"error":'Username Taken'})
 		else:
 			salt = uuid.uuid4().hex
 			hash = hashlib.sha512((password + salt).encode('utf-8')).hexdigest()
-			c.execute("INSERT INTO Users(username, passwordHash, passwordSalt, email) VALUES(?,?,?,?)", (username, hash, salt, email))
+			c.execute("INSERT INTO Users(Username, PasswordHash, PasswordSalt, Email) VALUES(?,?,?,?)", (username, hash, salt, email))
 			conn.commit()
 			return json.dumps({"error":'Account Created'})
 ################################################################################
@@ -49,7 +49,7 @@ def login():
 	conn = openConn()
 	with conn:
 		c = conn.cursor()
-		query = (c.execute("SELECT passwordHash, passwordSalt FROM Users WHERE username = ?",(username,))).fetchone()
+		query = (c.execute("SELECT PasswordHash, PasswordSalt FROM Users WHERE Username = ?",(username,))).fetchone()
 		if query:
 			DBhash = query[0]
 			salt = query[1]
@@ -88,7 +88,7 @@ def isFavoriteGame():
 	conn = openConn()
 	with conn:
 		c = conn.cursor()
-		isFavorite = (c.execute("SELECT gameTitle FROM favoriteGames WHERE username = ? AND gameTitle  = ?",(username, gameTitle))).fetchone()
+		isFavorite = (c.execute("SELECT GameTitle FROM FavoriteGames WHERE Username = ? AND GameTitle  = ?",(username, gameTitle))).fetchone()
 		if isFavorite is not None:
 			return json.dumps({"isFavorite":"true"})
 		elif isFavorite is None:
@@ -101,26 +101,22 @@ def getAllFavoriteGames():
 	conn = openConn()
 	with conn:
 		c = conn.cursor()
-		favoriteGames = (c.execute("SELECT gameTitle FROM favoriteGames WHERE username = ?", (username, ))).fetchall()
+		favoriteGames = (c.execute("SELECT GameTitle FROM FavoriteGames WHERE Username = ?", (username, ))).fetchall()
 		return json.dumps({"favoriteGames":favoriteGames})
 ################################################################################
 @post('/favoriteGame')
 def favoriteGame():
 	d = request.json
 	username = d["username"]
-	print username
 	gameTitle = d["gameTitle"]
-	print gameTitle
 	conn = openConn()
 	with conn:
 		c = conn.cursor()
-		isFavorite = (c.execute("SELECT gameTitle FROM favoriteGames WHERE username = ? AND gameTitle  = ?",(username, gameTitle))).fetchone()
+		isFavorite = (c.execute("SELECT GameTitle FROM FavoriteGames WHERE Username = ? AND GameTitle  = ?",(username, gameTitle))).fetchone()
 		if isFavorite is not None:
-			(c.execute("DELETE FROM favoriteGames WHERE username = ? AND gameTitle = ?", (username, gameTitle))).fetchone()
-			print (c.execute("SELECT gameTitle FROM favoriteGames WHERE username = ? AND gameTitle  = ?",(username, gameTitle))).fetchone()
+			(c.execute("DELETE FROM FavoriteGames WHERE Username = ? AND GameTitle = ?", (username, gameTitle))).fetchone()
 		elif isFavorite is None:
-			c.execute("INSERT INTO favoriteGames(username, gameTitle) VALUES (?, ?)", (username, gameTitle))
-			print (c.execute("SELECT gameTitle FROM favoriteGames WHERE username = ? AND gameTitle  = ?",(username, gameTitle))).fetchone()
+			c.execute("INSERT INTO FavoriteGames(Username, GameTitle) VALUES (?, ?)", (username, gameTitle))
 	conn.commit()
 	return json.dumps({"response":"RESPONSE FROM SERVER"})
 ################################################################################
@@ -132,11 +128,11 @@ def account():
 		username = session['username']
 		conn = openConn()
 		with conn:
-			c = conn.cursor()
-			email = (c.execute("SELECT email FROM Users WHERE username = ?",(username,))).fetchone()
-			email = email[0]
-			if(email == None):
-				email = "No email attached to this Account"
+			#c = conn.cursor()
+			#email = (c.execute("SELECT Email FROM Users WHERE Username = ?",(username,))).fetchone()
+			#email = email[0]
+			#if(email == None):
+			#	email = "No email attached to this Account"
 			return json.dumps({"username":username})
 	else:
 		return json.dumps({"username":"Click To Login"})

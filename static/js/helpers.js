@@ -11,7 +11,11 @@ helpers.inputValidation = function() {
         return (inputToValidate.search(/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/) !== -1);
     };
     me.replaceSpacesWithUnderscores = function(inputToValidate) {
-        return inputToValidate.replace(/ /g, "_");
+        if(inputToValidate != undefined) {
+            return inputToValidate.replace(/ /g, "_");
+        } else {
+            return "";
+        }
     };
     return me;
 };

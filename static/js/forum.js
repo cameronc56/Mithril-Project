@@ -3,18 +3,20 @@ var forum = {};
 forum.vm = {};
 
 forum.view = function(ctrl) {
-    var arr = ["first really really really long one", "second", "third"];
-    return m("div", [
+    var arr = ["My first thread", "Ducks are cool", "Ducks are cute"];
+    return m(".container", [
         arr.map(function(data) {
             return m.component(threadWidget, {title: data})
         }),
         m("nav", [
             m("ul.pager", [
-                m("li", [
-                    m("a", {href: "#"}, "Previous")
-                ]),
-                m("li", [
-                    m("a", {href: "#"}, "Next")
+                parseInt(m.route.param("pageNumber")) > 1 ?
+                m("li.pull-left", [
+                    m("a", {href: "/forum/page/" + (parseInt(m.route.param("pageNumber")) - 1).toString(), config: m.route}, "Previous")
+                ])
+                : "",
+                m("li.pull-right", [
+                    m("a", {href: "/forum/page/" + (parseInt(m.route.param("pageNumber")) + 1).toString(), config: m.route}, "Next")
                 ])
             ])
         ])

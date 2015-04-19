@@ -77,5 +77,5 @@ m.route(document.body, "/page/1", {
 	"/game/:gameTitle": gamePageLayout,
 	"/account/:username": accountPageLayout,
 	"/favoriteGames/page/:pageNumber": favoriteGamesLayout,
-	"/forum": forumPageLayout
+	"/forum/page/:pageNumber": forumPageLayout
 });

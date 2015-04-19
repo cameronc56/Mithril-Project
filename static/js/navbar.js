@@ -24,7 +24,7 @@ navbar.view = function(ctrl) {
                                     m("li", [ m("a", {href: "/page/1", onclick: _.compose(gameOverview.sortBy, function(){return "Alphabetically"}, routing.reroute), config: m.route }, "All Games") ])
                                 ])//end ul
                             ]),//end li
-                            m("li", [ m("a", {href:"/forum", config: m.route}, "Forums"  ) ]),
+                            m("li", [ m("a", {href:"/forum/page/1", config: m.route}, "Forums"  ) ]),
                             m("li", [ m("a", {href:"#contact", "data-toggle":"modal"}, "Contact" ) ]),
                             m("li", {class:"dropdown"}, [
                                 m("a", {class:"dropdown-toggle", "data-toggle":"dropdown", href:""}, ctrl.username(), m("b", {class:"caret"})),
