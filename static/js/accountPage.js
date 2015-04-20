@@ -1,9 +1,20 @@
 var accountPage = {};
 
 accountPage.view = function(ctrl) {
-    return m("div", [
-        m("center", [
-            m("p", "Username: " + ctrl.username())
+    return m(".container", [
+        m("p", "Username: " + ctrl.username()),
+        m(".row", [
+            m("input.form-control.pull-left", {placeholder: "Old Password", style: "width: 200px;"})
+        ]),
+        m(".row", [
+            m("input.form-control.pull-left", {placeholder: "New Password", style: "width: 200px;"})
+        ]),
+        m(".row", [
+            m("input.form-control.pull-left", {placeholder: "Confirm New Password", style: "width: 200px;"})
+        ]),
+        m(".row", [
+            m("a.btn.btn-primary.pull-left", "Change Password")
+
         ])
     ])
 };

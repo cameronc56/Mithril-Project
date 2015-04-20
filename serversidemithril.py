@@ -23,6 +23,10 @@ c = conn.cursor()
 def returnIndex():
 	return template('index', get_url = app.get_url)
 ################################################################################
+@get('/robots.txt')
+def returnRobots():
+	return static_file("robots.txt", root="")
+################################################################################
 @post('/register')
 def register():
 	d = request.json
