@@ -7,13 +7,13 @@ accountPage.view = function(ctrl) {
             m("input.form-control.pull-left", {placeholder: "Old Password", style: "width: 200px;"})
         ]),
         m(".row", [
-            m("input.form-control.pull-left", {placeholder: "New Password", style: "width: 200px;"})
+            m("input.form-control.pull-left", {placeholder: "New Password", style: "width: 200px; margin-top: 5px;"})
         ]),
         m(".row", [
-            m("input.form-control.pull-left", {placeholder: "Confirm New Password", style: "width: 200px;"})
+            m("input.form-control.pull-left", {placeholder: "Confirm New Password", style: "width: 200px; margin-top: 5px;"})
         ]),
         m(".row", [
-            m("a.btn.btn-primary.pull-left", "Change Password")
+            m("a.btn.btn-primary.pull-left", {style: "margin-top: 5px;"}, "Change Password")
 
         ])
     ])
