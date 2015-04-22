@@ -6,7 +6,7 @@ threadWidget.view = function(ctrl, args) {
             m("a", {href: "/forum/page/1#upvote"}, [
 
             ]),
-            m("a", {href: "/forum/page/1#downvote", config: m.route})
+            m("a", {href: "/forum/page/1#downvote", config: m.route}),
             m("span.glyphicon.glyphicon-arrow-up.pull-left", {style: "margin-top: 35px;"}),
             m("span.glyphicon.glyphicon-arrow-down.pull-left", {style: "margin-top: 35px; margin-right: 10px;"}),
             m(".media",
