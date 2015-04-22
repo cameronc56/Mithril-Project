@@ -36,5 +36,9 @@ threadWidget.view = function(ctrl, args) {
 
 threadWidget.controller = function(args) {
     var me = {};
+    //window.onbeforeunload=function(e){
+    //    e.returnValue="Any return string here forces a dialog to appear when user leaves this page"
+    //};
+    //window.location="http://www.google.com"; //prompt is invoked
     return me;
 };

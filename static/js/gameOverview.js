@@ -10,12 +10,12 @@ gameOverview.view = function(ctrl) {
                 : "",
             !ctrl.isFavoritesPage()
                 ? m(".row", [
-                    m("select.form-control.pull-left", {style: "width: 15em;", onchange: _.compose(m.withAttr("value", gameOverview.sortBy), /*gameThumbnail.resetViews, */ routing.reroute), value: gameOverview.sortBy()}, [
+                    m("select.form-control.pull-left", {style: "width: 14em;", onchange: _.compose(m.withAttr("value", gameOverview.sortBy), /*gameThumbnail.resetViews, */ routing.reroute), value: gameOverview.sortBy()}, [
                         m("option", "Most Played"),
                         m("option", "Alphabetically")
                     ]),
                     m("div.form-group.pull-right", [
-                        m("input#search.form-control", {onkeyup: m.withAttr("value", ctrl.searchValue), type: "text", placeholder: "Search"}, ctrl.searchValue())
+                        m("input#search.form-control", {onkeyup: m.withAttr("value", ctrl.searchValue), type: "text", placeholder: "Search", style: "width: 15em;"}, ctrl.searchValue())
                     ])
                 ])
                 : "",
