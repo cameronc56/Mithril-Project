@@ -1,6 +1,6 @@
-# Mithril-Project
+# LittleDucklingGames.com
 
-A simple flash game website. 
+A simple flash game website built using lhorie's mithril.js. 
 
 # Set-Up
 1. pip install sendgrid
