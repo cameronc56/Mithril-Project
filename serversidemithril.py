@@ -27,6 +27,13 @@ def returnIndex():
 def returnRobots():
 	return static_file("robots.txt", root="")
 ################################################################################
+@post('/newPost')
+def newPost():
+	d = request.json
+	threadTitle = d["threadTitle"]
+	threadBody = d["threadBody"]
+	return json.dumps({"threadTitle": threadTitle, "threadBody": threadBody})
+################################################################################
 @post('/register')
 def register():
 	d = request.json

@@ -37,7 +37,16 @@ newPostModal.controller = function(args) {
     me.threadTitle = m.prop("");
     me.threadBody = m.prop("");
     me.submitPost = function() {
-        console.log(me.threadTitle() + me.threadBody());
+        m.request({
+            method: "POST",
+            url: "/newPost",
+            data: {"threadTitle": me.threadTitle(), "threadBody": me.threadBody()}
+        }).then(function(response) {
+            console.log(response.threadTitle + response.threadBody);
+            me.threadTitle("");
+            me.threadBody("");
+            m.render();
+        })
     };
     return me;
 };

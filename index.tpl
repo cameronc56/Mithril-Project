@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Quack!~</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="{{ get_url('static', filename = 'jquery-2.1.1.js') }}" charset="utf-8"></script>
     <script type="text/javascript" src="{{ get_url('static', filename = 'mithril.js') }} "></script>

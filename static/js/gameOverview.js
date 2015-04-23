@@ -2,7 +2,9 @@ var gameOverview = {};
 
 gameOverview.view = function(ctrl) {
     var displayPageNumber = function(i) {
-        return m("li", [m("a", {style: ctrl.highlightCurrentPage(i), href: "/page/" + ctrl.pageNumberToDisplay(i), /* onclick: gameThumbnail.resetViews(), */ config: m.route}, ctrl.pageNumberToDisplay(i))]);
+        return m("li", {class: ctrl.highlightCurrentPage(i)}, [
+            m("a", {href: "/page/" + ctrl.pageNumberToDisplay(i), /* onclick: gameThumbnail.resetViews(), */ config: m.route}, ctrl.pageNumberToDisplay(i))
+        ]);
     };
     return m("#homePageGridContainer.container", [
             ctrl.isFavoritesPage()
@@ -146,7 +148,7 @@ gameOverview.controller = function() {
     //pagination stuff
     me.highlightCurrentPage = function(i) {
         if(parseInt(me.pageNumberToDisplay(i)) == parseInt(m.route.param("pageNumber"))) {
-            return "color: black;"
+            return "active";
         }
     };
     me.pageNumberToDisplay = function(i) {

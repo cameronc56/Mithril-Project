@@ -5,8 +5,13 @@ loginModal.view = function(ctrl) {
     return m("div", {class: "modal fade", id: "loginModal", role: "dialog"}, [
         m("div", {class: "modal-dialog"}, [
             m("div", {class: "modal-content"}, [
-                m("div", {class: "modal-header"}, [
-                    m("h4", "Login"),
+                m(".modal-header", [
+                    m(".container-fluid", [
+                        m(".row", [
+                            m("h4.pull-left", "Login"),
+                            m("a.btn.btn-primary.pull-right", {href:"#registerModal", "data-toggle":"modal"}, "Register")
+                        ])
+                    ])
                 ]),
                 m("div", {class: "modal-body"}, [
                     m("center", [
@@ -22,7 +27,7 @@ loginModal.view = function(ctrl) {
                     ]),
                     m("div", {class: "modal-footer"}, [
                         m("a#login-btn.btn.btn-primary", {onclick: ctrl.login, value: "Login"}, "Login"),
-                        m("a.btn.btn-primary.pull-left", {"data-dismiss": "modal"}, "Close"),
+                        m("a.btn.btn-primary.pull-left", {"data-dismiss": "modal"}, "Close")
                     ])
                 ])
             ])
