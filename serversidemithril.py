@@ -148,21 +148,33 @@ def account():
 	else:
 		return json.dumps({"username":"Click To Login"})
 ################################################################################
-@get('/static/<filename:re:.*\.js>', name='static')
+@get('/static/js/<filename:re:.*\.js>', name='static/js')
 def server_static(filename):
 	return static_file(filename, root='static/js')
 ################################################################################
-@get('/static/<filename:re:.*\.json>', name='static')
+@get('/static/js/components/<filename:re:.*\.js>', name='static/js/components')
+def server_static(filename):
+	return static_file(filename, root='/static/js/components')
+################################################################################
+@get('/static/js/libraries/<filename:re:.*\.js>', name='static/js/libraries')
+def server_static(filename):
+	return static_file(filename, root='/static/js/libraries')
+################################################################################
+@get('/static/js/routers/<filename:re:.*\.js>', name='static/js/routers')
+def server_static(filename):
+	return static_file(filename, root='/static/js/routers')
+################################################################################
+@get('/static/json/<filename:re:.*\.json>', name='static')
 def server_static(filename):
 	return static_file(filename, root='static/json')
 ################################################################################
-@get('/static/<filename:re:.*\.css>', name='static/css')
+@get('/static/css/<filename:re:.*\.(css|css.map)>', name='static/css')
 def server_static(filename):
 	return static_file(filename, root='static/css')
 ################################################################################
-@get('/fonts/<filename>')
+@get('/static/fonts/<filename>')
 def server_static(filename):
-	return static_file(filename, root='static/fonts')
+	return static_file(filename, root='static/css/fonts')
 ################################################################################
 @route('/images/<imageName>', name = 'images')
 def send_image(imageName):
