@@ -11,3 +11,5 @@ Notes:
 
 TODO: 
 hitting #/account/cameronc while !session should redirect to homepage with an error instead of displaying account page with defaults. 
+
+Shutdown server and take backup snapshot on digital ocean
