@@ -12,19 +12,19 @@ newPostModal.view = function(ctrl, args) {
                         m(".form-group", [
                             m("label.col-lg-2.control-label", {for: "threadTitle"}, "Thread Title"),
                             m(".col-lg-10", [
-                                m("input.form-control#threadTitle"/*, {onkeyup: m.withAttr("value", ctrl.name), style: ctrl.fieldColor(), placeholder: "Full Name", type: "text"}*/)
+                                m("input.form-control#threadTitle", {onkeyup: m.withAttr("value", ctrl.threadTitle), type: "text", value: ctrl.threadTitle()})
                             ])
                         ]),
                         m(".form-group", [
                             m("label.col-lg-2.control-label", {for: "threadBody"}, "Text"),
                             m(".col-lg-10", [
-                                m("textarea.form-control#threadBody", {rows: "8"}/*, {rows: "8", onkeyup: m.withAttr("value", ctrl.message), style: ctrl.fieldColor()}*/)
+                                m("textarea.form-control#threadBody", {rows: "8", onkeyup: m.withAttr("value", ctrl.threadBody), value: ctrl.threadBody()})
                             ])
                         ])
                     ]),
                     m(".modal-footer", [
                         m("a.btn.btn-primary.pull-left", {"data-dismiss":"modal"}, "Close"),
-                        m("button.btn.btn-primary"/*, {onclick: ctrl.sendEmail, "data-dismiss": "modal", type: "submit"}*/, "Post")
+                        m("button.btn.btn-primary", {onclick: ctrl.submitPost, "data-dismiss": "modal", type: "submit"}, "Post")
                     ])
                 ])
             ])
@@ -34,5 +34,10 @@ newPostModal.view = function(ctrl, args) {
 
 newPostModal.controller = function(args) {
     var me = {};
+    me.threadTitle = m.prop("");
+    me.threadBody = m.prop("");
+    me.submitPost = function() {
+        console.log(me.threadTitle() + me.threadBody());
+    };
     return me;
 };
