@@ -174,7 +174,7 @@ def server_static(filename):
 ################################################################################
 @get('/static/fonts/<filename>')
 def server_static(filename):
-	return static_file(filename, root='static/css/fonts')
+	return static_file(filename, root='static/fonts', mimetype = 'font/opentype')
 ################################################################################
 @route('/images/<imageName>', name = 'images')
 def send_image(imageName):

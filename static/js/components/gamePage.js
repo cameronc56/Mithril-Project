@@ -62,7 +62,7 @@ gamePage.controller = function() {
     me.getGamesJson = function() {
         m.request({
             method: "GET",
-            url: "/static/games.json"
+            url: "/static/json/games.json"
         }).then(function(val) {
             me.games(val);
         });
