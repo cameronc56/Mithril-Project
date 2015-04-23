@@ -74,7 +74,7 @@ gamePage.controller = function() {
         me.username(response.username);
         me.isFavorite();
     });
-    me.favoriteClass = m.prop();
+    me.favoriteClass = m.prop("glyphicon glyphicon-star-empty");
 
     me.isFavorite = function() {
         if(m.route.param("gameTitle") != undefined) {
