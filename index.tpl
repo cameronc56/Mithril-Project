@@ -25,7 +25,7 @@
     <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'loginModal.js') }}"></script>
     <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'registerModal.js') }}"></script>
     <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'contactModal.js') }}"></script>
-    <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'newPostModal.js') }}"></script>
+    <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'newThreadModal.js') }}"></script>
     <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'footer.js') }}"></script>
     <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'threadWidget.js') }}"></script>
     <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'forum.js') }}"></script>

@@ -65,7 +65,6 @@ forumPageLayout.view = function() {
 		loginModal,
 		registerModal,
 		contactModal,
-		newPostModal,
 		forum,
 		footer
 	]

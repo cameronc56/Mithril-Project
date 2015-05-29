@@ -35,7 +35,7 @@ helpers.cookies = function() {
                 return c.substring(name.length,c.length);
             }
         }
-        return "";
+        return false;
     };
     me.deleteCookie = function(cname) {
         if(me.getCookie(cname)) {
@@ -51,6 +51,8 @@ helpers.cookies = function() {
             }).then(function(response) {
                 responseFunction(response);
             })
+        } else {
+            return "No Session"
         }
     };
     return me;

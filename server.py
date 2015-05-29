@@ -11,7 +11,7 @@ import os
 app = default_app()
 cryptoKey = os.environ["CRYPTOKEY"]
 conn = sqlite3.connect('login.db')
-c = conn.cursor()
+#c = conn.cursor()
 
 #Users table
 #c.execute("DROP TABLE Users")
@@ -32,7 +32,20 @@ def newPost():
 	d = request.json
 	threadTitle = d["threadTitle"]
 	threadBody = d["threadBody"]
+	username = d["username"]
+	with conn:
+		c = conn.cursor()
+		c.execute("INSERT INTO Threads(Title, BodyText, Date, Username) VALUES (?, ?, CURRENT_TIMESTAMP, ?)", (threadTitle, threadBody, username))
+		print "SUCCESS"
 	return json.dumps({"threadTitle": threadTitle, "threadBody": threadBody})
+################################################################################
+@get('/getThreads')
+def getThreads():
+	conn = openConn()
+	with conn:
+		c = conn.cursor()
+		threads = c.execute("SELECT Title, Date, Username, BodyText FROM Threads").fetchall()
+		return json.dumps({"threads":threads})
 ################################################################################
 @post('/register')
 def register():
@@ -146,7 +159,7 @@ def account():
 			#	email = "No email attached to this Account"
 			return json.dumps({"username":username})
 	else:
-		return json.dumps({"username":"Click To Login"})
+		return json.dumps({"username":"Username"})
 ################################################################################
 @get('/static/js/<filename:re:.*\.js>', name='static/js')
 def server_static(filename):

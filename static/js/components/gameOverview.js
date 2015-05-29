@@ -11,13 +11,18 @@ gameOverview.view = function(ctrl) {
                 ? m("center", [m("h1", "Your Favorite Games")])
                 : "",
             !ctrl.isFavoritesPage()
-                ? m(".row", [
-                    m("select.form-control.pull-left", {style: "width: 14em;", onchange: _.compose(m.withAttr("value", gameOverview.sortBy), /*gameThumbnail.resetViews, */ routing.reroute), value: gameOverview.sortBy()}, [
+                ? m(".row", {style: "margin-bottom: 20px;"}, [
+                    m("select.form-control.pull-left", {style: "width: 16em; margin-left: 30px;", onchange: _.compose(m.withAttr("value", gameOverview.sortBy), /*gameThumbnail.resetViews, */ routing.reroute), value: gameOverview.sortBy()}, [
                         m("option", "Most Played"),
                         m("option", "Alphabetically")
                     ]),
-                    m("div.form-group.pull-right", [
-                        m("input#search.form-control", {onkeyup: m.withAttr("value", ctrl.searchValue), type: "text", placeholder: "Search", style: "width: 15em;"}, ctrl.searchValue())
+                    m(".input-group.pull-right", {style: "margin-right: 45px;"}, [
+                        m("input#search.form-control", {onkeyup: m.withAttr("value", ctrl.searchValue), placeholder: "Search", type: "text", style: "width: 180px;", value: ctrl.searchValue()}),
+                        m(".input-group-btn.pull-left", [
+                            m("button.btn.btn-default", {type: "submit"}, [
+                                m("span.glyphicon.glyphicon-search")
+                            ])
+                        ])
                     ])
                 ])
                 : "",
@@ -31,7 +36,7 @@ gameOverview.view = function(ctrl) {
                     //gets the number of favorite games rows to display
                     ctrl.isFavoritesPage() ? rows(parseInt((ctrl.favoriteGames().length / columns()) + Math.ceil((ctrl.favoriteGames().length % columns()) / columns() ))) : "";
                     return _.times(rows(), function(i) {
-                        return m(".row", {style: "margin-top: 10px;"}, _.times(4, function(j) {
+                        return m(".row", {style: "margin-top: 0px;"}, _.times(4, function(j) {
                             ctrl.thumbnailNumber(4 * (i + 1) + j - 4);
                             return m.component(gameThumbnail, {
                                 view: view(),
@@ -128,7 +133,7 @@ gameOverview.controller = function() {
         }
     };
 
-    me.searchValue = m.prop();
+    me.searchValue = m.prop("");
     me.search = function() {
 
     };

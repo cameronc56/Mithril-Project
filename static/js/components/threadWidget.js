@@ -10,8 +10,8 @@ threadWidget.view = function(ctrl, args) {
             m("span.glyphicon.glyphicon-arrow-up.pull-left", {style: "margin-top: 35px;"}),
             m("span.glyphicon.glyphicon-arrow-down.pull-left", {style: "margin-top: 35px; margin-right: 10px;"}),
             m(".media",
-            {
-                style: "margin-top: 10px; " +
+            {style:
+                "margin-top: 10px; " +
                 "border-style: solid; " +
                 "border-width: 2px; " +
                 "border-color: #8A9BB8; " +
@@ -27,7 +27,7 @@ threadWidget.view = function(ctrl, args) {
                         m("h4.media-heading.clearfix", args.title)
                     ]),
 
-                    m("p.pull-left", "Submitted 3 hours ago by Cameronc")
+                    m("p.pull-left", "Submitted 3 hours ago by: " + args.submitter)
                 ])
             ])
         ])
