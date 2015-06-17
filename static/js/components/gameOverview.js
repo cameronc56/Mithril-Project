@@ -1,11 +1,6 @@
 var gameOverview = {};
 
 gameOverview.view = function(ctrl) {
-    var displayPageNumber = function(i) {
-        return m("li", {class: ctrl.highlightCurrentPage(i)}, [
-            m("a", {href: "/page/" + ctrl.pageNumberToDisplay(i), /* onclick: gameThumbnail.resetViews(), */ config: m.route}, ctrl.pageNumberToDisplay(i))
-        ]);
-    };
     return m("#homePageGridContainer.container", [
             ctrl.isFavoritesPage()
                 ? m("center", [m("h1", "Your Favorite Games")])
@@ -19,7 +14,7 @@ gameOverview.view = function(ctrl) {
                     m(".input-group.pull-right", {style: "margin-right: 45px;"}, [
                         m("input#search.form-control", {onkeyup: m.withAttr("value", ctrl.searchValue), placeholder: "Search", type: "text", style: "width: 180px;", value: ctrl.searchValue()}),
                         m(".input-group-btn.pull-left", [
-                            m("button.btn.btn-default", {type: "submit"}, [
+                            m("button.btn.btn-default", {onclick: ctrl.search}, [
                                 m("span.glyphicon.glyphicon-search")
                             ])
                         ])
@@ -51,28 +46,7 @@ gameOverview.view = function(ctrl) {
                             })
                         }))
                     });
-                })(),
-                m("center", [
-                    m(".row", [
-                        m("nav", [
-                            !ctrl.isFavoritesPage() ?
-                                m("ul.pagination", [
-                                    m("li", [
-                                        m("a", {href: "/page/" + (parseInt(m.route.param("pageNumber")) - 1), "aria-label": "Previous", config: m.route}, [
-                                            m("span", {"aria-hidden": "true"}, "«")
-                                        ])
-                                    ]),
-                                    _.times(5, displayPageNumber),
-                                    m("li", [
-                                        m("a", {href: "/page/" + (parseInt(m.route.param("pageNumber")) + 1), "aria-label": "Next", config: m.route}, [
-                                            m("span", {"aria-hidden": "true"}, "»")
-                                        ])
-                                    ])
-                                ])
-                            : ""
-                        ])
-                    ])
-                ])
+                })()
             ])
         ]);
 };
@@ -118,6 +92,16 @@ gameOverview.controller = function() {
         });
     }
 
+
+    me.searchValue = m.prop("");
+    me.searchedValue = m.prop("");
+    me.search = function() {
+        me.searchedValue(me.searchValue());
+        console.log(me.searchedValue());
+        m.redraw();
+    };
+
+
     me.thumbnailNumber = m.prop(0);
 
     me.favoriteGameInfo = function(games, favoriteGames, thumbnailNumber) {
@@ -133,11 +117,6 @@ gameOverview.controller = function() {
         }
     };
 
-    me.searchValue = m.prop("");
-    me.search = function() {
-
-    };
-
     me.homepageGameInfo = function(games, thumbnailNumber) {
         //Most Played = gameplays -  Alphabetically = title
         var selectValue = m.prop("gameplays");
@@ -150,18 +129,5 @@ gameOverview.controller = function() {
         return game;
     };
 
-    //pagination stuff
-    me.highlightCurrentPage = function(i) {
-        if(parseInt(me.pageNumberToDisplay(i)) == parseInt(m.route.param("pageNumber"))) {
-            return "active";
-        }
-    };
-    me.pageNumberToDisplay = function(i) {
-        if (m.route.param("pageNumber") > 3) {
-            return (parseInt(m.route.param("pageNumber")) + i - 2).toString();
-        } else {
-            return (i + 1).toString();
-        }
-    };
     return me;
 };

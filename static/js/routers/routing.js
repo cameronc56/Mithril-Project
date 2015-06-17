@@ -14,6 +14,7 @@ homepage.view = function() {
 		loginModal,
 		registerModal,
 		contactModal,
+		pagination,
 		footer
 	]
 };
