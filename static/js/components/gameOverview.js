@@ -29,9 +29,10 @@ gameOverview.view = function(ctrl) {
                     var columns = m.prop(4);
                     ctrl.isFavoritesPage() ? view("favorites") : view("homepage");
                     //gets the number of favorite games rows to display
-                    ctrl.isFavoritesPage() ? rows(parseInt((ctrl.favoriteGames().length / columns()) + Math.ceil((ctrl.favoriteGames().length % columns()) / columns() ))) : "";
+                    ctrl.isFavoritesPage() ? rows(parseInt((ctrl.favoriteGamesJSON().length / columns()) + Math.ceil((ctrl.favoriteGamesJSON().length % columns()) / columns() ))) : "";
 
-                    ctrl.favoriteGameInfo(ctrl.games(), ctrl.favoriteGames(), ctrl.thumbnailNumber());
+                    ctrl.sortFavoriteGames(ctrl.games(), ctrl.favoriteGamesJSON());
+                    ctrl.sortAllGames(ctrl.games());
 
                     return _.times(rows(), function(i) {
                         return m(".row", {style: "margin-top: 0px;"}, _.times(4, function(j) {
@@ -42,9 +43,10 @@ gameOverview.view = function(ctrl) {
                                 gameInfo: function() {
                                     if(ctrl.isFavoritesPage()) {
                                         //ctrl.favoriteGameInfo(ctrl.games(), ctrl.favoriteGames(), ctrl.thumbnailNumber());
-                                        return ctrl.favoriteGamesArray[ctrl.thumbnailNumber()];
+                                        return ctrl.sortedFavoriteGames()[ctrl.thumbnailNumber() + (parseInt(m.route.param("pageNumber") - 1) * 12)];
                                     } else {
-                                        return ctrl.homepageGameInfo(ctrl.games(), ctrl.thumbnailNumber());
+                                        //return ctrl.homepageGameInfo(ctrl.games(), ctrl.thumbnailNumber());
+                                        return ctrl.sortedAllGames()[ctrl.thumbnailNumber() + (parseInt(m.route.param("pageNumber") - 1) * 12)];
                                     }
                                 }()
                             })
@@ -57,7 +59,6 @@ gameOverview.view = function(ctrl) {
 
 //global used by navbar, gameOverview and gameThumbnail
 gameOverview.sortBy = m.prop("Most Played");
-
 gameOverview.controller = function() {
     var me = {};
 
@@ -74,7 +75,7 @@ gameOverview.controller = function() {
     };
     me.getGamesJson();
 
-    me.favoriteGames = m.prop([]);
+    me.favoriteGamesJSON = m.prop([]);
     me.favoriteGamesPages = m.prop(1);
     me.getFavoriteGames = function() {
         m.request({
@@ -82,7 +83,7 @@ gameOverview.controller = function() {
             url: "/getAllFavoriteGames",
             data: {"username": me.username()}
         }).then(function(response) {
-            me.favoriteGames(response.favoriteGames);
+            me.favoriteGamesJSON(response.favoriteGames);
             //parseInt rounds down
             me.favoriteGamesPages(parseInt(response.favoriteGames.length / 12 + 1));
         })
@@ -107,35 +108,34 @@ gameOverview.controller = function() {
 
 
     me.thumbnailNumber = m.prop(0);
-    me.favoriteGamesArray = [];
-    me.favoriteGameInfo = function(games, favoriteGames, thumbnailNumber) {
-        var selectValue = m.prop("gameplays");
-        if(gameOverview.sortBy() == "Alphabetically") selectValue("title");
+    me.sortedFavoriteGames = m.prop([]);
+    me.sortFavoriteGames = function(games, favoriteGames) {
+        me.sortedFavoriteGames([]);
+        //matches favorite games from database to games in games file
         var maxGameThumbnails = favoriteGames.length;
-        if(thumbnailNumber <= maxGameThumbnails - 1) {
-            for(var j = thumbnailNumber; j < maxGameThumbnails; j++) {
+        //if(thumbnailNumber <= maxGameThumbnails - 1) {
+            for(var j = 0; j < maxGameThumbnails; j++) {
                 for(var i = 0; i < games.length; i++) {
                     if(favoriteGames[j][0] == inputValidation.replaceSpacesWithUnderscores(games[i].title)) {
-                        me.favoriteGamesArray.push(games[i]);
-                        console.log(me.favoriteGamesArray);
+                        me.sortedFavoriteGames().push(games[i]);
                     }
                 }
             }
-        }
-        //intellij freaks out over this...
-        me.favoriteGamesArray.sort(sorting.sortByProperty(selectValue()))[thumbnailNumber + (parseInt(m.route.param("pageNumber") -1) *12)];
-    };
-
-    me.homepageGameInfo = function(games, thumbnailNumber) {
-        //Most Played = gameplays -  Alphabetically = title
+        //}
+        //sorting
         var selectValue = m.prop("gameplays");
         if(gameOverview.sortBy() == "Alphabetically") selectValue("title");
-        var game = games.sort(sorting.sortByProperty(selectValue()))[thumbnailNumber + (parseInt(m.route.param("pageNumber") - 1) * 12)];
-        //if(game == undefined) {
-        //    //fallback for first render
-        //    return {title: "", thumbnail: ""}
-        //}
-        return game;
+        me.sortedFavoriteGames().sort(sorting.sortByProperty(selectValue()));
+    };
+
+
+    me.sortedAllGames = m.prop([]);
+    me.sortAllGames = function(games) {
+        me.sortedAllGames([]);
+        //sorting
+        var selectValue = m.prop("gameplays");
+        if(gameOverview.sortBy() == "Alphabetically") selectValue("title");
+        me.sortedAllGames(games.sort(sorting.sortByProperty(selectValue())));
     };
 
     return me;
