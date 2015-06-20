@@ -5,9 +5,9 @@ gameOverview.view = function(ctrl) {
             ctrl.isFavoritesPage()
                 ? m("center", [m("h1", "Your Favorite Games")])
                 : "",
-            !ctrl.isFavoritesPage()
-                ? m(".row", {style: "margin-bottom: 20px;"}, [
-                    m("select.form-control.pull-left", {style: "width: 16em; margin-left: 30px;", onchange: _.compose(m.withAttr("value", gameOverview.sortBy), /*gameThumbnail.resetViews, */ routing.reroute), value: gameOverview.sortBy()}, [
+            //!ctrl.isFavoritesPage()
+                m(".row", {style: "margin-bottom: 20px;"}, [
+                    m("select.form-control.pull-left", {style: "width: 16em; margin-left: 30px;", onchange: _.compose(m.withAttr("value", gameOverview.sortBy)/*routing.reroute*/), value: gameOverview.sortBy()}, [
                         m("option", "Most Played"),
                         m("option", "Alphabetically")
                     ]),
@@ -19,8 +19,8 @@ gameOverview.view = function(ctrl) {
                             ])
                         ])
                     ])
-                ])
-                : "",
+                ]),
+
             m(".container", [
                 (function() {
                     //default values
@@ -30,6 +30,9 @@ gameOverview.view = function(ctrl) {
                     ctrl.isFavoritesPage() ? view("favorites") : view("homepage");
                     //gets the number of favorite games rows to display
                     ctrl.isFavoritesPage() ? rows(parseInt((ctrl.favoriteGames().length / columns()) + Math.ceil((ctrl.favoriteGames().length % columns()) / columns() ))) : "";
+
+                    ctrl.favoriteGameInfo(ctrl.games(), ctrl.favoriteGames(), ctrl.thumbnailNumber());
+
                     return _.times(rows(), function(i) {
                         return m(".row", {style: "margin-top: 0px;"}, _.times(4, function(j) {
                             ctrl.thumbnailNumber(4 * (i + 1) + j - 4);
@@ -38,9 +41,10 @@ gameOverview.view = function(ctrl) {
                                 thumbnailNumber: ctrl.thumbnailNumber(),
                                 gameInfo: function() {
                                     if(ctrl.isFavoritesPage()) {
-                                        return ctrl.favoriteGameInfo(ctrl.games(), ctrl.favoriteGames(), ctrl.thumbnailNumber())
+                                        //ctrl.favoriteGameInfo(ctrl.games(), ctrl.favoriteGames(), ctrl.thumbnailNumber());
+                                        return ctrl.favoriteGamesArray[ctrl.thumbnailNumber()];
                                     } else {
-                                        return ctrl.homepageGameInfo(ctrl.games(), ctrl.thumbnailNumber())
+                                        return ctrl.homepageGameInfo(ctrl.games(), ctrl.thumbnailNumber());
                                     }
                                 }()
                             })
@@ -103,18 +107,23 @@ gameOverview.controller = function() {
 
 
     me.thumbnailNumber = m.prop(0);
-
+    me.favoriteGamesArray = [];
     me.favoriteGameInfo = function(games, favoriteGames, thumbnailNumber) {
+        var selectValue = m.prop("gameplays");
+        if(gameOverview.sortBy() == "Alphabetically") selectValue("title");
         var maxGameThumbnails = favoriteGames.length;
         if(thumbnailNumber <= maxGameThumbnails - 1) {
             for(var j = thumbnailNumber; j < maxGameThumbnails; j++) {
                 for(var i = 0; i < games.length; i++) {
                     if(favoriteGames[j][0] == inputValidation.replaceSpacesWithUnderscores(games[i].title)) {
-                        return games[i];
+                        me.favoriteGamesArray.push(games[i]);
+                        console.log(me.favoriteGamesArray);
                     }
                 }
             }
         }
+        //intellij freaks out over this...
+        me.favoriteGamesArray.sort(sorting.sortByProperty(selectValue()))[thumbnailNumber + (parseInt(m.route.param("pageNumber") -1) *12)];
     };
 
     me.homepageGameInfo = function(games, thumbnailNumber) {
