@@ -8,14 +8,14 @@ var routing = helpers.routing();
 var homepage = {};
 homepage.view = function() {
 	return [
-		navbar,
-		jumbotron,
-		gameOverview,
-		loginModal,
-		registerModal,
-		contactModal,
-		pagination,
-		footer
+		m.component(navbar),
+		m.component(jumbotron),
+		m.component(gameOverview),
+		m.component(loginModal),
+		m.component(registerModal),
+		m.component(contactModal),
+		m.component(pagination),
+		m.component(footer)
 	]
 };
 homepage.controller = function() {};
@@ -23,12 +23,12 @@ homepage.controller = function() {};
 var gamePageLayout = {};
 gamePageLayout.view = function() {
 	return [
-		navbar,
-		gamePage,
-		loginModal,
-		registerModal,
-		contactModal,
-		footer
+		m.component(navbar),
+		m.component(gamePage),
+		m.component(loginModal),
+		m.component(registerModal),
+		m.component(contactModal),
+		m.component(footer)
 	]
 };
 gamePageLayout.controller = function() {};
@@ -36,12 +36,12 @@ gamePageLayout.controller = function() {};
 var favoriteGamesLayout = {};
 favoriteGamesLayout.view = function() {
 	return [
-		navbar,
-		gameOverview,
-		loginModal,
-		registerModal,
-		contactModal,
-		footer
+		m.component(navbar),
+		m.component(gameOverview),
+		m.component(loginModal),
+		m.component(registerModal),
+		m.component(contactModal),
+		m.component(footer)
 	]
 };
 favoriteGamesLayout.controller = function() {};
@@ -49,12 +49,12 @@ favoriteGamesLayout.controller = function() {};
 var accountPageLayout = {};
 accountPageLayout.view = function() {
 	return [
-		navbar,
-		accountPage,
-		loginModal,
-		registerModal,
-		contactModal,
-		footer
+		m.component(navbar),
+		m.component(accountPage),
+		m.component(loginModal),
+		m.component(registerModal),
+		m.component(contactModal),
+		m.component(footer)
 	]
 };
 accountPageLayout.controller = function() {};
@@ -62,12 +62,12 @@ accountPageLayout.controller = function() {};
 var forumPageLayout = {};
 forumPageLayout.view = function() {
 	return [
-		navbar,
-		loginModal,
-		registerModal,
-		contactModal,
-		forum,
-		footer
+		m.component(navbar),
+		m.component(loginModal),
+		m.component(registerModal),
+		m.component(contactModal),
+		m.component(forum),
+		m.component(footer)
 	]
 };
 forumPageLayout.controller = function() {};

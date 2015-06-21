@@ -44,7 +44,7 @@ def getThreads():
 	conn = openConn()
 	with conn:
 		c = conn.cursor()
-		threads = c.execute("SELECT Title, Date, Username, BodyText FROM Threads").fetchall()
+		threads = c.execute("SELECT Title, BodyText, Date, Username FROM Threads").fetchall()
 		return json.dumps({"threads":threads})
 ################################################################################
 @post('/register')

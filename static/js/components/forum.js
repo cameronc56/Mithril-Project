@@ -7,17 +7,17 @@ forum.view = function(ctrl) {
     return m(".container", [
         ctrl.isLoggedIn() ?
             m(".row", [
-                m("a.btn.btn-primary.pull-right", {href:"#newThreadModal", "data-toggle":"modal"}, "New Thread")
+                m("a.btn.btn-primary.pull-right", {href:"#newThreadModal", "data-toggle":"modal", style: "margin-bottom: 10px;"}, "New Thread")
             ])
             :
             m(".row", [
-                m("a.btn.btn-primary.pull-right", {href: "#loginModal", "data-toggle":"modal"}, "Login to Post")
+                m("a.btn.btn-primary.pull-right", {href: "#loginModal", "data-toggle":"modal", style: "margin-bottom: 10px;"}, "Login to Post")
             ]),
         console.log("view rendered"),
         threads.map(function(thread) {
             console.log(thread);
             return m(".row", [
-                m.component(threadWidget, {title: thread[0], date: thread[1], submitter: thread[2]})
+                m.component(threadWidget, {title: thread[0], bodyText: thread[1], date: thread[2], submitter: thread[3]})
             ])
         }),
         m("nav", [

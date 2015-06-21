@@ -2,10 +2,13 @@ var gameOverview = {};
 
 gameOverview.view = function(ctrl) {
     return m("#homePageGridContainer.container", [
-            ctrl.isFavoritesPage()
-                ? m("center", [m("h1", "Your Favorite Games")])
+            ctrl.isFavoritesPage() ?
+                m("center", [
+                    m(".well.well-sm", {style: "border-style: solid; border-width: 1px; border-color: gray; background-color: #eee; width: 30em;"}, [
+                        m("h1", "Your Favorite Games")
+                    ])
+                ])
                 : "",
-            //!ctrl.isFavoritesPage()
                 m(".row", {style: "margin-bottom: 20px;"}, [
                     m("select.form-control.pull-left", {style: "width: 16em; margin-left: 30px;", onchange: _.compose(m.withAttr("value", gameOverview.sortBy)/*routing.reroute*/), value: gameOverview.sortBy()}, [
                         m("option", "Most Played"),
@@ -20,7 +23,13 @@ gameOverview.view = function(ctrl) {
                         ])
                     ])
                 ]),
-
+                ctrl.isFavoritesPage() ?
+                    (function() {
+                        if (ctrl.favoriteGamesJSON().length == 0) {
+                            return m("center", [ m("h4", "You have no favorite games.") ]);
+                        }
+                    })()
+                : "",
             m(".container", [
                 (function() {
                     //default values
