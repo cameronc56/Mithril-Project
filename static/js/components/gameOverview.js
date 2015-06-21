@@ -24,31 +24,20 @@ gameOverview.view = function(ctrl) {
             m(".container", [
                 (function() {
                     //default values
-                    var view = m.prop("");
                     var rows = m.prop(3);
                     var columns = m.prop(4);
-                    ctrl.isFavoritesPage() ? view("favorites") : view("homepage");
                     //gets the number of favorite games rows to display
                     ctrl.isFavoritesPage() ? rows(parseInt((ctrl.favoriteGamesJSON().length / columns()) + Math.ceil((ctrl.favoriteGamesJSON().length % columns()) / columns() ))) : "";
-
-                    ctrl.sortFavoriteGames(ctrl.games(), ctrl.favoriteGamesJSON());
-                    ctrl.sortAllGames(ctrl.games());
+                    //sorts games
+                    ctrl.sortGames(ctrl.games(), ctrl.favoriteGamesJSON());
 
                     return _.times(rows(), function(i) {
                         return m(".row", {style: "margin-top: 0px;"}, _.times(4, function(j) {
                             ctrl.thumbnailNumber(4 * (i + 1) + j - 4);
                             return m.component(gameThumbnail, {
-                                view: view(),
+                                view: ctrl.isFavoritesPage() ? "favorites" : "homepage",
                                 thumbnailNumber: ctrl.thumbnailNumber(),
-                                gameInfo: function() {
-                                    if(ctrl.isFavoritesPage()) {
-                                        //ctrl.favoriteGameInfo(ctrl.games(), ctrl.favoriteGames(), ctrl.thumbnailNumber());
-                                        return ctrl.sortedFavoriteGames()[ctrl.thumbnailNumber() + (parseInt(m.route.param("pageNumber") - 1) * 12)];
-                                    } else {
-                                        //return ctrl.homepageGameInfo(ctrl.games(), ctrl.thumbnailNumber());
-                                        return ctrl.sortedAllGames()[ctrl.thumbnailNumber() + (parseInt(m.route.param("pageNumber") - 1) * 12)];
-                                    }
-                                }()
+                                gameInfo: ctrl.sortedGames()[ctrl.thumbnailNumber() + (parseInt(m.route.param("pageNumber") - 1) * 12)]
                             })
                         }))
                     });
@@ -108,34 +97,26 @@ gameOverview.controller = function() {
 
 
     me.thumbnailNumber = m.prop(0);
-    me.sortedFavoriteGames = m.prop([]);
-    me.sortFavoriteGames = function(games, favoriteGames) {
-        me.sortedFavoriteGames([]);
-        //matches favorite games from database to games in games file
-        var maxGameThumbnails = favoriteGames.length;
-        //if(thumbnailNumber <= maxGameThumbnails - 1) {
+    me.sortedGames = m.prop([]);
+    me.sortGames = function(games, favoriteGames) {
+        me.sortedGames([]);
+        if(me.isFavoritesPage()) {
+            //matches favorite games from database to games in games file
+            var maxGameThumbnails = favoriteGames.length;
             for(var j = 0; j < maxGameThumbnails; j++) {
                 for(var i = 0; i < games.length; i++) {
                     if(favoriteGames[j][0] == inputValidation.replaceSpacesWithUnderscores(games[i].title)) {
-                        me.sortedFavoriteGames().push(games[i]);
+                        me.sortedGames().push(games[i]);
                     }
                 }
             }
-        //}
+        } else {
+            me.sortedGames(games);
+        }
         //sorting
         var selectValue = m.prop("gameplays");
         if(gameOverview.sortBy() == "Alphabetically") selectValue("title");
-        me.sortedFavoriteGames().sort(sorting.sortByProperty(selectValue()));
-    };
-
-
-    me.sortedAllGames = m.prop([]);
-    me.sortAllGames = function(games) {
-        me.sortedAllGames([]);
-        //sorting
-        var selectValue = m.prop("gameplays");
-        if(gameOverview.sortBy() == "Alphabetically") selectValue("title");
-        me.sortedAllGames(games.sort(sorting.sortByProperty(selectValue())));
+        me.sortedGames().sort(sorting.sortByProperty(selectValue()));
     };
 
     return me;
