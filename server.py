@@ -36,15 +36,22 @@ def newPost():
 	with conn:
 		c = conn.cursor()
 		c.execute("INSERT INTO Threads(Title, BodyText, Date, Username) VALUES (?, ?, CURRENT_TIMESTAMP, ?)", (threadTitle, threadBody, username))
-		print "SUCCESS"
 	return json.dumps({"threadTitle": threadTitle, "threadBody": threadBody})
+################################################################################
+@post('/getThread')
+def getThread():
+	d = request.json
+	id = d["threadId"]
+	with conn:
+		c = conn.cursor()
+		thread = (c.execute("SELECT ThreadId, Title, BodyText, Date, Username FROM Threads WHERE ThreadId = ?", id)).fetchone()
+		return json.dumps({"thread":thread})
 ################################################################################
 @get('/getThreads')
 def getThreads():
-	conn = openConn()
 	with conn:
 		c = conn.cursor()
-		threads = c.execute("SELECT Title, BodyText, Date, Username FROM Threads").fetchall()
+		threads = c.execute("SELECT ThreadId, Title, BodyText, Date, Username FROM Threads").fetchall()
 		return json.dumps({"threads":threads})
 ################################################################################
 @post('/register')

@@ -31,6 +31,8 @@
     <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'forum.js') }}"></script>
     <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'accountPage.js') }}"></script>
     <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'pagination.js') }}"></script>
+    <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'threadPage.js') }}"></script>
+
 
 
     <script type="text/javascript" src="{{ get_url('static/js/routers', filename = 'routing.js') }}"></script>

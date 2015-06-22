@@ -72,11 +72,26 @@ forumPageLayout.view = function() {
 };
 forumPageLayout.controller = function() {};
 
+var threadLayout = {};
+threadLayout.view = function() {
+	return [
+		m.component(navbar),
+		m.component(loginModal),
+		m.component(registerModal),
+		m.component(contactModal),
+		m.component(threadPage),
+		m.component(footer)
+	]
+};
+threadLayout.controller = function() {};
+
+
 m.route.mode = "hash";
 m.route(document.body, "/page/1", {
 	"/page/:pageNumber":homepage,
 	"/game/:gameTitle": gamePageLayout,
 	"/account/:username": accountPageLayout,
 	"/favoriteGames/page/:pageNumber": favoriteGamesLayout,
-	"/forum/page/:pageNumber": forumPageLayout
+	"/forum/page/:pageNumber": forumPageLayout,
+	"/forum/thread/:threadId": threadLayout
 });

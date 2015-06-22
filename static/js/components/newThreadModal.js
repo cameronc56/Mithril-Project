@@ -8,7 +8,6 @@ newThreadModal.view = function(ctrl, args) {
                     m(".modal-header", [
                         m("h4", "New Thread")
                     ]),
-                    console.log("modal rendered"),
                     m(".modal-body", [
                         m(".form-group", [
                             m("label.col-lg-2.control-label", {for: "threadTitle"}, "Thread Title"),
