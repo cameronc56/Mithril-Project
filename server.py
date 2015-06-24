@@ -30,6 +30,28 @@ def returnRobots():
 @post('/newPost')
 def newPost():
 	d = request.json
+	postBody = d["postBody"]
+	username = d["username"]
+	threadId = d["threadId"]
+	parentPostId = d["parentPostId"]
+	indentLevel = d["indentLevel"]
+	with conn:
+		c = conn.cursor()
+		c.execute("INSERT INTO Posts(ThreadId, Username, Date, BodyText, ParentPostId, IndentLevel) VALUES (?, ?, CURRENT_TIMESTAMP, ?, ?, ?)", (threadId, username, postBody, parentPostId, indentLevel))
+	return json.dumps({"status": "finished"})
+################################################################################
+@post('/getPosts')
+def getPosts():
+	d = request.json
+	threadId = d["threadId"]
+	with conn:
+		c = conn.cursor()
+		posts = (c.execute("SELECT PostId, ThreadId, Username, Date, BodyText, ParentPostId, IndentLevel FROM Posts WHERE ThreadId = ?", threadId)).fetchall()
+	return json.dumps({"posts": posts})
+################################################################################
+@post('/newThread')
+def newThread():
+	d = request.json
 	threadTitle = d["threadTitle"]
 	threadBody = d["threadBody"]
 	username = d["username"]

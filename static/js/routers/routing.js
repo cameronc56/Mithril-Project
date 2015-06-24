@@ -79,6 +79,7 @@ threadLayout.view = function() {
 		m.component(loginModal),
 		m.component(registerModal),
 		m.component(contactModal),
+		//m.component(newPostModal),
 		m.component(threadPage),
 		m.component(footer)
 	]

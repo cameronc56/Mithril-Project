@@ -1,18 +1,58 @@
 var threadPage = {};
 
 threadPage.view = function(ctrl, args) {
+
+    var title = ctrl.thread()[1];
+    var body = ctrl.thread()[2];
+    var date = ctrl.thread()[3];
+    var username = ctrl.thread()[4];
+
     return m(".container", [
-        m("p", "thread: " + ctrl.thread()),
-        m("p", "threadId: " + ctrl.threadId())
+        //post modal for original thread
+        m.component(newPostModal, {threadPageCtrl: ctrl, postId: "thread", indentLevel: -1}),
+        m(".row", [
+            m(".col-sm-offset-1.col-sm-10", [
+                m(".panel.panel-default", [
+                    m(".panel-heading", [
+                        m(".panel-title", title)
+                    ]),
+                    m(".panel-body", body),
+                    m(".panel-footer", {style: "height: 50px;"}, [
+                        "Posted at: " + date + " by " + username,
+                        m("a.btn.btn-primary.pull-right", {href:"#newPostModalthread", "data-toggle":"modal"}, "Reply")
+                    ])
+                ])
+            ])
+        ]),
+        (function() {
+            return _.times(ctrl.posts().length, function(i) {
+                console.log(ctrl.posts()[i]);
+                return m(".row", [
+                    m("div", {class: "col-sm-offset-" + (1 + ctrl.posts()[i][6]).toString() + " col-sm-10"}, [
+                        m(".panel.panel-default", [
+                            m(".panel-body", ctrl.posts()[i][4]),
+                            m(".panel-footer", {style: "height: 55px;"}, [
+                                "Posted at: " + ctrl.posts()[i][3] + " by " + ctrl.posts()[i][2],
+                                m("a.btn.btn-primary.pull-right", {href:"#newPostModal" + ctrl.posts()[i][0], "data-toggle":"modal"}, "Reply")
+                            ])
+                        ])
+                    ]),
+                    m.component(newPostModal, {threadPageCtrl: ctrl, postId: ctrl.posts()[i][0], indentLevel: ctrl.posts()[i][6]})
+                ])
+            });
+        })()
     ])
 };
 
 
 threadPage.controller = function(args) {
     var me = {};
-    console.log("controller loaded");
+
+    me.postIsAdded = function() {
+        me.getPosts();
+    };
+
     me.threadId = m.prop(m.route.param("threadId"));
-    console.log(me.threadId());
     me.thread = m.prop([]);
     me.getThread = function() {
         m.request({
@@ -24,6 +64,19 @@ threadPage.controller = function(args) {
         })
     };
     me.getThread();
+
+
+    me.posts = m.prop([]);
+    me.getPosts = function() {
+        m.request({
+            method: "POST",
+            url: "/getPosts",
+            data: {"threadId": me.threadId()}
+        }).then(function(response) {
+            me.posts(response.posts);
+        })
+    };
+    me.getPosts();
 
     me.isLoggedIn = m.prop(false);
     me.username = m.prop();

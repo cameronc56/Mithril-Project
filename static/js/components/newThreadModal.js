@@ -24,7 +24,7 @@ newThreadModal.view = function(ctrl, args) {
                     ]),
                     m(".modal-footer", [
                         m("a.btn.btn-primary.pull-left", {"data-dismiss":"modal"}, "Close"),
-                        m("button.btn.btn-primary", {onclick: _.compose(ctrl.forumController.getThreads, ctrl.submitPost), "data-dismiss": "modal", type: "submit"}, "Post")
+                        m("button.btn.btn-primary", {onclick: _.compose(args.forumController.getThreads, ctrl.submitThread), "data-dismiss": "modal", type: "submit"}, "Submit")
                     ])
                 ])
             ])
@@ -37,10 +37,10 @@ newThreadModal.controller = function(args) {
     me.threadTitle = m.prop("");
     me.threadBody = m.prop("");
     me.username = m.prop();
-    me.submitPost = function() {
+    me.submitThread = function() {
         m.request({
             method: "POST",
-            url: "/newPost",
+            url: "/newThread",
             data: {"threadTitle": me.threadTitle(), "threadBody": me.threadBody(), username: me.username()}
         }).then(function(response) {
             me.threadTitle("");
@@ -55,6 +55,5 @@ newThreadModal.controller = function(args) {
             me.username(response.username);
         }
     });
-    me.forumController = args.controller;
     return me;
 };

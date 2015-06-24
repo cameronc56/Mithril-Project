@@ -30,7 +30,7 @@ forum.view = function(ctrl) {
                 ])
             ])
         ]),
-        m.component(newThreadModal, {controller: ctrl})
+        m.component(newThreadModal, {forumController: ctrl})
     ]);
 };
 

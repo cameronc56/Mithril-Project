@@ -17,6 +17,8 @@
 </head>
 <body>
 
+
+
     <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'navbar.js') }}"></script>
     <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'jumbotron.js') }}"></script>
     <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'gameThumbnail.js') }}"></script>
@@ -32,6 +34,8 @@
     <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'accountPage.js') }}"></script>
     <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'pagination.js') }}"></script>
     <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'threadPage.js') }}"></script>
+    <script type="text/javascript" src="{{ get_url('static/js/components', filename = 'newPostModal.js') }}"></script>
+
 
 
 
