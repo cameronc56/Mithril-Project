@@ -22,6 +22,10 @@ def returnIndex():
 def returnRobots():
 	return static_file("robots.txt", root="")
 ################################################################################
+@get('/favicon.ico')
+def returnFavicon():
+	return static_file("favicon.ico", root="")
+################################################################################
 @post('/newPost')
 def newPost():
 	d = request.json
