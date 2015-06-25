@@ -6,7 +6,7 @@ newPostModal.view = function(ctrl, args) {
             m(".modal-content", [
                 m("form.form-horizontal", [
                     m(".modal-header", [
-                        m("h4", "New Thread")
+                        m("h4", "New Post")
                     ]),
                     m(".modal-body", [
                         m(".form-group", [

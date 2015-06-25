@@ -13,11 +13,6 @@ cryptoKey = os.environ["CRYPTOKEY"]
 conn = sqlite3.connect('login.db')
 #c = conn.cursor()
 
-#Users table
-#c.execute("DROP TABLE Users")
-#c.execute("CREATE TABLE Users (username text PRIMARY KEY, passwordHash text NOT Null, passwordSalt text, email text)")
-#conn.commit()
-
 ################################################################################
 @get('/')
 def returnIndex():
