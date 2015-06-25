@@ -3,7 +3,7 @@ var gameThumbnail = {};
 gameThumbnail.view = function(ctrl, args) {
     if(args.gameInfo != undefined) {
         return m(".col-sm-3",[
-            m(".well.well-sm", {style: "border-style: solid; border-width: 1px; border-color: gray; background-color: #eee; width: 220px;"}, [
+            m(".well.well-sm", {style: "border-style: solid; border-width: 1px; border-color: gray; background-color: #eee; width: " + (document.getElementById("getWidth").offsetWidth / 4)}, [
                 m("center", [
                     m("p", args.gameInfo.title),
                     m("a", {href: "#/game/" + inputValidation.replaceSpacesWithUnderscores(args.gameInfo.title)}, [

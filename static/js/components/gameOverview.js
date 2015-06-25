@@ -9,12 +9,12 @@ gameOverview.view = function(ctrl) {
                     ])
                 ])
                 : "",
-                m(".row", {style: "margin-bottom: 20px;"}, [
-                    m("select.form-control.pull-left", {style: "width: 16em; margin-left: 30px;", onchange: _.compose(m.withAttr("value", gameOverview.sortBy)/*routing.reroute*/), value: gameOverview.sortBy()}, [
+                m(".row#getWidth", {style: "margin-bottom: 20px;"}, [
+                    m("select.form-control.pull-left", {style: "width: 13em; margin-left: 30px;", onchange: _.compose(m.withAttr("value", gameOverview.sortBy)/*routing.reroute*/), value: gameOverview.sortBy()}, [
                         m("option", "Most Played"),
                         m("option", "Alphabetically")
                     ]),
-                    m(".input-group.pull-right", {style: "margin-right: 45px;"}, [
+                    m(".input-group.pull-right", [
                         m("input#search.form-control", {onkeyup: m.withAttr("value", ctrl.searchValue), placeholder: "Search", type: "text", style: "width: 180px;", value: ctrl.searchValue()}),
                         m(".input-group-btn.pull-left", [
                             m("button.btn.btn-default", {onclick: ctrl.search}, [
