@@ -79,7 +79,6 @@ threadLayout.view = function() {
 		m.component(loginModal),
 		m.component(registerModal),
 		m.component(contactModal),
-		//m.component(newPostModal),
 		m.component(threadPage),
 		m.component(footer)
 	]
@@ -91,7 +90,7 @@ m.route.mode = "hash";
 m.route(document.body, "/page/1", {
 	"/page/:pageNumber":homepage,
 	"/game/:gameTitle": gamePageLayout,
-	"/account/:username": accountPageLayout,
+	"/account": accountPageLayout,
 	"/favoriteGames/page/:pageNumber": favoriteGamesLayout,
 	"/forum/page/:pageNumber": forumPageLayout,
 	"/forum/thread/:threadId": threadLayout

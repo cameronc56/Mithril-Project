@@ -32,7 +32,7 @@ navbar.view = function(ctrl) {
                                     ctrl.isLoggedIn() ?
                                         [
                                             m("li", [
-                                                m("a", {href:"#/account/" + ctrl.username()}, "Account ", [
+                                                m("a", {href:"/account", config: m.route}, "Account ", [
                                                         m("span.glyphicon.glyphicon-user.pull-right", {"aria-hidden": "true"})
                                                 ])
                                             ]),

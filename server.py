@@ -75,6 +75,19 @@ def getThreads():
 		threads = c.execute("SELECT ThreadId, Title, BodyText, Date, Username FROM Threads").fetchall()
 		return json.dumps({"threads":threads})
 ################################################################################
+@post('/changePassword')
+def changePassword():
+	d = request.json
+	oldPassword = d["oldPassword"]
+	newPassword = d["newPassword"]
+	username = d["username"]
+	with conn:
+		print oldPassword + " " + newPassword + " " + username
+
+
+
+
+################################################################################
 @post('/register')
 def register():
 	d = request.json
