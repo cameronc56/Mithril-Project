@@ -5,7 +5,7 @@ registerModal.view = function(ctrl) {
             m(".modal-dialog", [
                 m(".modal-content", [
                     m(".modal-header", [
-                        m("h4", "Create Account")
+                        m("h4", {style: "font-weight: bold;"}, "Create Account")
                     ]),
                     m(".modal-body", [
                         m("center", [

@@ -17,6 +17,14 @@ conn = sqlite3.connect('login.db')
 def returnIndex():
     return template('adminIndex', get_url = app.get_url)
 ################################################################################
+@get('/robots.txt')
+def returnRobots():
+    return static_file("robots.txt", root="")
+################################################################################
+@get('/favicon.ico')
+def returnFavicon():
+    return static_file("favicon.ico", root="")
+################################################################################
 @get('/admin/static/js/<filename:re:.*\.js>', name='admin/static/js')
 def server_static(filename):
     return static_file(filename, root='admin/static/js')

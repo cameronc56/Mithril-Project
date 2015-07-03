@@ -30,7 +30,7 @@ gameOverview.view = function(ctrl) {
                         }
                     })()
                 : "",
-            m(".container", [
+            m(".container", {style: "margin-bottom: -22px;"}, [
                 (function() {
                     //default values
                     var rows = m.prop(3);

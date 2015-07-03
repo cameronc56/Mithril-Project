@@ -1,7 +1,7 @@
 var adminNavbar = {};
 
 adminNavbar.view = function(ctrl) {
-    return m(".container", {style: "margin-top: 30%;"}, [
+    return m(".container", {style: "margin-top: 20em;"}, [
         m(".col-md-6.col-md-offset-3.col-sm-6.col-sm-offset-3", [
             m(".panel.panel-default", [
                 m(".panel-heading", [

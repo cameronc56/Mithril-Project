@@ -2,13 +2,13 @@ var loginModal = {};
 
 loginModal.view = function(ctrl) {
     //                                LOGIN MODAL
-    return m("div", {class: "modal fade", id: "loginModal", role: "dialog"}, [
-        m("div", {class: "modal-dialog"}, [
-            m("div", {class: "modal-content"}, [
+    return m(".modal.fade#loginModal", {role: "dialog"}, [
+        m(".modal-dialog", {style: "width: 30em;"}, [
+            m(".modal-content", [
                 m(".modal-header", [
                     m(".container-fluid", [
                         m(".row", [
-                            m("h4.pull-left", "Login"),
+                            m("h4.pull-left",  {style: "font-weight: bold;"}, "Login"),
                             m("a.btn.btn-primary.pull-right", {href:"#registerModal", "data-toggle":"modal"}, "Register"),
                             m("p.pull-right", {style: "margin-right: 10px; margin-top: 5px;"}, "New User?"),
 
@@ -19,17 +19,23 @@ loginModal.view = function(ctrl) {
                     m("center", [
                         m("span#login-error-msg", {onkeyup: m.withAttr("value", ctrl.responseMessage), style: ctrl.responseMessageColor()}, ctrl.responseMessage()),
                     ]),
-                    m("div", {class: "form-group"}, [
-                        m("label", {for: "login-username", class: "col-lg-2 control-label"}, "Username"),
-                        m("input#login-username.form-control", {onkeyup: m.withAttr("value", ctrl.username), type: "text", placeholder: "Username"}, ctrl.username()),
+                    m("form.form-horizontal", [
+                        m(".input-group", [
+                            m("span.input-group-addon", [
+                                m("i.glyphicon.glyphicon-user")
+                            ]),
+                            m("input#login-username.form-control", {onkeyup: m.withAttr("value", ctrl.username), type: "text", placeholder: "Username"}, ctrl.username()),
+                        ]),
+                        m(".input-group", {style: "margin-top: 10px;"}, [
+                            m("span.input-group-addon", [
+                                m("i.glyphicon.glyphicon-lock")
+                            ]),
+                            m("input#login-password.form-control", {onkeyup: m.withAttr("value", ctrl.password), type: "password", placeholder: "Password"}, ctrl.password()),
+                        ])
                     ]),
-                    m("div", {class: "form-group"}, [
-                        m("label", {for: "login-password", class: "col-lg-2 control-label"}, "Password"),
-                        m("input#login-password.form-control", {onkeyup: m.withAttr("value", ctrl.password), type: "password", placeholder: "Password"}, ctrl.password()),
-                    ]),
-                    m("div", {class: "modal-footer"}, [
-                        m("a#login-btn.btn.btn-primary", {onclick: ctrl.login, value: "Login"}, "Login"),
-                        m("a.btn.btn-primary.pull-left", {"data-dismiss": "modal"}, "Close")
+                    m(".modal-footer", {style: "margin-top: 10px; padding: 0px;"}, [
+                        m("a#login-btn.btn.btn-primary.pull-right", {style: "margin-top: 10px;", onclick: ctrl.login, value: "Login"}, [m("i.glyphicon.glyphicon-log-in")], " Login"),
+                        m("a.btn.btn-primary.pull-left", {style: "margin-top: 10px;", "data-dismiss": "modal"}, [m("i.glyphicon.glyphicon-remove")], " Close")
                     ])
                 ])
             ])

@@ -10,7 +10,7 @@ pagination.view = function(ctrl) {
         m(".row", [
             m("nav", [
                 !ctrl.isFavoritesPage() ?
-                    m("ul.pagination", [
+                    m("ul.pagination", {style: "margin-bottom: -20px;"},[
                         m("li", [
                             m("a", {href: "/page/" + (parseInt(m.route.param("pageNumber")) - 1), "aria-label": "Previous", config: m.route}, [
                                 m("span", {"aria-hidden": "true"}, "«")
