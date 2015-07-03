@@ -9,11 +9,13 @@ loginModal.view = function(ctrl) {
                     m(".container-fluid", [
                         m(".row", [
                             m("h4.pull-left", "Login"),
-                            m("a.btn.btn-primary.pull-right", {href:"#registerModal", "data-toggle":"modal"}, "Register")
+                            m("a.btn.btn-primary.pull-right", {href:"#registerModal", "data-toggle":"modal"}, "Register"),
+                            m("p.pull-right", {style: "margin-right: 10px; margin-top: 5px;"}, "New User?"),
+
                         ])
                     ])
                 ]),
-                m("div", {class: "modal-body"}, [
+                m(".modal-body", [
                     m("center", [
                         m("span#login-error-msg", {onkeyup: m.withAttr("value", ctrl.responseMessage), style: ctrl.responseMessageColor()}, ctrl.responseMessage()),
                     ]),
