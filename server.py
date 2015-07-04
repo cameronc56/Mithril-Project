@@ -121,11 +121,11 @@ def login():
 			hash = hashlib.sha512((password + salt).encode('utf-8')).hexdigest()
 			if hash == DBhash:
 				response.set_cookie("session", encode_session_str({"username" : username}))
-				return json.dumps({"error":'Logged In'})
+				return json.dumps({"response":'Logged In'})
 			else:
-				return json.dumps({"error":'Invalid Credentials'})
+				return json.dumps({"response":'Invalid Credentials'})
 		else:
-			return json.dumps({"error":'Invalid Credentials'})
+			return json.dumps({"response":'Invalid Credentials'})
 ################################################################################
 @post('/sendEmail')
 def sendEmail():
@@ -193,11 +193,6 @@ def account():
 		username = session['username']
 		conn = openConn()
 		with conn:
-			#c = conn.cursor()
-			#email = (c.execute("SELECT Email FROM Users WHERE Username = ?",(username,))).fetchone()
-			#email = email[0]
-			#if(email == None):
-			#	email = "No email attached to this Account"
 			return json.dumps({"username":username})
 	else:
 		return json.dumps({"username":"Username"})

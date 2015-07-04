@@ -19,20 +19,20 @@ loginModal.view = function(ctrl) {
                 ]),
                 m(".modal-body", [
                     m("center", [
-                        m("span#login-error-msg", {onkeyup: m.withAttr("value", ctrl.responseMessage), style: ctrl.responseMessageColor()}, ctrl.responseMessage()),
+                        m("span#login-error-msg", {onchange: m.withAttr("value", ctrl.responseMessage), style: ctrl.responseMessageColor() + "; font-weight: bold;"}, ctrl.responseMessage()),
                     ]),
                     m("form.form-horizontal", [
-                        m(".input-group", [
+                        m(".input-group", {style: "margin-top: 10px;"}, [
                             m("span.input-group-addon", [
                                 m("i.glyphicon.glyphicon-user")
                             ]),
-                            m("input#login-username.form-control", {onkeyup: m.withAttr("value", ctrl.username), type: "text", placeholder: "Username"}, ctrl.username()),
+                            m("input#login-username.form-control", {onchange: m.withAttr("value", ctrl.username), type: "text", placeholder: "Username"}, ctrl.username()),
                         ]),
                         m(".input-group", {style: "margin-top: 10px;"}, [
                             m("span.input-group-addon", [
                                 m("i.glyphicon.glyphicon-lock")
                             ]),
-                            m("input#login-password.form-control", {onkeyup: m.withAttr("value", ctrl.password), type: "password", placeholder: "Password"}, ctrl.password()),
+                            m("input#login-password.form-control", {onchange: m.withAttr("value", ctrl.password), type: "password", placeholder: "Password"}, ctrl.password()),
                         ])
                     ]),
                     m(".modal-footer", {style: "margin-top: 10px; padding: 0px;"}, [
@@ -55,16 +55,18 @@ loginModal.controller = function() {
     me.login = function () {
         if(!inputValidation.isAlpha(me.username())) {
             me.responseMessage("Username contains invalid characters");
+            me.responseMessageColor("color: " + colors.badColor);
         } else if(!inputValidation.isAlpha(me.password())) {
             me.responseMessage("Password contains invalid characters");
+            me.responseMessageColor("color: " + colors.badColor);
         } else {
             m.request({
                 method: "POST",
                 url: "/login",
                 data: {"username": me.username(), "password": me.password()}
             }).then(function(response) {
-                me.responseMessage(response.error);
-                if(response.error == "Logged In") {
+                me.responseMessage(response.response);
+                if(response.response == "Logged In") {
                     me.responseMessageColor("color: " + colors.goodColor);
                     document.location.reload(true);
                 } else {

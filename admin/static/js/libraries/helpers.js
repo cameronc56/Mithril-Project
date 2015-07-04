@@ -52,6 +52,7 @@ helpers.cookies = function() {
                 responseFunction(response);
             })
         } else {
+            console.log("No Session");
             return "No Session"
         }
     };
