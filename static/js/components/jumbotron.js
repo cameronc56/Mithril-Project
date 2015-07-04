@@ -6,8 +6,12 @@ jumbotron.view = function(ctrl) {
             m("center", [
                 m("h1", {style: "margin-top: -10px;"}, "Quack!~"),
                 m("p", "Welcome to LittleDucklingGames.com."),
-                m("a", {class:"btn btn-default", href:"#loginModal", "data-toggle":"modal", style: "margin-right:10px;" + (ctrl.isLoggedInBool() == true ? "display: none;" : "")}, "Login"),
-                m("a", {class:"btn btn-primary", href:"#registerModal", "data-toggle":"modal", style: "" + (ctrl.isLoggedInBool() == true ? "display: none;" : "")}, "Create Account")
+                m("a", {class:"btn btn-default", href:"#loginModal", "data-toggle":"modal", style: "margin-right:10px;" + (ctrl.isLoggedInBool() == true ? "display: none;" : "")}, [
+                    m("i.glyphicon.glyphicon-log-in")
+                ], " Login"),
+                m("a", {class:"btn btn-primary", href:"#registerModal", "data-toggle":"modal", style: "" + (ctrl.isLoggedInBool() == true ? "display: none;" : "")}, [
+                    m("i.glyphicon.glyphicon-plus")
+                ], " Create Account")
             ])
         ])
     ])

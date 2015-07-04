@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72721e00-e306-49aa-ae74-7f1455d3308e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/static/js/components/adminNavbar.js" afterPath="$PROJECT_DIR$/admin/static/js/components/adminNavbar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminServer.py" afterPath="$PROJECT_DIR$/adminServer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/components/gameOverview.js" afterPath="$PROJECT_DIR$/static/js/components/gameOverview.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/components/jumbotron.js" afterPath="$PROJECT_DIR$/static/js/components/jumbotron.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/components/loginModal.js" afterPath="$PROJECT_DIR$/static/js/components/loginModal.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/components/pagination.js" afterPath="$PROJECT_DIR$/static/js/components/pagination.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/components/registerModal.js" afterPath="$PROJECT_DIR$/static/js/components/registerModal.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/components/navbar.js" afterPath="$PROJECT_DIR$/static/js/components/navbar.js" />
     </list>
     <ignored path="Mithril-Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,17 +29,37 @@
               <entry file="file://$PROJECT_DIR$/static/js/components/loginModal.js">
                 <provider selected="true" editor-type-id="text-editor">
                   <state vertical-scroll-proportion="0.0">
-                    <caret line="10" column="77" selection-start-line="10" selection-start-column="77" selection-end-line="10" selection-end-column="77" />
+                    <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
                     <folding />
                   </state>
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="registerModal.js" pinned="false" current-in-tab="true">
+            <file leaf-file-name="navbar.js" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/static/js/components/navbar.js">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.37974682">
+                    <caret line="20" column="63" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="registerModal.js" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/static/js/components/registerModal.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.1329114">
-                    <caret line="7" column="62" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="62" />
+                  <state vertical-scroll-proportion="0.0">
+                    <caret line="2" column="57" selection-start-line="2" selection-start-column="57" selection-end-line="2" selection-end-column="57" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="jumbotron.js" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/static/js/components/jumbotron.js">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.0">
+                    <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
                     <folding />
                   </state>
                 </provider>
@@ -124,7 +139,6 @@
         <option value="$PROJECT_DIR$/admin/static/js/routers/adminRouting.js" />
         <option value="$PROJECT_DIR$/static/js/components/gameThumbnail.js" />
         <option value="$PROJECT_DIR$/static/js/routers/routing.js" />
-        <option value="$PROJECT_DIR$/static/js/components/navbar.js" />
         <option value="$PROJECT_DIR$/static/js/components/accountPage.js" />
         <option value="$PROJECT_DIR$/server.py" />
         <option value="$PROJECT_DIR$/static/js/components/footer.js" />
@@ -132,9 +146,10 @@
         <option value="$PROJECT_DIR$/admin/static/js/components/adminNavbar.js" />
         <option value="$PROJECT_DIR$/static/js/components/gameOverview.js" />
         <option value="$PROJECT_DIR$/static/js/components/pagination.js" />
+        <option value="$PROJECT_DIR$/static/js/components/registerModal.js" />
         <option value="$PROJECT_DIR$/static/js/components/jumbotron.js" />
         <option value="$PROJECT_DIR$/static/js/components/loginModal.js" />
-        <option value="$PROJECT_DIR$/static/js/components/registerModal.js" />
+        <option value="$PROJECT_DIR$/static/js/components/navbar.js" />
       </list>
     </option>
   </component>
@@ -733,12 +748,12 @@
       <workItem from="1435251709399" duration="2722000" />
       <workItem from="1435266969869" duration="4758000" />
       <workItem from="1435288227225" duration="5674000" />
-      <workItem from="1435955894302" duration="11460000" />
+      <workItem from="1435955894302" duration="13650000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="453119000" />
+    <option name="totallyTimeSpent" value="455309000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="52" width="936" height="1028" extended-state="4" />
@@ -1030,14 +1045,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/components/navbar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72065216">
-          <caret line="42" column="47" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/routers/routing.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1110,14 +1117,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/components/jumbotron.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2658228">
-          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/components/gameOverview.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15189873">
@@ -1126,18 +1125,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/components/loginModal.js">
+    <entry file="file://$PROJECT_DIR$/static/js/components/registerModal.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="77" selection-start-line="10" selection-start-column="77" selection-end-line="10" selection-end-column="77" />
+          <caret line="2" column="57" selection-start-line="2" selection-start-column="57" selection-end-line="2" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/components/registerModal.js">
+    <entry file="file://$PROJECT_DIR$/static/js/components/jumbotron.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1329114">
-          <caret line="7" column="62" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="62" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/components/loginModal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/components/navbar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37974682">
+          <caret line="20" column="63" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
           <folding />
         </state>
       </provider>

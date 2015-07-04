@@ -9,7 +9,9 @@ loginModal.view = function(ctrl) {
                     m(".container-fluid", [
                         m(".row", [
                             m("h4.pull-left",  {style: "font-weight: bold;"}, "Login"),
-                            m("a.btn.btn-primary.pull-right", {href:"#registerModal", "data-toggle":"modal"}, "Register"),
+                            m("a.btn.btn-primary.pull-right", {href:"#registerModal", "data-toggle":"modal"}, [
+                                m("i.glyphicon.glyphicon-plus")
+                            ], " Register"),
                             m("p.pull-right", {style: "margin-right: 10px; margin-top: 5px;"}, "New User?"),
 
                         ])

@@ -1,8 +1,8 @@
 var navbar = {};
 
 navbar.view = function(ctrl) {
-    return m("div", {class:"navbar navbar-default navbar-static-top"}, [
-                m("div", {class:"container"}, [
+    return m(".navbar.navbar-default.navbar-static-top", [
+                m(".container", [
                     m("a", {href: "/"}, [
                        m("img.img-circle.pull-left", {src: "https://i.imgur.com/eevjESG.jpg", alt: "Quack!~", style: "height: 40px; margin-right: 10px; margin-top: 5px;"})
                     ]),
