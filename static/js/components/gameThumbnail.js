@@ -2,6 +2,9 @@ var gameThumbnail = {};
 
 gameThumbnail.view = function(ctrl, args) {
     if(args.gameInfo != undefined) {
+        if(args.gameInfo.title.length > 15) {
+            args.gameInfo.title = args.gameInfo.title.substring(0, 15) + "...";
+        }
         return m(".col-sm-3",[
             m(".well.well-sm", {style: "border-style: solid; border-width: 1px; border-color: gray; background-color: #eee; width: " + (document.getElementById("getWidth").offsetWidth / 4)}, [
                 m("center", [

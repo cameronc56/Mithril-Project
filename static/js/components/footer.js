@@ -14,7 +14,9 @@ footer.view = function(ctrl) {
     return m(".navbar.navbar-default.navbar-fixed-bottom", [
         m("#fb-root"),
         m(".container", [
-            m("p.navbar-text.pull-left", "Site by Cameron Cooks"),
+            m("a", {href: "https://twitter.com/DucklingGames"}, [
+                m("p.navbar-text.pull-left", "Site by Cameron Cooks")
+            ]),
             m("a.twitter-share-button.pull-right.navbar-btn", {href: "https://twitter.com/share", "data-url": "https://www.littleducklinggames.com"}, "Tweet"),
             m(".fb-share-button.pull-right.navbar-btn", {style: "margin-right: 5px", "date-href": "https://www.littleducklinggames.com", "data-layout": "button_count"})
         ])

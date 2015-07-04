@@ -1,45 +1,61 @@
 var registerModal = {};
 registerModal.view = function(ctrl) {
     //                               CREATE ACCOUNT MODAL
-    return m(".modal.fade", {id: "registerModal", role: "dialog"}, [
-            m(".modal-dialog", [
-                m(".modal-content", [
-                    m(".modal-header", [
-                        m("h4", {style: "font-weight: bold;"}, "Create Account")
+    return m(".modal.fade#registerModal", {role: "dialog"}, [
+        m(".modal-dialog", {style: "width: 30em;"}, [
+            m(".modal-content", [
+                m(".modal-header", [
+                    m("h4", {style: "font-weight: bold;"}, "Create Account")
+                ]),
+                m(".modal-body", [
+                    m("center", [
+                        m("p#register-error-msg", {onkeyup: m.withAttr("value", ctrl.responseMessage), style: ctrl.responseMessageColor() + "; font-weight: bold;"}, ctrl.responseMessage()),
                     ]),
-                    m(".modal-body", [
-                        m("center", [
-                            m("span#register-error-msg", {onkeyup: m.withAttr("value", ctrl.responseMessage), style: ctrl.responseMessageColor()}, ctrl.responseMessage())
-                        ]),
-                        m(".form-group", [
-                            m("label.col-lg-2.control-label", {for: "register-username"}, "Username:"),
+                    m("form.form-horizontal", [
+                        m(".input-group", {style: "margin-top: 10px;"}, [
+                            m("span.input-group-addon", [
+                                m("i.glyphicon.glyphicon-user")
+                            ]),
                             m("input#register-username.form-control", {onkeyup: m.withAttr("value", ctrl.username), style: ctrl.usernameColor(), type:"text", placeholder: "Username"}, ctrl.username()),
                         ]),
-                        m(".form-group", [
-                            m("label.col-lg-2.control-label", {for: 'register-email'}, "Email:"),
+                        m(".input-group", {style: "margin-top: 10px;"}, [
+                            m("span.input-group-addon", [
+                                m("i.glyphicon.glyphicon-envelope")
+                            ]),
                             m("input#register-email.form-control", {onkeyup: m.withAttr("value", ctrl.email), placeholder: "Email", type: "email"}, ctrl.email()),
                         ]),
-                        m(".form-group", [
-                            m("label.col-lg-2.control-label", {for: "register-password"}, "Password:"),
+                        m(".input-group", {style: "margin-top: 10px;"}, [
+                            m("span.input-group-addon", [
+                                m("i.glyphicon.glyphicon-lock")
+                            ]),
                             m("input#register-password.form-control", {onkeyup: _.compose(ctrl.checkPass, m.withAttr("value", ctrl.pass1)), placeholder: "Password", type: ctrl.pass1Type(), value: ctrl.pass1()}),
                         ]),
-                        m(".form-group", [
-                            m("label.col-lg-2.control-label", {for: "register-confirm-password"}, "Confirm Password:"),
+                        m(".input-group", {style: "margin-top: 10px;"}, [
+                            m("span.input-group-addon", [
+                                m("i.glyphicon.glyphicon-lock")
+                            ]),
                             m("input.form-control", {id: "register-confirm-password", "style": ctrl.pass2Color(), onkeyup: _.compose(ctrl.checkPass, m.withAttr("value", ctrl.pass2)), placeholder: "Confirm Password", type: ctrl.pass2Type(), value: ctrl.pass2()}),
-                            m("input#showPass.pull-right", {type: "checkbox", name: "showPass", style: "margin-left: 5px", onchange: _.compose(ctrl.showPass, m.withAttr("checked", ctrl.isChecked)), checked: ctrl.isChecked()}),
-                            m("label.pull-right", {for: "showPass"}, "Show Password"),
-                        ]),
-                        m("center", [
-                            m("span", {id: "confirm-msg", "style": ctrl.messageColor()}, ctrl.message())
                         ])
                     ]),
-                    m(".modal-footer", [
-                        m("a.btn.btn-primary.pull-left", {"data-dismiss": "modal"}, "Close"),
-                        m("a#register-btn.btn.btn-primary.pull-right", {onclick: ctrl.register}, "Register"),
+                    m(".form-group", {style: "margin-top: 5px;"}, [
+                        m("input#showPass.pull-right", {type: "checkbox", name: "showPass", style: "margin-left: 5px", onchange: _.compose(ctrl.showPass, m.withAttr("checked", ctrl.isChecked)), checked: ctrl.isChecked()}),
+                        m("label.pull-right", {for: "showPass"}, "Show Password"),
+                    ]),
+                    m("center", [
+                        m("span", {id: "confirm-msg", "style": ctrl.messageColor()}, ctrl.message())
                     ])
+                ]),
+                m(".modal-footer", [
+                    m("a.btn.btn-primary.pull-left", {"data-dismiss": "modal"}, [
+                        m("i.glyphicon.glyphicon-remove")
+                    ], " Close"),
+                    m("a#register-btn.btn.btn-primary.pull-right", {onclick: ctrl.register}, [
+                        m("i.glyphicon.glyphicon-plus")
+                    ], " Register"),
                 ])
             ])
-        ]);
+        ])
+]   );
 };
 
 registerModal.controller = function() {
