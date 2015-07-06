@@ -158,7 +158,6 @@ registerModal.controller = function() {
     me.bestPassword = m.prop(["green", "green", "green", "green"]);
     me.calcPasswordStrength = function() {
         me.result(zxcvbn(me.pass1(), [me.username(), me.email()]));
-        console.log(me.result.score);
         me.selectedPassword(me.result().score < 2 ? me.worstPassword() :
                             me.result().score < 3 ? me.okayPassword() :
                             me.result().score < 4 ? me.betterPassword() :

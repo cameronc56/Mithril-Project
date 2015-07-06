@@ -2,29 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72721e00-e306-49aa-ae74-7f1455d3308e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/static/css/bootstrap-theme.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/static/css/bootstrap-theme.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/static/css/bootstrap-theme.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/static/css/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/static/css/bootstrap.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/static/css/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/static/css/css.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/static/fonts/glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/static/fonts/glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/static/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/static/fonts/glyphicons-halflings-regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/static/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/static/json/games.json" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/admin/static/js/components/adminNavbar.js" afterPath="$PROJECT_DIR$/admin/static/js/components/adminLogin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login.db" afterPath="$PROJECT_DIR$/login.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminIndex.tpl" afterPath="$PROJECT_DIR$/adminIndex.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/static/js/routers/adminRouting.js" afterPath="$PROJECT_DIR$/admin/static/js/routers/adminRouting.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminServer.py" afterPath="$PROJECT_DIR$/adminServer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/components/footer.js" afterPath="$PROJECT_DIR$/static/js/components/footer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.tpl" afterPath="$PROJECT_DIR$/index.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/components/loginModal.js" afterPath="$PROJECT_DIR$/static/js/components/loginModal.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/components/registerModal.js" afterPath="$PROJECT_DIR$/static/js/components/registerModal.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Mithril-Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,8 +27,8 @@
       <file leaf-file-name="registerModal.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/components/registerModal.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7733473">
-              <caret line="164" column="72" selection-start-line="164" selection-start-column="72" selection-end-line="164" selection-end-column="72" />
+            <state vertical-scroll-proportion="0.6977964">
+              <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -744,12 +722,12 @@
       <workItem from="1436127302783" duration="3517000" />
       <workItem from="1436195888540" duration="660000" />
       <workItem from="1436200049312" duration="1459000" />
-      <workItem from="1436202496850" duration="7503000" />
+      <workItem from="1436202496850" duration="7660000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="487368000" />
+    <option name="totallyTimeSpent" value="487525000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="-4" width="1873" height="1084" extended-state="6" />
@@ -1174,8 +1152,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/components/registerModal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7733473">
-          <caret line="164" column="72" selection-start-line="164" selection-start-column="72" selection-end-line="164" selection-end-column="72" />
+        <state vertical-scroll-proportion="0.6977964">
+          <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
           <folding />
         </state>
       </provider>
