@@ -6,4 +6,6 @@ bottle.pyc
 node_modules
 .idea/*
 .idea/workspace.xml
+login.db
+admin.db
 
