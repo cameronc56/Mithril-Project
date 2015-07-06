@@ -152,10 +152,10 @@ registerModal.controller = function() {
     me.result = m.prop("");
     me.defaultPassword = m.prop(["white", "white", "white", "white"]);
     me.selectedPassword = m.prop(me.defaultPassword());
-    me.worstPassword = m.prop(["red", "white", "white", "white"]);
-    me.okayPassword = m.prop(["orange", "orange", "white", "white"]);
+    me.worstPassword = m.prop(["#d9534f", "white", "white", "white"]);
+    me.okayPassword = m.prop(["#ec971f", "#ec971f", "white", "white"]);
     me.betterPassword = m.prop(["yellow", "yellow", "yellow", "white"]);
-    me.bestPassword = m.prop(["green", "green", "green", "green"]);
+    me.bestPassword = m.prop(["#449d44", "#449d44", "#449d44", "#449d44"]);
     me.calcPasswordStrength = function() {
         me.result(zxcvbn(me.pass1(), [me.username(), me.email()]));
         me.selectedPassword(me.result().score < 2 ? me.worstPassword() :

@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="72721e00-e306-49aa-ae74-7f1455d3308e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/components/registerModal.js" afterPath="$PROJECT_DIR$/static/js/components/registerModal.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Mithril-Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,8 +28,8 @@
       <file leaf-file-name="registerModal.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/components/registerModal.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6977964">
-              <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.64113325">
+              <caret line="157" column="66" selection-start-line="157" selection-start-column="66" selection-end-line="157" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -722,12 +723,12 @@
       <workItem from="1436127302783" duration="3517000" />
       <workItem from="1436195888540" duration="660000" />
       <workItem from="1436200049312" duration="1459000" />
-      <workItem from="1436202496850" duration="7660000" />
+      <workItem from="1436202496850" duration="8600000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="487525000" />
+    <option name="totallyTimeSpent" value="488465000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="-4" width="1873" height="1084" extended-state="6" />
@@ -1152,8 +1153,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/components/registerModal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6977964">
-          <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.64113325">
+          <caret line="157" column="66" selection-start-line="157" selection-start-column="66" selection-end-line="157" selection-end-column="66" />
           <folding />
         </state>
       </provider>
