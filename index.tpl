@@ -10,6 +10,8 @@
     <script type="text/javascript" src="{{ get_url('static/js/libraries', filename = 'underscore.js') }}"></script>
     <script type="text/javascript" src="{{ get_url('static/js/libraries', filename = 'bootstrap.js') }}" charset="utf-8"></script>
     <script type="text/javascript" src="{{ get_url('static/js/libraries', filename = 'helpers.js') }}"></script>
+    <script type="text/javascript" src="{{ get_url('static/js/libraries', filename = 'zxcvbn-async.js') }}"></script>
+
 
     <link rel="stylesheet" href="{{ get_url('static/css', filename = 'bootstrap.css') }}">
     <link rel="stylesheet" href="{{ get_url('static/css', filename = 'css.css') }}">

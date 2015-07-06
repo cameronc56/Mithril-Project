@@ -75,6 +75,8 @@ loginModal.controller = function() {
             })
         }
     };
+
+
     return me;
 };
 

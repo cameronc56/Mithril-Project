@@ -80,23 +80,23 @@ def server_static(filename):
 ################################################################################
 @get('/admin/static/js/libraries/<filename:re:.*\.js>', name='admin/static/js/libraries')
 def server_static(filename):
-    return static_file(filename, root='/admin/static/js/libraries')
+    return static_file(filename, root='static/js/libraries')
 ################################################################################
 @get('/admin/static/js/routers/<filename:re:.*\.js>', name='admin/static/js/routers')
 def server_static(filename):
-    return static_file(filename, root='/admin/static/js/routers')
+    return static_file(filename, root='admin/static/js/routers')
 ################################################################################
 @get('/admin/static/json/<filename:re:.*\.json>', name='admin/static')
 def server_static(filename):
-    return static_file(filename, root='admin/static/json')
+    return static_file(filename, root='static/json')
 ################################################################################
 @get('/admin/static/css/<filename:re:.*\.(css|css.map)>', name='admin/static/css')
 def server_static(filename):
-    return static_file(filename, root='admin/static/css')
+    return static_file(filename, root='static/css')
 ################################################################################
 @get('/admin/static/fonts/<filename>')
 def server_static(filename):
-    return static_file(filename, root='admin/static/fonts', mimetype = 'font/opentype')
+    return static_file(filename, root='static/fonts', mimetype = 'font/opentype')
 ################################################################################
 @route('/admin/images/<imageName>', name = 'images')
 def send_image(imageName):

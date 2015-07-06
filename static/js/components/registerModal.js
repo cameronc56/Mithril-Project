@@ -9,28 +9,38 @@ registerModal.view = function(ctrl) {
                 ]),
                 m(".modal-body", [
                     m("center", [
-                        m("p#register-error-msg", {onkeyup: m.withAttr("value", ctrl.responseMessage), style: ctrl.responseMessageColor() + "; font-weight: bold;"}, ctrl.responseMessage()),
+                        m("p#register-error-msg", {onchange: m.withAttr("value", ctrl.responseMessage), style: ctrl.responseMessageColor() + "; font-weight: bold;"}, ctrl.responseMessage()),
                     ]),
                     m("form.form-horizontal", [
                         m(".input-group", {style: "margin-top: 10px;"}, [
                             m("span.input-group-addon", [
                                 m("i.glyphicon.glyphicon-user")
                             ]),
-                            m("input#register-username.form-control", {onkeyup: m.withAttr("value", ctrl.username), style: ctrl.usernameColor(), type:"text", placeholder: "Username"}, ctrl.username()),
+                            m("input#register-username.form-control", {onchange: m.withAttr("value", ctrl.username), style: ctrl.usernameColor(), type:"text", placeholder: "Username"}, ctrl.username()),
                         ]),
                         m(".input-group", {style: "margin-top: 10px;"}, [
                             m("span.input-group-addon", [
                                 m("i.glyphicon.glyphicon-envelope")
                             ]),
-                            m("input#register-email.form-control", {onkeyup: m.withAttr("value", ctrl.email), placeholder: "Email", type: "email"}, ctrl.email()),
+                            m("input#register-email.form-control", {onchange: m.withAttr("value", ctrl.email), placeholder: "Email", type: "email"}, ctrl.email()),
                         ]),
                         m(".input-group", {style: "margin-top: 10px;"}, [
                             m("span.input-group-addon", [
                                 m("i.glyphicon.glyphicon-lock")
                             ]),
-                            m("input#register-password.form-control", {onkeyup: _.compose(ctrl.checkPass, m.withAttr("value", ctrl.pass1)), placeholder: "Password", type: ctrl.pass1Type(), value: ctrl.pass1()}),
+                            m("input#register-password.form-control", {onkeyup: _.compose(ctrl.checkPass, ctrl.calcPasswordStrength, m.withAttr("value", ctrl.pass1)), placeholder: "Password", type: ctrl.pass1Type(), value: ctrl.pass1()}),
                         ]),
-                        m(".input-group", {style: "margin-top: 10px;"}, [
+                        m(".form-group", {style: "margin-top: 5px;"}, [
+                            m(".container", [
+                                m(".row", [
+                                    m(".column-sm-3", {style: "width: 90px; height: 5px;" + "background-color: " + ctrl.selectedPassword()[0] + "; border-radius: 3px; position: absolute; margin-left: 20px;"}),
+                                    m(".column-sm-3", {style: "width: 90px; height: 5px;" + "background-color: " + ctrl.selectedPassword()[1] + "; orange;  border-radius: 3px; position: absolute; margin-left: 115px;"}),
+                                    m(".column-sm-3", {style: "width: 90px; height: 5px;" + "background-color: " + ctrl.selectedPassword()[2] + ";  border-radius: 3px; position: absolute; margin-left: 210px;"}),
+                                    m(".column-sm-3", {style: "width: 90px; height: 5px;" + "background-color: " + ctrl.selectedPassword()[3] + "; border-radius: 3px; position: absolute; margin-left: 305px;"})
+                                ])
+                            ])
+                        ]),
+                        m(".input-group", {style: "margin-top: 0px;"}, [
                             m("span.input-group-addon", [
                                 m("i.glyphicon.glyphicon-lock")
                             ]),
@@ -60,6 +70,7 @@ registerModal.view = function(ctrl) {
 
 registerModal.controller = function() {
     var me = {};
+
     me.message =  m.prop("");
     me.messageColor = m.prop("");
     me.pass1 = m.prop("");
@@ -136,5 +147,25 @@ registerModal.controller = function() {
 
         }
     };
+
+
+    me.result = m.prop("");
+    me.defaultPassword = m.prop(["white", "white", "white", "white"]);
+    me.selectedPassword = m.prop(me.defaultPassword());
+    me.worstPassword = m.prop(["red", "white", "white", "white"]);
+    me.okayPassword = m.prop(["orange", "orange", "white", "white"]);
+    me.betterPassword = m.prop(["yellow", "yellow", "yellow", "white"]);
+    me.bestPassword = m.prop(["green", "green", "green", "green"]);
+    me.calcPasswordStrength = function() {
+        me.result(zxcvbn(me.pass1(), [me.username(), me.email()]));
+        console.log(me.result.score);
+        me.selectedPassword(me.result().score < 2 ? me.worstPassword() :
+                            me.result().score < 3 ? me.okayPassword() :
+                            me.result().score < 4 ? me.betterPassword() :
+                            me.result().score < 10 ? me.bestPassword() :
+                            me.defaultPassword());
+    };
+
+
     return me;
 };

@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<script type="text/javascript" src="{{ get_url('admin/static/js/components', filename = 'adminNavbar.js') }}"></script>
+<script type="text/javascript" src="{{ get_url('admin/static/js/components', filename = 'adminLogin.js') }}"></script>
 
 
 <script type="text/javascript" src="{{ get_url('admin/static/js/routers', filename = 'adminRouting.js') }}"></script>

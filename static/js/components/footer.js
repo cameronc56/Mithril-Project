@@ -28,8 +28,6 @@ footer.controller = function() {
     me.drawSocialMediaIcons = function(element, isInitialized) {
         //don't redraw if we did once already
         if (isInitialized) return;
-
-        console.log("hi");
         //twitter button
         !function(d,s,id){
             var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
