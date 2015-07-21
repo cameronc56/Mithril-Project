@@ -10,10 +10,12 @@ gameOverview.view = function(ctrl) {
                 ])
                 : "",
                 m(".row#getWidth", {style: "margin-bottom: 20px;"}, [
+                    //sortby dropdown
                     m("select.form-control.pull-left", {style: "width: 13em; margin-left: 30px;", onchange: _.compose(m.withAttr("value", gameOverview.sortBy)/*routing.reroute*/), value: gameOverview.sortBy()}, [
                         m("option", "Most Played"),
                         m("option", "Alphabetically")
                     ]),
+                    //search field
                     m(".input-group.pull-right", [
                         m("input#search.form-control", {onkeyup: m.withAttr("value", ctrl.searchValue), placeholder: "Search", type: "text", style: "width: 180px;", value: ctrl.searchValue()}),
                         m(".input-group-btn.pull-left", [
@@ -39,6 +41,8 @@ gameOverview.view = function(ctrl) {
                     ctrl.isFavoritesPage() ? rows(parseInt((ctrl.favoriteGamesJSON().length / columns()) + Math.ceil((ctrl.favoriteGamesJSON().length % columns()) / columns() ))) : "";
                     //sorts games
                     ctrl.sortGames(ctrl.games(), ctrl.favoriteGamesJSON());
+                    ctrl.search(ctrl.sortedGames(), ctrl.searchValue());
+
 
                     return _.times(rows(), function(i) {
                         return m(".row", {style: "margin-top: 0px;"}, _.times(4, function(j) {
@@ -46,7 +50,7 @@ gameOverview.view = function(ctrl) {
                             return m.component(gameThumbnail, {
                                 view: ctrl.isFavoritesPage() ? "favorites" : "homepage",
                                 thumbnailNumber: ctrl.thumbnailNumber(),
-                                gameInfo: ctrl.sortedGames()[ctrl.thumbnailNumber() + (parseInt(m.route.param("pageNumber") - 1) * 12)]
+                                gameInfo: ctrl.searchedGames()[ctrl.thumbnailNumber() + (parseInt(m.route.param("pageNumber") - 1) * 12)]
                             })
                         }))
                     });
@@ -69,6 +73,7 @@ gameOverview.controller = function() {
             url: "/static/json/games.json"
         }).then(function(val) {
             me.games(val);
+            console.log(me.games());
         });
     };
     me.getGamesJson();
@@ -97,11 +102,14 @@ gameOverview.controller = function() {
 
 
     me.searchValue = m.prop("");
-    me.searchedValue = m.prop("");
-    me.search = function() {
-        me.searchedValue(me.searchValue());
-        console.log(me.searchedValue());
-        m.redraw();
+    me.searchedGames = m.prop([]);
+    me.search = function(games, searchQuery) {
+        me.searchedGames([]);
+        for(var i = 0; i < games.length; i++) {
+            if(games[i].title.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1) {
+                me.searchedGames().push(games[i]);
+            }
+        }
     };
 
 

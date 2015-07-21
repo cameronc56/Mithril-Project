@@ -161,7 +161,7 @@ registerModal.controller = function() {
         me.selectedPassword(me.result().score < 2 ? me.worstPassword() :
                             me.result().score < 3 ? me.okayPassword() :
                             me.result().score < 4 ? me.betterPassword() :
-                            me.result().score < 10 ? me.bestPassword() :
+                            me.result().score < 5 ? me.bestPassword() :
                             me.defaultPassword());
     };
 
