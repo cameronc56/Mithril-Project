@@ -32,3 +32,4 @@ threadWidget.controller = function(args) {
     var me = {};
     return me;
 };
+

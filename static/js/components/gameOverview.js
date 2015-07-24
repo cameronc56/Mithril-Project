@@ -73,7 +73,6 @@ gameOverview.controller = function() {
             url: "/static/json/games.json"
         }).then(function(val) {
             me.games(val);
-            console.log(me.games());
         });
     };
     me.getGamesJson();
@@ -106,7 +105,7 @@ gameOverview.controller = function() {
     me.search = function(games, searchQuery) {
         me.searchedGames([]);
         for(var i = 0; i < games.length; i++) {
-            if(games[i].title.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1) {
+            if(games[i].title.toLowerCase().indexOf(searchQuery.toLowerCase().trim()) > -1) {
                 me.searchedGames().push(games[i]);
             }
         }
