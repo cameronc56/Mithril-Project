@@ -50,6 +50,9 @@ contactModal.controller = function() {
             data: {"emailName": me.name(), "emailAddress": me.email(), "emailBody": me.message()}
         }).then(function(response) {
             me.fieldColor("border-color: " + colors.goodColor + ";");
+            me.name("");
+            me.email("");
+            me.message("");
         });
     };
     return me;
