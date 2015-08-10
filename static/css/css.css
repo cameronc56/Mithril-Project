@@ -1,4 +1,29 @@
 body {
-	margin-bottom: 80px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	margin-bottom: 160px;
 	background-color: #C6E2FF;
+	background-image: -o-linear-gradient(bottom, rgba(129, 138, 138, 0.5), rgba(46, 134, 255, 0.5));
+	background-image: -moz-linear-gradient(bottom, rgba(129, 138, 138, 0.5), rgba(46, 134, 255, 0.5));
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(rgba(129, 138, 138, 0.5)), color-stop(rgba(46, 134, 255, 0.5)));
+	background-image: -webkit-linear-gradient(bottom, rgba(129, 138, 138, 0.5), rgba(46, 134, 255, 0.5));
+	background-image: -ms-linear-gradient(bottom, rgba(129, 138, 138, 0.5), rgba(46, 134, 255, 0.5));
+	background-image: linear-gradient(bottom, rgba(129, 138, 138, 0.5), rgba(46, 134, 255, 0.5));
 }
+
+
+body .container .jumbotron {
+	border-radius: 0;
+	background-color: transparent;
+	background-image: -o-linear-gradient(bottom, rgba(129, 138, 138, 0.5), rgba(46, 134, 255, 0.5));
+	background-image: -moz-linear-gradient(bottom, rgba(129, 138, 138, 0.5), rgba(46, 134, 255, 0.5));
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(rgba(129, 138, 138, 0.5)), color-stop(rgba(46, 134, 255, 0.5)));
+	background-image: -webkit-linear-gradient(bottom, rgba(129, 138, 138, 0.5), rgba(46, 134, 255, 0.5));
+	background-image: -ms-linear-gradient(bottom, rgba(129, 138, 138, 0.5), rgba(46, 134, 255, 0.5));
+	background-image: linear-gradient(bottom, rgba(129, 138, 138, 0.5), rgba(46, 134, 255, 0.5));
+}
+
+.container {
+	padding: 0;
+}
+

@@ -68,7 +68,9 @@ loginModal.controller = function() {
                 me.responseMessage(response.response);
                 if(response.response == "Logged In") {
                     me.responseMessageColor("color: " + colors.goodColor);
-                    document.location.reload(true);
+                    setTimeout(function() {
+                        document.location.reload(true);
+                    }, 500);
                 } else {
                     me.responseMessageColor("color: " + colors.badColor);
                 }

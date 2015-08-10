@@ -171,8 +171,6 @@ def sendEmail():
     message.set_from(emailName + " <" + emailAddress + " ")
     status, msg = sg.send(message)
     return json.dumps({"status": status})
-
-
 ################################################################################
 @post('/isFavoriteGame')
 def isFavoriteGame():

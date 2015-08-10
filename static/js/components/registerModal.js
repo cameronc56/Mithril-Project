@@ -9,26 +9,26 @@ registerModal.view = function(ctrl) {
                 ]),
                 m(".modal-body", [
                     m("center", [
-                        m("p#register-error-msg", {onchange: m.withAttr("value", ctrl.responseMessage), style: ctrl.responseMessageColor() + "; font-weight: bold;"}, ctrl.responseMessage()),
+                        m("p#register-error-msg", {onchange: m.withAttr("value", ctrl.responseMessage), style: ctrl.responseMessageColor() + "; font-weight: bold;"}, ctrl.responseMessage())
                     ]),
                     m("form.form-horizontal", [
                         m(".input-group", {style: "margin-top: 10px;"}, [
                             m("span.input-group-addon", [
                                 m("i.glyphicon.glyphicon-user")
                             ]),
-                            m("input#register-username.form-control", {onchange: m.withAttr("value", ctrl.username), style: ctrl.usernameColor(), type:"text", placeholder: "Username"}, ctrl.username()),
+                            m("input#register-username.form-control", {onchange: m.withAttr("value", ctrl.username), style: ctrl.usernameColor(), type:"text", placeholder: "Username"}, ctrl.username())
                         ]),
                         m(".input-group", {style: "margin-top: 10px;"}, [
                             m("span.input-group-addon", [
                                 m("i.glyphicon.glyphicon-envelope")
                             ]),
-                            m("input#register-email.form-control", {onchange: m.withAttr("value", ctrl.email), placeholder: "Email", type: "email"}, ctrl.email()),
+                            m("input#register-email.form-control", {onchange: m.withAttr("value", ctrl.email), placeholder: "Email", type: "email"}, ctrl.email())
                         ]),
                         m(".input-group", {style: "margin-top: 10px;"}, [
                             m("span.input-group-addon", [
                                 m("i.glyphicon.glyphicon-lock")
                             ]),
-                            m("input#register-password.form-control", {onkeyup: _.compose(ctrl.checkPass, ctrl.calcPasswordStrength, m.withAttr("value", ctrl.pass1)), placeholder: "Password", type: ctrl.pass1Type(), value: ctrl.pass1()}),
+                            m("input#register-password.form-control", {onkeyup: _.compose(ctrl.checkPass, ctrl.calcPasswordStrength, m.withAttr("value", ctrl.pass1)), placeholder: "Password", type: ctrl.pass1Type(), value: ctrl.pass1()})
                         ]),
                         m(".form-group", {style: "margin-top: 5px;"}, [
                             m(".container", [
@@ -49,7 +49,7 @@ registerModal.view = function(ctrl) {
                     ]),
                     m(".form-group", {style: "margin-top: 5px;"}, [
                         m("input#showPass.pull-right", {type: "checkbox", name: "showPass", style: "margin-left: 5px", onchange: _.compose(ctrl.showPass, m.withAttr("checked", ctrl.isChecked)), checked: ctrl.isChecked()}),
-                        m("label.pull-right", {for: "showPass"}, "Show Password"),
+                        m("label.pull-right", {for: "showPass"}, "Show Password")
                     ]),
                     m("center", [
                         m("span", {id: "confirm-msg", "style": ctrl.messageColor()}, ctrl.message())
@@ -61,7 +61,7 @@ registerModal.view = function(ctrl) {
                     ], " Close"),
                     m("a#register-btn.btn.btn-primary.pull-right", {onclick: ctrl.register}, [
                         m("i.glyphicon.glyphicon-plus")
-                    ], " Register"),
+                    ], " Register")
                 ])
             ])
         ])
@@ -138,7 +138,9 @@ registerModal.controller = function() {
                 if (response.error == 'Account Created') {
                     me.usernameColor("background-color: " + colors.goodColor);
                     me.responseMessageColor("color: " + colors.goodColor);
-                    document.location.reload(true);
+                    setTimeout(function() {
+                        document.location.reload(true);
+                    }, 500);
                 } else {
                     me.usernameColor("background-color: " + colors.badColor);
                     me.responseMessageColor("color: " + colors.badColor);
