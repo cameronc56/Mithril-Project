@@ -12,13 +12,13 @@ footer.view = function(ctrl) {
     ctrl.drawSocialMediaIcons();
 
     return m(".navbar.navbar-default.navbar-fixed-bottom", [
-        m("#fb-root"),
-        m(".container", [
+        m(".container", {style: "padding: 5px;"}, [
             m("a", {href: "https://twitter.com/DucklingGames"}, [
                 m("p.navbar-text.pull-left", "Site by Cameron Cooks")
             ]),
-            m("a.twitter-share-button.pull-right.navbar-btn", {href: "https://twitter.com/share", "data-url": "https://www.littleducklinggames.com"}, "Tweet"),
-            m(".fb-share-button.pull-right.navbar-btn", {style: "margin-right: 5px", "date-href": "https://www.littleducklinggames.com", "data-layout": "button_count"})
+            m("#fb-root"),
+            m("a.fb-share-button.navbar-btn.pull-right", {style: "margin-top: 5px;", "data-href": "https://www.littleducklinggames.com", "data-layout": "button_count"}),
+            //m("a.twitter-share-button.navbar-btn.pull-right", {style: "display: none;", href: "https://twitter.com/share", "data-url": "https://www.littleducklinggames.com"}, "Tweet")
         ])
     ])
 };
