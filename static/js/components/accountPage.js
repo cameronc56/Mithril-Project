@@ -1,15 +1,32 @@
 var accountPage = {};
 
 accountPage.view = function(ctrl) {
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#profilePhoto').attr('src', e.target.result);
+                ctrl.uploadProfilePhoto(e.target.result, input.files[0].name)
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imageInput").change(function(){
+        readURL(this);
+    });
     return m(".container", [
         m(".row", [
             m(".well.well-sm.col-sm-3", {style: "width: 260px; padding: 10px;"}, [
                 m(".thumbnail", {style: "margin-bottom: 0px;"}, [
-                    m("img", {src: "http://www.saddleback.edu/uploads/asg/blank-profile-hi.png"}),
+                    m("img#profilePhoto", {src: "http://www.saddleback.edu/uploads/asg/blank-profile-hi.png"}),
                     m("center.caption", [
                         m("h4", "Profile Picture"),
                         m("p", [
-                            m("a.btn.btn-primary", {href: "#/account", role: "button"}, "Upload"),
+                                m("span.btn.btn-primary.btn-file", "Upload", [
+                                    m("input#imageInput", {type: "file"})
+                                ]),
+
                             m("a.btn.btn-default", {style: "margin-left: 5px;", href: "#/account", role: "button"}, "Delete")
                         ])
                     ])
@@ -69,7 +86,20 @@ accountPage.controller = function() {
         }
     };
 
-
+    me.uploadProfilePhoto = function(myFile, filename) {
+        console.log(JSON.stringify(myFile));
+        console.log(filename);
+        cookies.checkSession(function(response) {
+            me.username(response.username)
+        });
+        m.request({
+            method: "POST",
+            url: "/setUserProfilePhoto",
+            data: {file: JSON.stringify(myFile), filename: filename, username: me.username}
+        }).then(function(response) {
+            console.log(response)
+        })
+    };
 
     return me;
 };

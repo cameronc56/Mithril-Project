@@ -203,13 +203,17 @@ def account():
     else:
         return json.dumps({"username": "Username"})
 ################################################################################
-@post('setUserProfilePhoto')
+@post('/setUserProfilePhoto')
 def setUserProfilePhoto():
     d = request.json
+    file = d["file"]
+    filename = d["filename"]
     username = d["username"]
-    f = open("imageToSave.png", "wb")
-    f.write()
-    f.close()
+    # f = open("imageToSave.png", "wb")
+    # f.write()
+    # f.close()
+    print "hello world"
+    print file + " " + filename + " " + username
 ################################################################################
 # @get('getUserProfilePhoto')
 # def getUserProfilePhoto():
