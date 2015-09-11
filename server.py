@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from bottle import default_app, template, get, post, request, response, static_file
 from bottle import *
 import sqlite3
 import hashlib, uuid
@@ -205,15 +206,13 @@ def account():
 ################################################################################
 @post('/setUserProfilePhoto')
 def setUserProfilePhoto():
-    d = request.json
-    file = d["file"]
-    filename = d["filename"]
-    username = d["username"]
-    # f = open("imageToSave.png", "wb")
-    # f.write()
-    # f.close()
-    print "hello world"
-    print file + " " + filename + " " + username
+    pic = request.files.get('pic')
+    ext = pic.filename.split(".")[-1]
+    filename = "images/test." + ext
+    #todo 1. Check if image already exists at this point, if it does and pic.save is run it will fail
+    #todo 2. Save filename of picture in the DB along with username of user
+    pic.save(filename)
+    print "DONE"
 ################################################################################
 # @get('getUserProfilePhoto')
 # def getUserProfilePhoto():
@@ -222,6 +221,7 @@ def setUserProfilePhoto():
 #     photo = open('userProfilePhotos/' + username, 'r')
 #
 #       Dont need a get photo, just do <img src="dir">
+
 
 ################################################################################
 @get('/static/js/<filename:re:.*\.js>', name='static/js')
@@ -252,9 +252,9 @@ def server_static(filename):
 def server_static(filename):
     return static_file(filename, root='static/fonts', mimetype='font/opentype')
 ################################################################################
-@route('/images/<imageName>', name='images')
-def send_image(imageName):
-    return static_file(imageName, root='images', mimetype='image/png')
+@route('/images/<filepath:path>')
+def server_static(filepath):
+    return static_file(filepath, root='images')
 ################################################################################
 def decode_session_str(s):
     if s:

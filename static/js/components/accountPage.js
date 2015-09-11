@@ -1,20 +1,32 @@
 var accountPage = {};
 
 accountPage.view = function(ctrl) {
-    function readURL(input) {
+    $("#imageInput").change(function(){
+        previewImage(this);
+    });
+
+    function previewImage(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
+                //previews image:
                 $('#profilePhoto').attr('src', e.target.result);
-                ctrl.uploadProfilePhoto(e.target.result, input.files[0].name)
             };
             reader.readAsDataURL(input.files[0]);
         }
     }
 
-    $("#imageInput").change(function(){
-        readURL(this);
-    });
+    function uploadPhoto() {
+        var formData = new FormData;
+        formData.append("pic", document.getElementById("imageInput").files[0]);
+        return m.request({
+            method: "POST",
+            url: "/setUserProfilePhoto",
+            data: formData,
+            serialize: function(value) {return value}
+        });
+    }
+
     return m(".container", [
         m(".row", [
             m(".well.well-sm.col-sm-3", {style: "width: 260px; padding: 10px;"}, [
@@ -26,7 +38,7 @@ accountPage.view = function(ctrl) {
                                 m("span.btn.btn-primary.btn-file", "Upload", [
                                     m("input#imageInput", {type: "file"})
                                 ]),
-
+                            m("a.btn.btn-default", {style: "margin-left: 5px;", href: "#/account", role: "button", onclick: uploadPhoto}, "Save"),
                             m("a.btn.btn-default", {style: "margin-left: 5px;", href: "#/account", role: "button"}, "Delete")
                         ])
                     ])
@@ -84,21 +96,6 @@ accountPage.controller = function() {
         } else {
             console.log("New passwords do not match.")
         }
-    };
-
-    me.uploadProfilePhoto = function(myFile, filename) {
-        console.log(JSON.stringify(myFile));
-        console.log(filename);
-        cookies.checkSession(function(response) {
-            me.username(response.username)
-        });
-        m.request({
-            method: "POST",
-            url: "/setUserProfilePhoto",
-            data: {file: JSON.stringify(myFile), filename: filename, username: me.username}
-        }).then(function(response) {
-            console.log(response)
-        })
     };
 
     return me;
