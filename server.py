@@ -8,6 +8,8 @@ import blowfish
 import base64
 import sendgrid
 import os
+import string
+import random
 
 app = default_app()
 cryptoKey = os.environ["CRYPTOKEY"]
@@ -208,7 +210,7 @@ def account():
 def setUserProfilePhoto():
     pic = request.files.get('pic')
     ext = pic.filename.split(".")[-1]
-    filename = "images/test." + ext
+    filename = "images/" + id_generator(30) + "." + ext
     #todo 1. Check if image already exists at this point, if it does and pic.save is run it will fail
     #todo 2. Save filename of picture in the DB along with username of user
     pic.save(filename)
@@ -255,6 +257,9 @@ def server_static(filename):
 @route('/images/<filepath:path>')
 def server_static(filepath):
     return static_file(filepath, root='images')
+################################################################################
+def id_generator(size = 6, chars = string.ascii_lowercase + string.digits + string.ascii_uppercase):
+    return ''.join(random.choice(chars) for _ in range(size))
 ################################################################################
 def decode_session_str(s):
     if s:
