@@ -17,10 +17,10 @@ threadPage.view = function(ctrl, args) {
                         m(".panel-title", title)
                     ]),
                     m(".panel-body", body),
-                    m(".panel-footer", {style: "height: 50px;"}, [
+                    m(".panel-footer", [
                         "Posted at: " + date + " by " + username,
                         ctrl.isLoggedIn() ?
-                            m("a.btn.btn-primary.pull-right", {href:"#newPostModalthread", "data-toggle":"modal"}, [
+                            m("a.pull-right", {href:"#newPostModalthread", "data-toggle":"modal"}, [
                                 "Reply ",
                                 m("span.glyphicon.glyphicon-comment", {"aria-hidden": "true"})
                             ])
@@ -29,16 +29,17 @@ threadPage.view = function(ctrl, args) {
                 ])
             ])
         ]),
+        m("hr"),
         (function() {
             return _.times(ctrl.posts().length, function(i) {
                 return m(".row", [
                     m("div", {class: "col-sm-offset-" + (1 + ctrl.posts()[i][6]).toString() + " col-sm-10"}, [
                         m(".panel.panel-default", [
                             m(".panel-body", ctrl.posts()[i][4]),
-                            m(".panel-footer", {style: "height: 55px;"}, [
+                            m(".panel-footer", [
                                 "Posted at: " + ctrl.posts()[i][3] + " by " + ctrl.posts()[i][2],
                                 ctrl.isLoggedIn() ?
-                                    m("a.btn.btn-primary.pull-right", {href:"#newPostModal" + ctrl.posts()[i][0], "data-toggle":"modal"}, [
+                                    m("a.pull-right", {href:"#newPostModal" + ctrl.posts()[i][0], "data-toggle":"modal"}, [
                                         "Reply ",
                                         m("span.glyphicon.glyphicon-comment", {"aria-hidden": "true"}),
                                     ])

@@ -208,12 +208,19 @@ def account():
 ################################################################################
 @post('/setUserProfilePhoto')
 def setUserProfilePhoto():
+
+    username = request.forms.get("username")
     pic = request.files.get('pic')
-    ext = pic.filename.split(".")[-1]
-    filename = "images/" + id_generator(30) + "." + ext
-    #todo 1. Check if image already exists at this point, if it does and pic.save is run it will fail
-    #todo 2. Save filename of picture in the DB along with username of user
-    pic.save(filename)
+
+    if pic and username:
+        ext = pic.filename.split(".")[-1]
+        filename = "images/" + id_generator(30) + "." + ext
+        pic.save(filename)
+
+        #todo: Save filename of picture in the DB along with username of user
+        conn = openConn()
+        
+
     print "DONE"
 ################################################################################
 # @get('getUserProfilePhoto')

@@ -15,7 +15,8 @@ forum.view = function(ctrl) {
             ]),
         threads.map(function(thread) {
             return m(".row", [
-                m.component(threadWidget, { id: thread[0], title: thread[1], bodyText: thread[2], date: thread[3], submitter: thread[4]})
+                m.component(threadWidget, { id: thread[0], title: thread[1], bodyText: thread[2], date: thread[3], submitter: thread[4]}),
+                m("hr", {style: "margin-top: 0px; margin-bottom: 20px;"})
             ])
         }),
         m("nav", [

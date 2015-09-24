@@ -19,6 +19,7 @@ accountPage.view = function(ctrl) {
     function uploadPhoto() {
         var formData = new FormData;
         formData.append("pic", document.getElementById("imageInput").files[0]);
+        formData.append("username",  ctrl.username());
         return m.request({
             method: "POST",
             url: "/setUserProfilePhoto",
