@@ -219,7 +219,7 @@ def setUserProfilePhoto():
 
         #todo: Save filename of picture in the DB along with username of user
         conn = openConn()
-        
+
 
     print "DONE"
 ################################################################################
